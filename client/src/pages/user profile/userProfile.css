@@ -1,0 +1,87 @@
+.user-profile .user-profile-box {
+    width: 60%;
+    margin-top: 80px;
+}
+
+.user-profile .user-profile-box .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-profile .user-profile-box .top h2 {
+    font-size: 40px;
+    line-height: 1;
+    color: var(--dark);
+}
+
+.user-profile .user-profile-box .top p {
+    font-size: 20px;
+    color: var(--dark);
+}
+
+.user-profile .user-profile-box .top>span:last-child {
+    align-self: baseline;
+    color: #dc3545;
+    cursor: pointer;
+}
+
+.user-profile .user-profile-box ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    padding: 0;
+    margin: 25px 0 40px 0;
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+}
+
+.user-profile .user-profile-box ul li {
+    height: 100%;
+}
+
+.user-profile .user-profile-box ul li a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: var(--dark);
+    text-transform: capitalize;
+    font-size: 20px;
+    line-height: 70px;
+}
+
+.user-profile .user-profile-box ul li a.active {
+    font-weight: 600;
+    border-bottom: 2px solid var(--dark);
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:768px) {
+
+    .user-profile .user-profile-box {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .user-profile .user-profile-box .top h2 {
+        font-size: 23px;
+    }
+
+    .user-profile .user-profile-box ul li a {
+        font-size: 17px;
+    }
+
+    .user-profile .user-profile-box .top p {
+        font-size: 17px;
+    }
+
+    .user-profile .user-profile-box .top p span {
+        display: block;
+    }
+
+}

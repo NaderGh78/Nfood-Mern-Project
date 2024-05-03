@@ -1,0 +1,160 @@
+.account .account-box {
+    display: flex;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.account .account-box .img-handler {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    padding: 4px;
+    border: 1px solid #999;
+    border-radius: 50%;
+}
+
+.account .account-box .img-handler img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.account .account-box .img-handler .change-img {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    border-radius: 50%;
+    transition: all .2s;
+    opacity: 0;
+}
+
+.account .account-box .img-handler .change-img svg {
+    font-size: 25px;
+}
+
+.account .account-box .img-handler:hover .change-img {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.account .account-box .img-handler+form {
+    text-align: center;
+}
+
+.account .account-box .img-handler>span:first-child {
+    position: absolute;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    top: 4px;
+    left: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(225, 225, 225, .8);
+    z-index: 1;
+}
+
+.account button.upload-profile-photo-btn {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    margin-top: 20px;
+    background-color: transparent;
+    color: var(--dark);
+    border: 1px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.account .right {
+    flex-grow: 1;
+}
+
+.account .right .account-from .form-group {
+    margin-bottom: 20px;
+}
+
+.account .right .account-from .form-group label {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--light-white)
+}
+
+.account .right .account-from .form-group input,
+.account .right .account-from .form-group textarea,
+.account .right .account-from .form-group select {
+    background-color: transparent;
+    color: var(--dark);
+}
+
+.account .right .account-from button {
+    padding: 10px 25px;
+    background-color: var(--pistach);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+}
+
+.account .hide-account {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.account .hide-account ul {
+    height: auto !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+    border: none !important;
+}
+
+.account .hide-account ul li {
+    padding: 7px 0;
+    font-weight: 600;
+    color: var(--dark);
+    border-bottom: 1px solid;
+}
+
+.account .hide-account ul li span {
+    margin-left: 5px;
+    color: var(--pistach);
+}
+
+.account .hide-account img {
+    width: 150px;
+    height: 150px;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:768px) {
+
+    .account .account-box {
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .account .account-box .left form {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .account button.upload-profile-photo-btn {
+        width: 150px;
+    }
+
+}

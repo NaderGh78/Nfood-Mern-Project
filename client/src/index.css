@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
+
+:root {
+  /* --navbar-active-link: #39db4a;
+  --navbar-link-hover: #39db4a;
+  --navbar-link-hover: #53ec62;
+  --button-bg: #fff;
+  --button-clr: #444;
+  --button-bg-hover: #c7ab62;
+  --arrow-slide-clr: rgba(0, 0, 0, .4);
+  --arrow-slide-hover: #c7ab62;
+  --form-btn-hover: #c7ab62;
+  --light-teal: #3bb19b;
+  --placeholder: #adb5bd;
+  --admin-bg: #f5f5f5;
+  --input-bg: #c4cfcc;
+  --dash-link-bg: #564675; */
+
+  --pistach: #39db4a;
+  --light-red: #ff6868;
+  --nav-bg: rgb(248, 249, 250);
+  --navy-blue: #fff;
+  --dark: #444;
+  --hard-black: #1e1d23;
+  --white: #fff;
+  --light-white: #444;
+  --soft-white: rgba(0, 0, 0, .1);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #39db4a #fff;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #39db4a;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: auto;
+  position: relative;
+}
+
+/* change the color in dark mode case */
+body.dark-mode {
+  background-color: #10172a;
+  --nav-bg: #1f2937;
+  --navy-blue: #10172a;
+  --dark: #fff;
+  --hard-black: #fff;
+  --white: transparent;
+  --light-white: rgba(225, 225, 225, .8);
+  --soft-white: rgba(225, 225, 225, .8);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* my custom container */
+.myContainer {
+  width: 90%;
+  margin: auto;
+}
+
+h5.my-logo {
+  font-size: 30px;
+  color: var(--dark);
+  margin: 0 0 0 25px;
+}
+
+h5.my-logo span {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  margin-right: 3px;
+  background-color: var(--pistach);
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 4px;
+}
+
+a.my_link {
+  text-decoration: none;
+  color: #666;
+  transition: all .2s;
+}
+
+/* ======================== */
+
+.my-form h2.form-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  color: var(--dark);
+}
+
+.my-form h2.form-title a {
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--light-white);
+}
+
+.my-form form label {
+  font-size: 15px;
+  color: var(--light-white);
+}
+
+.my-form form input::placeholder,
+.my-form form textarea::placeholder {
+  color: #cfcbcb;
+  font-size: 14px;
+}
+
+.my-form form input,
+.my-form form textarea {
+  background-color: transparent !important;
+  color: var(--dark) !important;
+}
+
+.my-form form textarea {
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border-color: #dee2e6;
+}
+
+.my-form form input:focus,
+.my-form form textarea:focus {
+  box-shadow: none;
+  border-color: #dee2e6;
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 2px;
+  outline-color: #dee2e6;
+  background-color: transparent !important;
+}
+
+.my-form form a {
+  text-decoration: none;
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--light-white);
+  transition: all .2s;
+}
+
+.my-form form a:hover {
+  text-decoration: underline;
+}
+
+.my-form form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  margin: 30px 0;
+  font-size: 15px;
+  background-color: var(--pistach);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: all .2s;
+}
+
+.my-form form button:hover {
+  background-color: #ddd;
+  color: #222;
+}
+
+.my-form ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+}
+
+.my-form ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+  background-color: #f2f2f2;
+  color: #000;
+  border-radius: 50%;
+  transition: all .2s;
+}
+
+.my-form ul li a:hover {
+  background-color: var(--pistach);
+  color: #fff;
+}
+
+/* ======================== */
+
+/* commun style */
+.categories-style {
+  padding: 15px;
+  border: 1px solid var(--soft-white);
+  border-radius: 10px;
+}
+
+.categories-style ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #edeaea;
+  border-radius: 10px;
+}
+
+.categories-style ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.categories-style ul li:hover {
+  color: var(--pistach);
+}
+
+.categories-style ul li span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* ======================== */
+
+/* style the confirm msg */
+.react-confirm-alert-overlay {
+  background: rgba(0, 0, 0, .3) !important;
+  animation: react-confirm-alert-fadeIn 0.01s 0.01s forwards !important;
+  z-index: 99999999999 !important;
+}
+
+.react-confirm-alert-body {
+  width: 500px !important;
+  padding: 34px !important;
+  background-color: #e2e3e5 !important;
+  text-align: center !important;
+  border-radius: 6px !important;
+}
+
+.react-confirm-alert-button-group {
+  justify-content: center !important;
+}
+
+.react-confirm-alert-button-group>button {
+  background: #222 !important;
+  font-size: 17px !important;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:425px) {
+
+  .react-confirm-alert-body {
+    width: 95% !important;
+    padding: 12px !important;
+    margin: auto;
+    font-size: 4vw;
+  }
+
+  .react-confirm-alert-button-group>button {
+    font-size: 3vw !important;
+  }
+
+  .Toastify__toast-container {
+    width: 80vw !important;
+    left: 20vw !important;
+  }
+
+  .Toastify__toast-body>div:last-child {
+    font-size: 3.5vw !important;
+  }
+
+}
+
+/* end 425px */

@@ -1,0 +1,14 @@
+.my-modal .btn-close {
+    box-shadow: none;
+}
+
+.my-modal .btn-close {
+    color: #000 !important;
+    opacity: 1;
+    transition: all .2s linear 0s;
+}
+
+.my-modal .btn-close:hover {
+    color: #000 !important;
+    transform: rotate(-180deg);
+}

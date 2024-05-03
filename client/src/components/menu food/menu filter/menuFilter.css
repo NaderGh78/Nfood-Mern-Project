@@ -1,0 +1,231 @@
+.menu-filter {
+    margin-top: 50px;
+    display: flex;
+}
+
+.menu-filter .my-card {
+    width: calc((100% - 60px) /3) !important
+}
+
+.menu-filter .menu-filter-content-all {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-filter .menu-filter-content-all .left {
+    flex: 9;
+}
+
+.menu-filter .menu-filter-content-all .left-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-filter .menu-filter-content-all .left .left-content .filter-icon span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    color: var(--dark);
+    border: 1px solid var(--soft-white);
+    border-radius: 4px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.menu-filter .menu-filter-content-all .left .left-content .filter-icon+div {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu-filter .menu-filter-content-all .right-sidebar {
+    flex: 3;
+}
+
+.categories-style ul li.active {
+    color: #fff;
+    background-color: var(--pistach);
+    border-radius: 7px;
+}
+
+.menu-filter .icons span {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 31px;
+    background-color: #999;
+    color: #fff;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.menu-filter .icons span:hover,
+.menu-filter .icons span.active {
+    background-color: var(--pistach);
+}
+
+.menu-filter .select-box {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+}
+
+.menu-filter .select-box:before {
+    content: "Sort By : ";
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    font-size: 14px;
+    color: #fff;
+    z-index: 3;
+}
+
+.menu-filter .select-box select {
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 100%;
+    padding: 8px 0 8px 80px;
+    font-size: 14px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    outline: none;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.menu-filter .select-box select:focus {
+    box-shadow: none;
+}
+
+/* start all filters items style */
+.menu-filter .all-filters-items {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    min-height: 400px;
+    margin-top: 20px;
+}
+
+.menu-filter .all-filters-items .spinner-holder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-filter .all-filters-items .my-card {
+    width: calc((100% - 90px)/4);
+}
+
+.menu-filter .all-filters-items .my-card .card {
+    width: 100%;
+}
+
+/* end all filters items style */
+
+/* start change to list view style */
+
+.change-to-list-view .single-card-list-view {
+    width: calc((100% - 30px) / 2) !important;
+}
+
+/* end change to list view style */
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:560px) {
+
+    .menu-filter .my-card {
+        /* width: 100% !important; */
+        width: 80% !important;
+        margin: auto;
+    }
+
+    .menu-filter .my-card .card-top {
+        max-height: 200px;
+    }
+
+    .menu-filter .my-card .card-top img {
+        width: 70%;
+        height: 200px;
+    }
+
+}
+
+/* end 560px*/
+
+@media only screen and (min-width:560px) and (max-width: 800px) {
+
+    .menu-filter .my-card {
+        width: calc((100% - 30px) /2) !important
+    }
+
+}
+
+/* end 800px and 560px*/
+
+@media only screen and (max-width:767px) {
+
+    .menu-filter .menu-filter-content-all .left-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+}
+
+/* end 767px*/
+
+@media only screen and (max-width:1090px) {
+
+    .change-to-list-view .single-card-list-view {
+        /* width: 100% !important; */
+        width: 80% !important;
+        margin: auto;
+    }
+
+}
+
+/* end 1090px*/
+
+@media only screen and (min-width:800px) and (max-width: 1450px) {
+
+    .menu-filter .my-card {
+        width: calc((100% - 60px) /3) !important
+    }
+
+}
+
+/* end 1120px and 800px*/
+
+@media only screen and (max-width:1450px) {
+
+    .menu-filter .menu-filter-content-all {
+        gap: 0;
+    }
+
+    .menu-filter .menu-filter-content-all .left {
+        flex: 100%;
+    }
+
+    .menu-filter .menu-filter-sidebar-categories {
+        display: none;
+    }
+
+    .menu-filter .menu-filter-content-all .left .left-content .filter-icon span {
+        opacity: 1;
+    }
+
+}
+
+/* end 1450px */

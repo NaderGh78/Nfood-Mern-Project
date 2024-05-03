@@ -1,0 +1,295 @@
+.item-details {
+    margin-top: 90px;
+}
+
+.item-details .add-to-cart-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px 20px 20px 13px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    background-color: #0f834d;
+    border-left: 12px solid rgba(0, 0, 0, .15);
+}
+
+.item-details .add-to-cart-banner p {
+    color: #fff;
+}
+
+.item-details .add-to-cart-banner a {
+    padding-left: 15px;
+    color: #fff;
+    border-left: 1px solid #fff;
+    white-space: nowrap;
+}
+
+.item-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item-details a {
+    text-decoration: none;
+    transition: all .2s;
+}
+
+.item-details .item-details-top {
+    display: flex;
+    gap: 40px;
+}
+
+.item-details .item-details-top .left,
+.item-details .item-details-top .right {
+    flex: 1;
+    height: 100%;
+}
+
+.item-details .item-details-top .left div {
+    position: relative;
+    background-color: #f7f4ef;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.item-details .item-details-top .left div span {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 0 10px;
+    background-color: #1e1d23;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 24px;
+    border-radius: 20px;
+    z-index: 3;
+}
+
+.item-details .item-details-top .left div img {
+    width: 80%;
+    height: 100%;
+}
+
+/* ================ */
+
+/* start right style */
+.item-details .item-details-top .right h1 {
+    font-size: 52px;
+    line-height: 1.2;
+    color: var(--dark);
+    white-space: nowrap;
+}
+
+.item-details .item-details-top .right .product-rating {
+    display: flex;
+    gap: 10px;
+}
+
+.item-details .item-details-top .right .product-rating ul {
+    display: flex;
+    color: #f97316;
+}
+
+.item-details .item-details-top .right .product-rating p {
+    font-size: 16px;
+    color: var(--light-white);
+}
+
+.item-details .item-details-top .right .product-rating p a {
+    font-size: 14px;
+    color: var(--light-white);
+}
+
+.item-details .item-details-top .right .product-rating p a:hover {
+    text-decoration: underline;
+}
+
+.item-details .item-details-top .right .item-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--pistach);
+}
+
+.item-details .item-details-top .right .increase {
+    display: flex;
+    align-items: center;
+    height: 75px;
+    margin: 20px 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.item-details .item-details-top .right .increase input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--light-white);
+    border: none;
+    outline: none;
+    user-select: none;
+}
+
+/* remove the arrow */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.item-details .item-details-top .right .increase button {
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-weight: bolder;
+    background-color: #f7f4ef;
+    border: none;
+    border-radius: 50%;
+    transition: all .2s;
+}
+
+.item-details .item-details-top .right .increase button:hover {
+    background-color: var(--pistach);
+    color: #fff;
+}
+
+.item-details .item-details-top .right .increase span {
+    display: inline-block;
+    width: 35px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.item-details .item-details-top .right button.big-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-grow: 8;
+    height: 45px;
+    padding: 10px;
+    margin: 0 20px;
+    font-weight: 600;
+    background-color: var(--pistach);
+    color: #222;
+    border: none;
+    border-radius: 5px;
+    transition: all .2s;
+    overflow: hidden;
+}
+
+.item-details .item-details-top .right button.big-btn:hover {
+    color: #fff;
+}
+
+.item-details .item-details-top .right button.big-btn[disabled]:hover {
+    color: #222;
+}
+
+.item-details .item-details-top .right button.heart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 45px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.item-details .item-details-top .right .product-meta {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 20px;
+}
+
+.item-details .item-details-top .right .product-meta h6 {
+    font-weight: 400;
+    color: var(--light-white);
+}
+
+.item-details .item-details-top .right .product-meta h6 a {
+    font-size: 16px;
+    font-weight: 700;
+    color: #808080;
+    text-transform: capitalize;
+}
+
+.item-details .item-details-top .right .product-meta h6 a:hover {
+    color: var(--pistach);
+    text-decoration: underline;
+}
+
+.item-details .item-details-top .right .product-meta .share ul {
+    display: flex;
+    gap: 8px;
+}
+
+.item-details .item-details-top .right .product-meta .share ul li a {
+    color: #808080;
+    font-size: 15px;
+}
+
+.item-details .item-details-top .right .product-meta .share ul li a:hover {
+    color: var(--pistach);
+}
+
+.item-details .item-details-top .right .product-meta .share ul li a svg {
+    vertical-align: baseline;
+}
+
+.item-details .item-details-top .right ul.extra-info {
+    list-style: disc;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #999;
+    list-style-position: inside;
+}
+
+/* end right style */
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:768px) {
+
+    .item-details .item-details-top {
+        flex-direction: column;
+    }
+
+    .item-details .item-details-top .right h1 {
+        font-size: 35px;
+    }
+
+}
+
+/* end 768px */
+
+@media only screen and (max-width:600px) {
+
+    .item-details .add-to-cart-banner {
+        padding: 10px 13px 10px 5px;
+        margin-bottom: 15px;
+        font-size: 16px !important;
+        border-left: 5px solid rgba(0, 0, 0, .15) !important;
+    }
+
+}
+
+/* end 600px */

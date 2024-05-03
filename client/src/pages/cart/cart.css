@@ -1,0 +1,256 @@
+.cart .cart-content {
+    display: flex;
+    align-items: start;
+    gap: 40px;
+    margin-top: 100px;
+}
+
+.cart .my-table {
+    flex: 8;
+    overflow: auto;
+}
+
+.cart table tr th {
+    padding: 20px 0;
+}
+
+.cart table tr th,
+.cart table tr td {
+    text-align: center;
+    font-weight: 700;
+    vertical-align: middle;
+    background-color: transparent;
+    color: var(--dark);
+}
+
+.cart table .img-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart table .img-box button {
+    display: flex;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.cart table .img-box img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}
+
+.cart a {
+    text-decoration: none;
+    color: inherit;
+    text-transform: capitalize;
+    transition: all .2s;
+}
+
+.cart table .img-box a h5 {
+    font-size: 14px;
+    font-weight: 700;
+    transition: all .2s;
+    white-space: nowrap;
+}
+
+.cart table .img-box a h5:hover {
+    color: var(--pistach);
+}
+
+.cart table .input-box {
+    display: flex;
+    width: 60px;
+    height: 40px;
+    margin: auto;
+}
+
+.cart table .input-box span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+    background-color: transparent;
+}
+
+.cart table .input-box input:focus {
+    outline: none;
+}
+
+.cart table .input-box button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    color: var(--dark);
+    border: none;
+    border: 1px solid var(--dark);
+    border-left: none;
+    transition: all .2s;
+}
+
+.cart table .input-box button:first-of-type {
+    border-bottom: none;
+}
+
+.cart table .input-box button:hover {
+    background-color: var(--pistach);
+    color: #fff;
+}
+
+.cart .total-cart {
+    flex: 4;
+    padding: 15px 35px 30px;
+    border: 5px solid #e5e5e5;
+}
+
+.cart .total-cart h5 {
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    color: var(--dark);
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.cart .total-cart ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart .total-cart ul li {
+    padding: 20px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.cart .total-cart ul li:last-child {
+    border-bottom: none;
+}
+
+.cart .total-cart ul li h6 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--light-white);
+}
+
+.cart .total-cart ul li:nth-child(2) span {
+    color: #999;
+    font-weight: 300;
+}
+
+.cart .total-cart ul li:nth-child(2) h6 {
+    gap: 20px;
+}
+
+.cart .total-cart a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 30px;
+    background-color: var(--pistach);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 5px;
+    transition: all .2s;
+}
+
+.cart .total-cart button {
+    width: 100%;
+    padding: 9px 0;
+    margin-top: 12px;
+    background-color: #dc3545;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    transition: all .2s;
+}
+
+.cart .total-cart a:hover,
+.cart .total-cart button:hover {
+    color: #333;
+}
+
+.cart div.empty-cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 600px;
+    text-align: center;
+}
+
+.cart div.empty-cart img {
+    width: 150px;
+}
+
+.cart div.empty-cart h5 {
+    margin-top: 13px;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--light-white);
+}
+
+.cart div.empty-cart a {
+    padding: 15px 30px;
+    margin-top: 50px;
+    background-color: var(--pistach);
+    color: #fff;
+    border-radius: 5px;
+}
+
+.cart div.empty-cart a:hover {
+    color: #222;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (min-width:700px) and (max-width: 1024px) {
+
+    .cart .cart-content {
+        flex-direction: column-reverse;
+        gap: 0;
+        margin-top: 40px;
+    }
+
+    .cart .my-table {
+        width: 100%;
+    }
+
+    .cart .my-table table {
+        width: 100%;
+    }
+}
+
+/* end 1024px and 700px */
+
+@media only screen and (max-width:700px) {
+
+    .cart .cart-content {
+        flex-direction: column-reverse;
+        gap: 0;
+        margin-top: 40px;
+    }
+
+    .cart .my-table {
+        width: 100%;
+    }
+
+    .cart .my-table table {
+        width: 700px;
+    }
+}
+
+/* end 700px */

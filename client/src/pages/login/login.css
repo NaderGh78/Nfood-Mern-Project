@@ -1,0 +1,22 @@
+.login {
+    margin-top: 100px;
+}
+
+.login .my-form {
+    width: 500px;
+    margin: auto;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:540px) {
+
+    .login .my-form {
+        width: 90% !important;
+    }
+
+}
+
+/* end 540px */

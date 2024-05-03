@@ -1,0 +1,49 @@
+.heading-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 150px;
+    margin-top: 64px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.heading-breadcrumb h2 {
+    text-transform: capitalize;
+    font-size: 40px;
+    letter-spacing: 1px;
+    color: var(--dark);
+}
+
+.heading-breadcrumb p {
+    text-transform: capitalize;
+    color: var(--dark);
+    margin-bottom: 0;
+}
+
+.heading-breadcrumb p a {
+    color: #999;
+    transition: all .2s;
+}
+
+.heading-breadcrumb p a:hover {
+    color: var(--pistach);
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width: 480px) {
+
+    .heading-breadcrumb {
+        height: 100px;
+    }
+
+    .heading-breadcrumb h2 {
+        font-size: 25px;
+    }
+
+}
+
+/* end 480px */

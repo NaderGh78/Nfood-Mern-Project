@@ -1,0 +1,233 @@
+.footer {
+    margin-top: 70px;
+    color: var(--dark);
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: var(--light-white);
+}
+
+/* start top style */
+.footer .top {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.footer h5.my-logo {
+    margin-left: 0;
+}
+
+.footer .top .footer-sections {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .top .footer-sections>div {
+    flex: 1;
+}
+
+.footer .top .footer-sections p {
+    width: 70%;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.footer .top .footer-sections ul li a {
+    font-size: 14px;
+}
+
+.footer .top .footer-sections ul li a:hover {
+    text-decoration: underline;
+}
+
+/* will appear in small devices */
+.footer .top .footer-toggle {
+    display: none;
+}
+
+/* style the accordion */
+.footer .top .footer-toggle .accordion-button {
+    padding: 0;
+    background-color: transparent;
+}
+
+.footer .top .footer-toggle .accordion-button:focus {
+    box-shadow: none;
+}
+
+.footer .top .footer-toggle .accordion-body {
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+.footer .top .footer-toggle .accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+    color: var(--dark) !important;
+    box-shadow: none !important;
+}
+
+.footer .top .footer-toggle .accordion-item {
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+
+.footer .top .footer-toggle .accordion-button::after {
+    content: "\F282";
+    position: absolute;
+    top: 1px;
+    right: 0;
+    background-image: none !important;
+    font-family: "Bootstrap-icons";
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--dark);
+    transform-origin: 6px;
+}
+
+.accordion-button:not(.collapsed)::after {
+    top: -5px !important;
+}
+
+/* end top style */
+
+/* start bottom style */
+.footer .bottom .copyRight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.footer .bottom .copyRight ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 20px;
+}
+
+/* end bottom style */
+
+/* start footer-bottom-menu */
+.footer-bottom-menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    display: none;
+    z-index: 5;
+}
+
+.footer-bottom-menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    background-color: var(--nav-bg);
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-bottom-menu ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 5);
+    height: 100%;
+    font-size: 18px;
+    border-right: 1px solid #e5e5e5;
+    cursor: pointer;
+}
+
+.footer-bottom-menu ul li a,
+.footer-bottom-menu ul li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: all .2s;
+}
+
+.footer-bottom-menu ul li:last-child {
+    border-right: none;
+}
+
+.footer-bottom-menu ul li:hover a,
+.footer-bottom-menu ul li:hover span {
+    color: var(--pistach)
+}
+
+.footer-bottom-menu ul li:nth-child(4) {
+    position: relative;
+}
+
+.footer-bottom-menu ul li:nth-child(4) small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    background-color: var(--pistach);
+    color: #fff;
+    border-radius: 50%;
+    transform: translate(0%, -90%);
+}
+
+/* end footer-bottom-menu */
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:576px) {
+
+    .footer .top .footer-sections,
+    .footer .bottom .copyRight {
+        flex-direction: column;
+    }
+
+    .footer .top .footer-content-show {
+        display: none;
+    }
+
+    .footer .top .footer-toggle {
+        display: block;
+    }
+
+    .footer .top h6 {
+        font-size: 14px;
+        color: var(--dark);
+        margin-bottom: 0;
+    }
+
+}
+
+/* end 576px */
+
+@media only screen and (max-width:990px) {
+
+    .footer .bottom {
+        margin-bottom: 50px;
+    }
+
+    .footer-bottom-menu {
+        display: block;
+    }
+}
+
+/* end 990px */

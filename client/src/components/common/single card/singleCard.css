@@ -1,0 +1,129 @@
+.my-card .card {
+    width: 100%;
+    background-color: var(--white);
+    border: 1px solid var(--soft-white);
+    user-select: none;
+    overflow: hidden;
+}
+
+.my-card .card .card-top {
+    max-height: 230px;
+    text-align: center;
+}
+
+.my-card .card .card-top span.new-price {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 0 10px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 24px;
+    background-color: var(--hard-black);
+    color: var(--pistach);
+    border-radius: 20px;
+    z-index: 3;
+}
+
+.my-card .card .card-top img {
+    width: 80%;
+    height: 230px;
+    object-fit: cover;
+    transition: all .3s;
+    margin: auto;
+}
+
+.my-card .card:hover img {
+    transform: scale(1.1);
+}
+
+.my-card .card h5 a {
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s;
+}
+
+.my-card .card h5 a:hover {
+    color: var(--pistach);
+}
+
+.my-card .card p {
+    color: var(--light-white);
+    user-select: text;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.my-card .card .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.my-card .card p.edit-price {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--pistach);
+}
+
+.my-card .card .bottom span,
+.my-card .card .bottom button,
+.my-card .card .bottom a {
+    flex: 2;
+    padding: 5px;
+    background-color: #d6dadd;
+    color: #686d6f;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.my-card .card .bottom button {
+    flex: 8;
+    position: relative;
+    background-color: var(--pistach);
+    color: #fff;
+    border: none;
+}
+
+.my-card .card .bottom button small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -13px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    background-color: var(--light-red);
+    color: #fff;
+    border-radius: 50%;
+    cursor: default;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:480px) {
+
+    .my-card .card {
+        width: 80%;
+        margin: auto;
+    }
+
+    .my-card .card-top {
+        max-height: 200px !important;
+    }
+
+    .my-card .card-top img {
+        width: 70% !important;
+        height: 200px !important;
+    }
+
+}

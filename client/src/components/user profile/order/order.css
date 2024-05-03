@@ -1,0 +1,137 @@
+.orders .tab-title {
+    margin-bottom: 25px;
+    color: var(--dark);
+}
+
+.orders h5.noOrders {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgb(153, 153, 153);
+}
+
+.orders .panel-group {
+    margin-bottom: 25px;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+.orders .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    background-color: transparent;
+}
+
+.orders .panel-heading .left>span:first-child {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--light-white);
+}
+
+.orders .panel-heading .left p {
+    margin: 15px 0;
+    font-size: 15px;
+    color: var(--light-white);
+}
+
+.orders .panel-heading .left p span:last-child {
+    color: var(--pistach)
+}
+
+.orders .panel-heading h4.right span {
+    padding: 11px 17px;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: var(--pistach);
+    color: var(--dark);
+    border: 1px solid var(--pistach);
+    border-radius: 25px;
+    user-select: none;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.orders .panel-heading h4.right span:hover {
+    background-color: transparent;
+    color: var(--pistach);
+}
+
+.orders .tab-single .panel-collapse {
+    max-height: 500px;
+    overflow: auto;
+    transition: max-height .5s cubic-bezier(0.25, 0.1, 0.25, 1.12);
+    scrollbar-width: none;
+}
+
+.orders .tab-single .panel-collapse ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    border: none;
+    border-top: 1px solid #999;
+}
+
+.orders .tab-single .panel-collapse ul li {
+    height: auto;
+    border-bottom: 1px solid #999;
+}
+
+.orders .tab-single .panel-close {
+    max-height: 0;
+}
+
+.orders .panel-footer {
+    padding: 20px 15px;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--light-white)
+}
+
+.orders span.green-span {
+    padding: 3px 8px;
+    font-size: 15px;
+    color: var(--pistach);
+    border: 2px solid;
+    border-radius: 8px;
+}
+
+.orders .order-ui {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.orders .order-ui .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.orders .order-ui .left .img-box {
+    width: 130px;
+    height: 130px;
+}
+
+.orders .order-ui .left .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.orders .order-ui .left div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--light-white);
+}
+
+.orders .order-ui .left div h5 {
+    font-size: 20px;
+    margin-bottom: 0;
+    text-transform: capitalize;
+}

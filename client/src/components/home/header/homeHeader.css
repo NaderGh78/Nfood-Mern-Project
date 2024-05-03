@@ -1,0 +1,103 @@
+/* start home-header style */
+.home-header {
+    height: auto;
+}
+
+.home-header .header-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 100px;
+}
+
+.home-header .header-content .left,
+.home-header .header-content .right {
+    width: 50%;
+}
+
+.home-header .header-content .left h1 {
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.home-header .header-content .left h1 span {
+    color: var(--pistach);
+}
+
+.home-header .header-content .right {
+    position: relative;
+}
+
+.home-header .header-content .right img {
+    max-width: 100%;
+    height: auto;
+}
+
+.home-header .header-content .right .img-box {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.home-header .header-content .right .img-box .spicy {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 45px 12px 12px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.home-header .header-content .right .img-box .spicy img {
+    width: 75px;
+    border-radius: 8px;
+}
+
+.home-header .header-content .right .img-box .spicy ul {
+    display: flex;
+    gap: 3px;
+    font-size: 17px;
+}
+
+.home-header .header-content .right .img-box .spicy ul svg {
+    color: #f97316;
+}
+
+/* end home-header style */
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:576px) {
+
+    .home-header .header-content {
+        flex-direction: column-reverse;
+    }
+
+    .home-header .header-content .left,
+    .home-header .header-content .right {
+        width: 100% !important;
+    }
+
+}
+
+/* end 576px */
+
+@media only screen and (max-width:1200px) {
+
+    .home-header .header-content .right .img-box .spicy {
+        display: none;
+    }
+
+    .home-header .header-content .left h1 {
+        font-size: 35px;
+    }
+
+    .home-header .header-content .left h1+p {
+        font-size: 19px;
+    }
+}

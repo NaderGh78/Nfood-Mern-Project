@@ -1,0 +1,21 @@
+.related-products {
+    margin: 30px 0;
+}
+
+.related-products .related-products-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.related-products .related-products-box .my-card {
+    width: 300px;
+}
+
+.related-products h3.title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: var(--dark);
+}

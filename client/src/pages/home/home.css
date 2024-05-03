@@ -1,0 +1,82 @@
+.home ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+p.homeP {
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--light-white);
+}
+
+h5.homeH5 {
+    font-size: 20px;
+    color: var(--light-red);
+}
+
+h2.homeH2 {
+    font-size: 50px;
+    color: var(--dark);
+}
+
+.custom-btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: var(--pistach);
+    color: #fff;
+    border-radius: 25px;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width: 425px) {
+
+    .custom-btn {
+        padding: 7px 15px;
+        font-size: 13px;
+        border-radius: 25px;
+    }
+
+}
+
+/* end 425px */
+
+@media only screen and (max-width:576px) {
+
+    p.homeP {
+        font-size: 15px !important;
+    }
+
+    h5.homeH5 {
+        font-size: 24px;
+    }
+
+    h2.homeH2 {
+        font-size: 22px;
+    }
+
+}
+
+/* end 576px */
+
+@media only screen and (min-width:576px) and (max-width: 768px) {
+
+    p.homeP {
+        font-size: 2vw;
+    }
+
+    h5.homeH5 {
+        font-size: 2vw;
+    }
+
+    h2.homeH2 {
+        font-size: 35px;
+    }
+
+}
+
+/* end 576px and 768px*/

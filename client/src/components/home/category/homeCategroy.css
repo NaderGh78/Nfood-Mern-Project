@@ -1,0 +1,117 @@
+/* start home-category style */
+.home-category {
+    margin-top: 25px;
+}
+
+.home-category .all-categories {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.home-category .all-categories .single-category {
+    width: calc((100% - 90px)/4);
+    padding-bottom: 30px;
+    box-shadow: 0px 3px 6px 0px rgba(221, 221, 221, 1);
+    transition: all .2s;
+}
+
+.home-category .all-categories .single-category .img-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    margin: 30px auto;
+    background-color: #c1f1c6;
+    border-radius: 50%;
+    transition: all .2s;
+}
+
+.home-category .all-categories .single-category .img-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed var(--light-red);
+    border-radius: 50%;
+    animation: mymove 15s linear infinite alternate;
+    display: none;
+    /*show it when hover*/
+}
+
+@keyframes mymove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.home-category .all-categories .single-category:hover {
+    transform: translateY(-10px);
+}
+
+.home-category .all-categories .single-category:hover .img-box::before {
+    display: inline;
+}
+
+.home-category .all-categories .single-category:hover .img-box {
+    background-color: transparent;
+}
+
+.home-category .all-categories .single-category .img-box img {
+    width: 85px;
+}
+
+.home-category .all-categories .single-category h5 {
+    margin: 10px 0 5px 0;
+    color: var(--dark);
+}
+
+.home-category .all-categories .single-category h5+span {
+    color: var(--light-white);
+}
+
+/* end home-category style */
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:576px) {
+
+    .home-category .all-categories {
+        gap: 20px
+    }
+
+    .home-category .all-categories .single-category {
+        width: 80%;
+        margin: auto;
+    }
+
+}
+
+/* end 576px */
+
+@media only screen and (min-width:576px) and (max-width: 768px) {
+
+    .home-category .all-categories .single-category {
+        width: calc((100% - 60px)/2) !important;
+    }
+
+    .home-category .all-categories {
+        margin-top: 12px;
+    }
+
+}
+
+/* end 576px and 768px*/

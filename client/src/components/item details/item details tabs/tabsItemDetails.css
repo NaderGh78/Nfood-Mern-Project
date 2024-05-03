@@ -1,0 +1,60 @@
+.my-tab {
+    margin-bottom: 40px;
+    padding-top: 70px;
+}
+
+.my-tab ul {
+    gap: 20px;
+    margin-bottom: 25px !important;
+    border: none;
+}
+
+.my-tab ul li button {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--dark);
+    border: none !important;
+    border-radius: 8px;
+    border-top-left-radius: none;
+    border-top-right-radius: none;
+}
+
+.my-tab ul li button:hover,
+.my-tab ul li button.active,
+.my-tab ul li button.active:hover {
+    background-color: var(--pistach) !important;
+    color: #fff;
+}
+
+.my-tab p {
+    font-size: 15px;
+    color: #808080;
+}
+
+.my-tab p span {
+    margin-right: 7px;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:480px) {
+
+    .my-tab {
+        margin-bottom: 0;
+    }
+
+    .my-tab ul {
+        gap: 10px;
+    }
+
+    .my-tab ul li button {
+        font-size: 16px;
+    }
+
+}
+
+/* end 480px */

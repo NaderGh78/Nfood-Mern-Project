@@ -1,0 +1,260 @@
+.topmenu .navbar {
+    background-color: var(--nav-bg) !important;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+/* put image instead icon in navbar toggler */
+.navbar-toggler {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    margin-right: 20px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.navbar-light .navbar-toggler-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url("../../../../public/assets/images/big.png") !important;
+    border: 2px solid #dee2e6;
+    border-radius: 50%;
+}
+
+/* =================== */
+
+.topmenu .navbar-brand img {
+    width: 120px;
+}
+
+.topmenu .nav-link {
+    font-size: 20px;
+    color: var(--dark);
+}
+
+.topmenu .no-user {
+    padding: 5px 20px 8px;
+    margin: 0 25px 0 10px;
+    background-color: var(--pistach);
+    color: #fff;
+    align-self: center;
+    border-radius: 25px;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.topmenu .no-user:hover {
+    background-color: #ddd;
+    color: #222;
+}
+
+.topmenu .nav-link.LinkIcon svg {
+    margin-right: 10px;
+    font-size: 27px;
+    vertical-align: baseline;
+}
+
+.topmenu .nav-link.LinkIcon:first-of-type svg {
+    font-size: 25px;
+    vertical-align: bottom;
+    transform: rotate(265deg);
+}
+
+.topmenu .nav-link.LinkIcon:last-of-type {
+    position: relative;
+    top: 4px
+}
+
+.topmenu .nav-link.LinkIcon:last-of-type span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 3px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    background-color: var(--pistach);
+    color: #fff;
+    border-radius: 50%;
+}
+
+.topmenu .nav-link:hover {
+    color: var(--pistach);
+}
+
+.topmenu .nav-link.active {
+    color: var(--pistach) !important;
+}
+
+.topmenu .nav-link svg {
+    font-size: 16px;
+}
+
+.topmenu svg.toggle-icon {
+    margin-right: 20px;
+    color: var(--dark);
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.topmenu svg.toggle-icon:hover {
+    color: var(--pistach) !important
+}
+
+/* style the image user in top menu */
+.topmenu .user-account {
+    display: flex;
+    align-items: center;
+    margin: 0 25px 0 10px;
+}
+
+.topmenu .user-account img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+.dropdown-toggle {
+    width: 100%;
+    padding: 0 !important;
+    font-size: 20px !important;
+}
+
+.dropdown-toggle span {
+    color: var(--dark) !important;
+    transition: all .2s;
+}
+
+.dropdown-toggle span:hover {
+    color: var(--pistach) !important;
+}
+
+/* remove the arrow from butn */
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+/* remove the outline border */
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    border-color: transparent !important;
+}
+
+.dropdown-menu[data-bs-popper] {
+    width: 250px;
+    top: 48px !important;
+    right: 0 !important;
+    left: auto !important;
+    padding: 10px 10px 0 10px;
+    margin-bottom: 20px;
+}
+
+.dropdown-menu[data-bs-popper] li {
+    min-height: 50px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.dropdown-menu[data-bs-popper] li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu[data-bs-popper] li a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 50px;
+    font-size: 15px;
+    background-color: transparent;
+}
+
+.dropdown-menu[data-bs-popper] a:hover {
+    color: var(--pistach) !important;
+}
+
+.dropdown-menu[data-bs-popper] .dropdown-title {
+    display: flex;
+    gap: 10px;
+}
+
+.dropdown-menu[data-bs-popper] .dropdown-title h5 {
+    margin-bottom: 0;
+    font-size: 17px;
+    text-transform: capitalize;
+}
+
+.dropdown-menu[data-bs-popper] .dropdown-title p {
+    font-size: 13px;
+}
+
+.topmenu .register-login div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 2;
+}
+
+.topmenu .register-login a {
+    color: var(--dark);
+}
+
+.topmenu .register-login div p {
+    margin: 0;
+}
+
+.topmenu a.icon-badge {
+    position: relative;
+}
+
+.topmenu a.icon-badge span {
+    position: absolute;
+    top: 2px;
+    left: -3px;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    text-align: center;
+    line-height: 18px;
+    background-color: var(--pistach);
+    color: #fff;
+    border-radius: 50%;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width:990px) {
+
+    .topmenu .second-nav,
+    .topmenu svg.toggle-icon {
+        display: none !important;
+    }
+}
+
+/* end 990px */
+
+@media only screen and (max-width: 991px) {
+
+    .hide-on-resize {
+        display: none;
+    }
+
+    .topmenu .nav-link.LinkIcon:last-of-type span {
+        left: 11px;
+    }
+
+}
+
+/* end 991px */
