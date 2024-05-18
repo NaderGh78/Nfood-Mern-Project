@@ -57,6 +57,7 @@
 
 .single-review .title span.delete-icon {
     font-size: 18px;
+    color: #999;
     line-height: 0;
     transition: all .2s;
     cursor: pointer;

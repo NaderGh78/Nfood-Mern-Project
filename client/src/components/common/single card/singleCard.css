@@ -86,6 +86,7 @@
     position: relative;
     background-color: var(--pistach);
     color: #fff;
+    white-space: nowrap;
     border: none;
 }
 

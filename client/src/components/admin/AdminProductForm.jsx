@@ -113,9 +113,15 @@ const AdminProductForm = () => {
 
             try {
 
-                const res = await userRequest.get("/api/categories");
+                const res = await userRequest.get(`/api/categories`);
 
-                setCat(res.data);
+                if (res && res?.data) {
+
+                    const { categories } = res?.data;
+
+                    setCat(categories);
+
+                }
 
             } catch (error) {
                 console.log(error)
