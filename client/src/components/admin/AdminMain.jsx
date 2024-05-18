@@ -34,7 +34,7 @@ const AdminMain = () => {
 
             setLoading(true);
 
-            const { data } = await request.get(`/api/users/count`,
+            const res = await request.get(`/api/users/profile`,
                 {
                     headers: {
                         Authorization: "Bearer " + currentUser.token,
@@ -42,7 +42,13 @@ const AdminMain = () => {
                 }
             );
 
-            setCustomerCount(data);
+            if (res && res?.data) {
+
+                const { customersCount } = res?.data;
+
+                setCustomerCount(customersCount);
+
+            }
 
             setLoading(false);
 
@@ -60,9 +66,15 @@ const AdminMain = () => {
 
             setLoading(true);
 
-            const { data } = await request.get(`/api/products/count`);
+            const res = await request.get(`/api/products`);
 
-            setProductCount(data);
+            if (res && res?.data) {
+
+                const { productsCount } = res?.data;
+
+                setProductCount(productsCount);
+
+            }
 
             setLoading(false);
 
@@ -80,9 +92,15 @@ const AdminMain = () => {
 
             setLoading(true);
 
-            const { data } = await request.get(`/api/categories/count`);
+            const res = await request.get(`/api/categories`);
 
-            setCatCount(data);
+            if (res && res?.data) {
+
+                const { catCount } = res?.data;
+
+                setCatCount(catCount);
+
+            }
 
             setLoading(false);
 

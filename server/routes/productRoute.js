@@ -1,13 +1,15 @@
 const router = require("express").Router();
 const photoUpload = require("../middlewares/photoUpload");
 const { validateObjectId } = require("../middlewares/validateObjectId");
-const { verifyTokenAndAdmin } = require("../middlewares/verifyToken");
+const { verifyTokenAndAdmin, verifyTokenAndAuthorization, verifyToken } = require("../middlewares/verifyToken");
 const {
     getAllProductsCtrl,
     newProductCtrl,
-    countProductsCtrl,
     getProductCtrl,
-    deleteProductCtrl
+    deleteProductCtrl,
+    productReviewCtrl,
+    deleteSingleReviewCtrl,
+    getProductReviewsCtrl
 } = require("../controllers/productController");
 
 /*===========================================*/
@@ -21,9 +23,15 @@ router.route("/")
 
 /*=========================================*/
 
-// get products count
-// /api/products/count
-router.route("/count").get(countProductsCtrl);
+// /api/products/review
+router.route("/review")
+    .put(verifyToken, productReviewCtrl)
+    .delete(verifyToken, deleteSingleReviewCtrl);
+
+/*=========================================*/
+
+// /api/products/reviews 
+router.route("/reviews").get(getProductReviewsCtrl);
 
 /*=========================================*/
 

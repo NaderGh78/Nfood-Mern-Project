@@ -4,11 +4,11 @@ import axios from "axios";
 /*===========================================*/
 /*===========================================*/
 
-//const BASE_URL = "http://localhost:3001";
+//const BASE_URL = "http://localhost:3001"; 
 
-//const BASE_URL = "http://localhost:3001/";
+//const BASE_URL = "https://nfood-mern-project.onrender.com";
 
-const BASE_URL = "https://nfood-mern-project.onrender.com";
+const BASE_URL = "http://localhost:3001";
 
 const TOKEN = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).token :

@@ -1,0 +1,434 @@
+[
+    {
+        "_id": "661d602259f287f96ec621ee",
+        "name": "apricot chicken",
+        "description": "Mouth watering pepperoni, cabanossi, mushroom, capsicum, black olives and stretchy mozzarella, seasoned with garlic and oregano.",
+        "category": "pizza",
+        "price": 18.3,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201185/naepemjberhgdbrntdg9.png",
+            "publicId": "naepemjberhgdbrntdg9"
+        },
+        "createdAt": "2024-04-15T17:13:06.205Z",
+        "updatedAt": "2024-05-15T18:32:32.674Z",
+        "__v": 28,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d606c59f287f96ec623cb",
+        "name": "Chocolate cake",
+        "description": "Browse unique Coca-Cola products, clothing, & accessories, or customize Coke bottles and gifts",
+        "category": "desserts",
+        "price": 17.76,
+        "newPrice": 11.2,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201259/xboposiit1s1y6d3zabo.png",
+            "publicId": "xboposiit1s1y6d3zabo"
+        },
+        "createdAt": "2024-04-15T17:14:20.580Z",
+        "updatedAt": "2024-05-15T00:02:16.431Z",
+        "__v": 5,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d60bd59f287f96ec625dc",
+        "name": "salad 1",
+        "description": "salad 1 desc",
+        "category": "salad",
+        "price": 14.2,
+        "newPrice": 13.2,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201340/n7utxyqnygp9wolmqhew.png",
+            "publicId": "n7utxyqnygp9wolmqhew"
+        },
+        "createdAt": "2024-04-15T17:15:41.807Z",
+        "updatedAt": "2024-05-12T01:30:23.451Z",
+        "__v": 3,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d60fd59f287f96ec6274e",
+        "name": "Cheese Butter",
+        "description": "A mighty meaty double helping of all the reasons you love our burger.",
+        "category": "burger",
+        "price": 15.76,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201405/qqnq6l3mp653vnhrpitg.png",
+            "publicId": "qqnq6l3mp653vnhrpitg"
+        },
+        "createdAt": "2024-04-15T17:16:45.684Z",
+        "updatedAt": "2024-05-15T00:01:38.074Z",
+        "__v": 4,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d614959f287f96ec62904",
+        "name": "Chocolate Muffin",
+        "description": "Browse unique Coca-Cola products, clothing, & accessories, or customize Coke bottles and gifts",
+        "category": "desserts",
+        "price": 23.22,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201480/czlvcllfpiyfii1adufy.png",
+            "publicId": "czlvcllfpiyfii1adufy"
+        },
+        "createdAt": "2024-04-15T17:18:01.195Z",
+        "updatedAt": "2024-05-15T00:02:54.879Z",
+        "__v": 4,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d619059f287f96ec62a8c",
+        "name": "Tropicana Juice",
+        "description": "View great tasting Tropicana Orange Juice and Juice Drink Products. Featuring Tropicana Orange Juice",
+        "category": "drinks",
+        "price": 10.11,
+        "newPrice": 8.2,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201551/rx1cuc1ojttd23gfdthm.png",
+            "publicId": "rx1cuc1ojttd23gfdthm"
+        },
+        "createdAt": "2024-04-15T17:19:12.083Z",
+        "updatedAt": "2024-05-14T23:53:58.884Z",
+        "__v": 3,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d625359f287f96ec62f52",
+        "name": "Country Burger",
+        "description": "A mighty meaty double helping of all the reasons you love our burger.",
+        "category": "burger",
+        "price": 18.35,
+        "newPrice": 16.2,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201746/jbqejr6itfffmalsxl9p.png",
+            "publicId": "jbqejr6itfffmalsxl9p"
+        },
+        "createdAt": "2024-04-15T17:22:27.104Z",
+        "updatedAt": "2024-05-14T23:59:26.143Z",
+        "__v": 4,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d629959f287f96ec630d1",
+        "name": "Chicken Hawaii",
+        "description": "Extra-virgin olive oil, mozzarella cheese, thinly-sliced steak meat, garlic, green peppers, mushrooms and tomatoes",
+        "category": "pizza",
+        "price": 14.49,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201816/rtrng3sxeffwqukh8vxz.png",
+            "publicId": "rtrng3sxeffwqukh8vxz"
+        },
+        "createdAt": "2024-04-15T17:23:37.080Z",
+        "updatedAt": "2024-05-15T18:06:58.721Z",
+        "__v": 5,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d62e159f287f96ec63277",
+        "name": "Black Coffee",
+        "description": "Browse unique Coca-Cola products, clothing, & accessories, or customize Coke bottles and gifts",
+        "category": "desserts",
+        "price": 11.76,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201888/qodpk7domhlwlcqk4dro.png",
+            "publicId": "qodpk7domhlwlcqk4dro"
+        },
+        "createdAt": "2024-04-15T17:24:49.270Z",
+        "updatedAt": "2024-05-14T23:33:41.579Z",
+        "__v": 4,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d631b59f287f96ec633c1",
+        "name": "Trio Cheesse",
+        "description": "Extra-virgin olive oil, mozzarella cheese, thinly-sliced steak meat, garlic, green peppers, mushrooms and tomatoes",
+        "category": "pizza",
+        "price": 12.27,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713201946/xygsyyimpo3l9cyyoqg3.png",
+            "publicId": "xygsyyimpo3l9cyyoqg3"
+        },
+        "createdAt": "2024-04-15T17:25:47.453Z",
+        "updatedAt": "2024-05-12T00:23:43.092Z",
+        "__v": 4,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d638459f287f96ec635f9",
+        "name": "Double Cheese",
+        "description": "A mighty meaty double helping of all the reasons you love our burger.",
+        "category": "burger",
+        "price": 28.63,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202052/c5rln8ecgwd6to3gp9du.png",
+            "publicId": "c5rln8ecgwd6to3gp9du"
+        },
+        "createdAt": "2024-04-15T17:27:32.970Z",
+        "updatedAt": "2024-05-11T17:31:57.060Z",
+        "__v": 2,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d63ba59f287f96ec63754",
+        "name": "salad 2",
+        "description": "salad 2 desc",
+        "category": "salad",
+        "price": 5.22,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202105/mvq3mbjpwgrtdtfi27l4.png",
+            "publicId": "mvq3mbjpwgrtdtfi27l4"
+        },
+        "createdAt": "2024-04-15T17:28:26.487Z",
+        "updatedAt": "2024-05-11T17:51:43.592Z",
+        "__v": 2,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d63fb59f287f96ec638c7",
+        "name": "Water Bottle",
+        "description": "Investing in a reusable water bottle that you can refill throughout the day. Carrying one around with you will make you more likely to drink up.",
+        "category": "drinks",
+        "price": 10.18,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202170/gmhpwfso0bv9zhocne1d.png",
+            "publicId": "gmhpwfso0bv9zhocne1d"
+        },
+        "createdAt": "2024-04-15T17:29:31.391Z",
+        "updatedAt": "2024-05-11T17:03:28.215Z",
+        "__v": 1,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d64b159f287f96ec63cc0",
+        "name": "Supreme Pizza",
+        "description": "Extra-virgin olive oil, mozzarella cheese, thinly-sliced steak meat, garlic, green peppers, mushrooms and tomatoes",
+        "category": "pizza",
+        "price": 12.27,
+        "newPrice": 9.2,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202353/jvsaakbifhoxjhzwshso.png",
+            "publicId": "jvsaakbifhoxjhzwshso"
+        },
+        "createdAt": "2024-04-15T17:32:33.841Z",
+        "updatedAt": "2024-05-11T17:52:16.754Z",
+        "__v": 3,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d64e759f287f96ec63dfc",
+        "name": "Chicken Burger",
+        "description": "A mighty meaty double helping of all the reasons you love our burger.",
+        "category": "burger",
+        "price": 16.75,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202407/u2xhk3ahhseojgjnnpfb.png",
+            "publicId": "u2xhk3ahhseojgjnnpfb"
+        },
+        "createdAt": "2024-04-15T17:33:27.947Z",
+        "updatedAt": "2024-05-11T17:04:39.214Z",
+        "__v": 1,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d653859f287f96ec63fef",
+        "name": "trio Cafe",
+        "description": "Trio Cafe is Family owned establishment located in Boston Waterfront next to World Trade Center.",
+        "category": "drinks",
+        "price": 12.18,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202487/bbn7juotldq2p5lun3rk.png",
+            "publicId": "bbn7juotldq2p5lun3rk"
+        },
+        "createdAt": "2024-04-15T17:34:48.039Z",
+        "updatedAt": "2024-05-14T23:56:18.627Z",
+        "__v": 3,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d657759f287f96ec64171",
+        "name": "salad 3",
+        "description": "salad 3 desc",
+        "category": "salad",
+        "price": 7.7,
+        "newPrice": 4.2,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202550/hwzp8dvot4s8optz2wl5.png",
+            "publicId": "hwzp8dvot4s8optz2wl5"
+        },
+        "createdAt": "2024-04-15T17:35:51.459Z",
+        "updatedAt": "2024-05-11T17:34:38.207Z",
+        "__v": 1,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d65a859f287f96ec6428f",
+        "name": "Pepperoni Pizza",
+        "description": "Extra-virgin olive oil, mozzarella cheese, thinly-sliced steak meat, garlic, green peppers, mushrooms and tomatoes",
+        "category": "pizza",
+        "price": 34.88,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202599/axfa4bnzqesbqvwwoknj.png",
+            "publicId": "axfa4bnzqesbqvwwoknj"
+        },
+        "createdAt": "2024-04-15T17:36:40.707Z",
+        "updatedAt": "2024-05-11T17:53:11.720Z",
+        "__v": 1,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d65dc59f287f96ec643bf",
+        "name": "Double Beef Burger",
+        "description": "A mighty meaty double helping of all the reasons you love our burger.",
+        "category": "burger",
+        "price": 13.17,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202651/w1xmw21xobiqnkjr9beq.png",
+            "publicId": "w1xmw21xobiqnkjr9beq"
+        },
+        "createdAt": "2024-04-15T17:37:32.513Z",
+        "updatedAt": "2024-05-15T00:01:29.888Z",
+        "__v": 2,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d661359f287f96ec644f8",
+        "name": "Red Chocolate Cake",
+        "description": "Browse unique Coca-Cola products, clothing, & accessories, or customize Coke bottles and gifts",
+        "category": "desserts",
+        "price": 13.42,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202706/pqqvtyl0y3e2feqdautu.png",
+            "publicId": "pqqvtyl0y3e2feqdautu"
+        },
+        "createdAt": "2024-04-15T17:38:27.251Z",
+        "updatedAt": "2024-05-14T23:34:55.879Z",
+        "__v": 3,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d666459f287f96ec6469e",
+        "name": "Grand Italiano",
+        "description": "Quisque pretium turpis non tempus cursus. Nulla consequat, mi nec pellentesque imperdiet, mi quam congue magna, tristique commodo.",
+        "category": "pizza",
+        "price": 7,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202787/rb41rbgeanvywpz8yjxs.png",
+            "publicId": "rb41rbgeanvywpz8yjxs"
+        },
+        "createdAt": "2024-04-15T17:39:48.064Z",
+        "updatedAt": "2024-05-11T17:54:28.284Z",
+        "__v": 1,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "661d66d659f287f96ec64904",
+        "name": "Pene Salmone",
+        "description": "A mighty meaty double helping of all the reasons you love our burger.",
+        "category": "burger",
+        "price": 14.05,
+        "newPrice": 10.02,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1713202901/mbv7rn0h7g40vuzsxznv.png",
+            "publicId": "mbv7rn0h7g40vuzsxznv"
+        },
+        "createdAt": "2024-04-15T17:41:42.367Z",
+        "updatedAt": "2024-05-11T18:44:47.318Z",
+        "__v": 4,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "663bb487183b05dabc602855",
+        "name": "ai product",
+        "description": "ai product desc",
+        "category": "desserts",
+        "price": 44,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1715188870/m5yzekpr77uvrylrl1xd.jpg",
+            "publicId": "m5yzekpr77uvrylrl1xd"
+        },
+        "createdAt": "2024-05-08T17:21:11.381Z",
+        "updatedAt": "2024-05-14T23:35:13.026Z",
+        "__v": 3,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    },
+    {
+        "_id": "663cef76f79ee1f51a573842",
+        "name": "add new item",
+        "description": "add new item desc",
+        "category": "drinks",
+        "price": 55,
+        "newPrice": 1,
+        "image": {
+            "url": "https://res.cloudinary.com/dqs20x7bm/image/upload/v1715269494/ikcoenjofi5ad01cjnkf.jpg",
+            "publicId": "ikcoenjofi5ad01cjnkf"
+        },
+        "createdAt": "2024-05-09T15:44:54.750Z",
+        "updatedAt": "2024-05-14T23:56:53.648Z",
+        "__v": 2,
+        "numReviews": 0,
+        "reviews": [],
+        "ratings": 0
+    }
+]

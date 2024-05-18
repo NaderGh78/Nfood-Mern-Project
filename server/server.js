@@ -30,6 +30,13 @@ const { errorHandling, notFound } = require("./middlewares/errorHandling");
 
 connectDB();
 
+// middleware
+const corsOptions = {
+  origin: "nfood-mern-project.vercel.app", // frontend URI (ReactJS)
+}
+
+// app.use(cors(corsOptions));
+
 app.use(cors());
 
 app.use(express.json());

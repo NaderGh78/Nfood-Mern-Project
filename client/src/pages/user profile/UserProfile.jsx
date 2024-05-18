@@ -79,8 +79,8 @@ const UserProfile = () => {
                                 loading ?
                                     <CustomSpinner width="20" height="20" /> :
                                     <p>
-                                        <span className="text-capitalize">{currentUser?.username},</span>
-                                        <span className="text-secondary">{currentUser?.email}</span>
+                                        <span className="text-capitalize">{profile?.username},</span>
+                                        <span className="text-secondary">{profile?.email}</span>
                                     </p>
                             }
                         </div>

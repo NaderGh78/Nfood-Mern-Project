@@ -44,6 +44,17 @@ const TopMenu = () => {
 
   /*===========================================*/
 
+  // open the [cart modal] based on if there is an user or not
+  const openModalHandler = () => {
+    if (currentUser) {
+      dispatch(setShowModal());
+    } else {
+      dispatch(setShowRgisterModal());
+    }
+  }
+
+  /*===========================================*/
+
   return (
     <div className='topmenu'>
       {/* make at the top of page with fixed-top*/}
@@ -131,7 +142,7 @@ const TopMenu = () => {
                   className="LinkIcon"
                   onClick={() => {
                     setExpanded(false)
-                    dispatch(setShowModal())
+                    openModalHandler()
                   }}
                 >
                   <span>{userCart.length || 0}</span>

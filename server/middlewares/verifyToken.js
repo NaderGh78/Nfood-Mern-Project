@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
+const { UserModel } = require("../models/UserModel");
 
 /*===========================================*/
 /*===========================================*/
 /*===========================================*/
 
 // verify token ++++++++ Bearer 
-function verifyToken(req, res, next) {
+const verifyToken = async (req, res, next) => {
 
     // req.headers.authorization =>  authorization is a buld in property inside [req.headers]
     const authToken = req.headers.authorization;
@@ -20,7 +21,7 @@ function verifyToken(req, res, next) {
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-            req.userDecoded = decoded;
+            req.userDecoded = await UserModel.findById(decoded.id);
 
             next();
 
@@ -86,7 +87,7 @@ function verifyTokenAndAuthorization(req, res, next) {
 
     verifyToken(req, res, () => {
 
-        if (req.userDecoded.id === req.params.id || req.userDecoded.isAdmin) {
+        if ((req.userDecoded.id === req.params.id) || req.userDecoded.isAdmin) {
 
             next();
 

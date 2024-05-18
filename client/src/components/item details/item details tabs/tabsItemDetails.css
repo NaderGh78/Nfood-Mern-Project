@@ -3,9 +3,12 @@
     padding-top: 70px;
 }
 
+.my-tab ul.nav-tabs {
+    margin-bottom: 30px;
+}
+
 .my-tab ul {
-    gap: 20px;
-    margin-bottom: 25px !important;
+    gap: 3px;
     border: none;
 }
 

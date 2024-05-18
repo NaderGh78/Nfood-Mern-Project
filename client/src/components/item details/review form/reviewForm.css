@@ -6,6 +6,25 @@
     color: #f97316;
 }
 
+.review-form .rating-stars-box {
+    display: flex;
+    gap: 5px;
+}
+
+.review-form .rating-stars-box label svg {
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.review-form .rating-stars-box label svg.active {
+    color: #f97316;
+}
+
+.review-form input[type="radio"] {
+    display: none;
+}
+
 .review-form h6 {
     margin-bottom: 0;
     font-weight: 400;
@@ -59,7 +78,11 @@
     box-shadow: none;
 }
 
-.review-form form button {
+.review-form form button.reviw-btn {
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 6px 25px;
     background-color: var(--pistach);
     color: #fff;
@@ -68,8 +91,22 @@
     transition: all .2s;
 }
 
+.review-form form button.reviw-btn:disabled {
+    background-color: yellow;
+}
+
 .review-form form button:hover {
     color: red;
+}
+
+.review-form p.must-login {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.review-form p.must-login span {
+    color: var(--pistach);
+    cursor: pointer;
 }
 
 /*====================================*/

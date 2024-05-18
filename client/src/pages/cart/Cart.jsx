@@ -2,7 +2,7 @@ import "./cart.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { emptyUserCart, getAllUserCart, removeSingleCart } from "../../redux/apiCalls/cartApiCall";
+import { addToCart, emptyUserCart, getAllUserCart, removeSingleCart } from "../../redux/apiCalls/cartApiCall";
 import { useTitle } from "../../components/helpers";
 import { HeadingBreadcrumb } from "../../allPagesPaths";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -72,11 +72,36 @@ const Cart = () => {
 
     /*===========================================*/
 
-    const handleIncrementQuantity = (id) => {
+    const handleIncrementQuantity = (id, quantity) => {
 
-        setQuantity(prev => prev + 1);
+        const newQty = quantity + 1;
+
+        let itemIndex = userCart.findIndex(p => p.product._id === id);
+
+        const reqObj = { productId: id, quantity: newQty }
+
+        if (itemIndex > -1) {
+            dispatch(addToCart(reqObj));
+        }
 
     };
+
+    /*===========================================*/
+
+    const handleDecrementQuantity = (id, quantity) => {
+
+        const newQty = quantity === 1 ? quantity : quantity - 1;
+
+        let itemIndex = userCart.findIndex(p => p.product._id === id);
+
+        const reqObj = { productId: id, quantity: newQty }
+
+        if (itemIndex > -1) {
+            dispatch(addToCart(reqObj));
+        }
+
+    };
+
     /*===========================================*/
 
     return (
@@ -134,8 +159,8 @@ const Cart = () => {
                                                             <div className="input-box">
                                                                 <span>{el.quantity}</span>
                                                                 <div>
-                                                                    <button onClick={() => handleIncrementQuantity(el.product._id)}>+</button>
-                                                                    <button >-</button>
+                                                                    <button onClick={() => handleIncrementQuantity(el.product._id, el.quantity)}>+</button>
+                                                                    <button onClick={() => handleDecrementQuantity(el.product._id, el.quantity)}>-</button>
                                                                 </div>
                                                             </div>
                                                         </td>

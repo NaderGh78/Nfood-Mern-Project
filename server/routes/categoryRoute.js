@@ -5,8 +5,7 @@ const {
     allCategoriesCtrl,
     newCategoryCtrl,
     updateCategoryCtrl,
-    deleteCategoryCtrl,
-    countCategoryCtrl
+    deleteCategoryCtrl
 } = require("../controllers/categoryController");
 
 /*===========================================*/
@@ -24,11 +23,5 @@ router.route("/")
 router.route("/:id")
     .put(verifyTokenAndAdmin, updateCategoryCtrl)
     .delete(validateObjectId, verifyTokenAndAdmin, deleteCategoryCtrl);
-
-/*=========================================*/
-
-// get category count
-// /api/categories/count
-router.route("/count").get(countCategoryCtrl);
 
 module.exports = router;

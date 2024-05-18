@@ -10,7 +10,7 @@ const {
 /*===========================================*/
 
 /**
- *@desc Get all categories
+ *@desc Get all categories 
  *@route /api/categories
  *@method Get
  *@access public  
@@ -23,7 +23,10 @@ const allCategoriesCtrl = asynHandler(
         // 1. get all categories from db
         const categories = await CategoryModel.find();
 
-        res.status(200).json(categories);
+        res.status(200).json({
+            catCount: categories.length,
+            categories
+        });
 
     }
 
@@ -135,32 +138,9 @@ const deleteCategoryCtrl = asynHandler(
 
 /*===========================================*/
 
-/**
- *@desc get count category
- *@route /api/categories/count
- *@method Get
- *@access public  
-*/
-
-const countCategoryCtrl = asynHandler(
-
-    async (req, res) => {
-
-        // get the count of the categories
-        const count = await CategoryModel.countDocuments();
-
-        res.status(200).json(count);
-
-    }
-
-);
-
-/*===========================================*/
-
 module.exports = {
     allCategoriesCtrl,
     newCategoryCtrl,
     updateCategoryCtrl,
-    deleteCategoryCtrl,
-    countCategoryCtrl
+    deleteCategoryCtrl
 }

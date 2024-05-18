@@ -8,9 +8,15 @@ import Reviews from "../reviews/Reviews";
 /*===========================================*/
 /*===========================================*/
 
-const TabsItemDetailes = () => {
+const TabsItemDetailes = (props) => {
+
+    const { product } = props;
 
     const [key, setKey] = useState('Description');
+
+    const [rating, setRating] = useState(0);
+
+    const [hover, setHover] = useState(null);
 
     /*===========================================*/
 
@@ -32,8 +38,15 @@ const TabsItemDetailes = () => {
                         Dr. Praeger’s Black Bean Burger, Focaccia bun, Balsamic Vinaigrette, Pesto, Tomato, Swiss Cheese
                     </p>
                 </Tab>
-                <Tab eventKey="profile" title="Reviews (5)">
-                    <Reviews />
+
+                <Tab eventKey="profile" title={`Reviews (${product?.numReviews ? product?.numReviews : 0})`}>
+                    <Reviews
+                        product={product}
+                        rating={rating}
+                        setRating={setRating}
+                        hover={hover}
+                        setHover={setHover}
+                    />
                 </Tab>
             </Tabs>
         </div>

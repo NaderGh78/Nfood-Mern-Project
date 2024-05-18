@@ -31,10 +31,17 @@ const SliderCategories = () => {
 
                 setLoading(true);
 
-                const { data } = await request.get(`/api/products`);
-                setProducts(data);
+                const res = await request.get(`/api/products`);
 
-                setLoading(false);
+                if (res && res?.data) {
+
+                    const { products } = res?.data;
+
+                    setProducts(products);
+
+                    setLoading(false);
+
+                }
 
             } catch (error) {
                 console.log(error)
@@ -97,7 +104,7 @@ const SliderCategories = () => {
     /*===========================================*/
 
     // show the first 7 products from whole products to draw the cart slider
-    const slicedProducts = products?.slice(0, 7);
+    const slicedProducts = products.length > 0 && products?.slice(0, 7);
 
     if (loading) return <Spinner />;
     return (

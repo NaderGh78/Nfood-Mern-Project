@@ -87,12 +87,14 @@
 
 .item-details .item-details-top .right .product-rating {
     display: flex;
-    gap: 10px;
 }
 
 .item-details .item-details-top .right .product-rating ul {
     display: flex;
     color: #f97316;
+    font-size: 25px;
+    line-height: 0;
+    overflow: hidden;
 }
 
 .item-details .item-details-top .right .product-rating p {

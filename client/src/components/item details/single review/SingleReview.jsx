@@ -1,32 +1,43 @@
 import "./singleReview.css";
-import { LiaStarSolid } from "react-icons/lia";
+import { useSelector } from "react-redux";
+import { LiaStarSolid, LiaTrashSolid } from "react-icons/lia";
 import { FaClock } from "react-icons/fa6";
+import moment from 'moment';
 
 /*===========================================*/
 /*===========================================*/
 /*===========================================*/
 
-const SingleReview = () => {
+const SingleReview = ({ review, onDelteReview }) => {
+
+    const { currentUser } = useSelector((state) => state.auth);
+
+    // // make the rating as an array 
+    const ratingArr = [...Array(review.rating).keys()];
+
+    /*===========================================*/
+
     return (
         <div className="single-review">
-            <img src={process.env.PUBLIC_URL + "/assets/images/review.png"} alt="single review" />
+            <img src={review.image} alt="single review" />
             <div className="review">
                 <ul>
-                    <li><LiaStarSolid /></li>
-                    <li><LiaStarSolid /></li>
-                    <li><LiaStarSolid /></li>
-                    <li><LiaStarSolid /></li>
-                    <li><LiaStarSolid /></li>
+                    {/* draw the rating star ui */}
+                    {ratingArr?.map((el, index) => (<li key={index}><LiaStarSolid /></li>))}
                 </ul>
                 <div className="title">
-                    <h5>salim doe</h5>
-                    <p><FaClock /> September 4, 2020</p>
+                    <div className="d-flex gap-2">
+                        <h5>{review.name}</h5>
+                        <p><FaClock /> {moment(review.createdAt).fromNow()}</p>
+                    </div>
+                    {
+                        // if this review belongs to current user show the delete icon
+                        review.userId === currentUser?._id ?
+                            <span className="delete-icon" onClick={onDelteReview}><LiaTrashSolid /></span> :
+                            ""
+                    }
                 </div>
-                <p className="review-desc">
-                    The shirt was not the fabric I believed it to be. It says Classic Fit but was made like the
-                    older versions, not the soft cotton like my others. I don’t understand how the labels are
-                    the same but a completely different shirt. Oh well, stuck with it now.
-                </p>
+                <p className="review-desc">{review.comment}</p>
             </div>
             {/* end review */}
         </div>

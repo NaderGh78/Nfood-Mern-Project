@@ -23,7 +23,10 @@ const getAllUsersCtrl = asynHandler(
         // get all users  
         const allUsers = await UserModel.find().select("-password");
 
-        res.status(200).json(allUsers);
+        res.status(200).json({
+            customersCount: allUsers.length,
+            allUsers
+        });
 
     }
 
@@ -199,28 +202,6 @@ const deleteUserCtrl = asynHandler(
 /*===========================================*/
 
 /**
- * @desc  get user count
- * @route   /api/users/count
- * @method  GET
- * @access  private (only admin)
-*/
-
-const getUsersCountCtrl = asynHandler(
-
-    async (req, res) => {
-
-        // get user count for admin dashboard
-        const count = await UserModel.countDocuments();
-
-        res.status(200).json(count);
-
-    }
-
-);
-
-/*===========================================*/
-
-/**
  * @desc  Profile Photo Upload
  * @route   /api/users/profile/profile-photo-upload
  * @method  POST
@@ -279,6 +260,5 @@ module.exports = {
     updateUserCtrl,
     updatePasswordCtrl,
     deleteUserCtrl,
-    getUsersCountCtrl,
-    profilePhotoUploadCtrl,
+    profilePhotoUploadCtrl
 }

@@ -15,8 +15,7 @@ const {
     updatePasswordCtrl,
     getUserCtrl,
     updateUserCtrl,
-    deleteUserCtrl,
-    getUsersCountCtrl
+    deleteUserCtrl
 } = require("../controllers/userController");
 
 /*===========================================*/
@@ -45,10 +44,5 @@ router.route("/profile/:id")
     .get(verifyTokenAndAuthorization, getUserCtrl)
     .put(verifyTokenAndOnlyUser, updateUserCtrl)
     .delete(validateObjectId, verifyTokenAndAuthorization, deleteUserCtrl);
-
-/*===========================================*/
-
-// /api/users/count
-router.route("/count").get(verifyTokenAndAdmin, getUsersCountCtrl);
 
 module.exports = router;

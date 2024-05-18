@@ -28,7 +28,7 @@ const AdminCutomersTable = () => {
 
             try {
 
-                const { data } = await request.get(`/api/users/profile`,
+                const res = await request.get(`/api/users/profile`,
                     {
                         headers: {
                             Authorization: "Bearer " + currentUser.token,
@@ -36,7 +36,13 @@ const AdminCutomersTable = () => {
                     }
                 );
 
-                setProfiles(data);
+                if (res && res?.data) {
+
+                    const { allUsers } = res?.data;
+
+                    setProfiles(allUsers);
+
+                }
 
             } catch (error) {
                 console.log(error)

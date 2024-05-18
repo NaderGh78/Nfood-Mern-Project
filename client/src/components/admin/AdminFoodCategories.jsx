@@ -36,10 +36,17 @@ const AdminFoodCategories = () => {
 
                 const res = await userRequest.get("/api/categories");
 
-                setCat(res.data);
+                if (res && res?.data) {
 
+                    const { categories } = res?.data;
 
-            } catch { }
+                    setCat(categories);
+
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
         };
 
         getCategories();

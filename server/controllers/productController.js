@@ -2,7 +2,8 @@ const asynHandler = require("express-async-handler");
 const bcrypt = require('bcryptjs');
 const path = require("path");
 const fs = require("fs");
-const { ProductModel, newProductValidate } = require("../models/ProductModel");
+const { UserModel } = require("../models/UserModel");
+const { ProductModel, newProductValidate, newRatingValidate } = require("../models/ProductModel");
 const { cloudinaryUploadImage } = require("../utils/cloudinary");
 
 /*===========================================*/
@@ -21,9 +22,12 @@ const getAllProductsCtrl = asynHandler(
     async (req, res) => {
 
         // get all users  
-        const allUsers = await ProductModel.find();
+        const products = await ProductModel.find();
 
-        res.status(200).json(allUsers);
+        res.status(200).json({
+            productsCount: products.length,
+            products
+        });
 
     }
 
@@ -126,17 +130,22 @@ const deleteProductCtrl = asynHandler(
 
     async (req, res) => {
 
-        // 1. get the category from db
+        // 1. get the product from db
         const product = await ProductModel.findById(req.params.id);
 
-        // 2. find the category and delete it,otherwise return msg the category not fond
+        // 2. find the product and delete it,otherwise return msg the product not fond
         if (product) {
+
             await ProductModel.findByIdAndDelete(req.params.id);
+
             res.status(200).json({
                 message: "product has been deleted successfully"
             });
+
         } else {
+
             res.status(404).json({ message: "product not found" });
+
         }
 
     }
@@ -146,20 +155,137 @@ const deleteProductCtrl = asynHandler(
 /*===========================================*/
 
 /**
- *@desc get count products
- *@route /api/products/count
- *@method Get
- *@access public  
+ *@desc make product review
+ *@route /api/products/review
+ *@method Put
+ *@access private(only admin and user himself) 
 */
 
-const countProductsCtrl = asynHandler(
+const productReviewCtrl = asynHandler(
 
     async (req, res) => {
 
-        // get the count of the categories
-        const count = await ProductModel.countDocuments();
+        const { rating, comment, productId } = req.body;
 
-        res.status(200).json(count);
+        // 1. Validation for data
+        const { error } = newRatingValidate(req.body);
+
+        if (error) {
+            return res.status(400).json({ message: error.details[0].message });
+        }
+
+        const product = await ProductModel.findById(productId);
+
+        const review = {
+            userId: req.userDecoded.id,
+            name: req.userDecoded.username,
+            image: req.userDecoded.profilePhoto.url,
+            rating: Number(rating),
+            comment,
+        }
+
+        const alreadyReviewed = product.reviews.find(
+            review => review.userId.toString() === req.userDecoded.id.toString()
+        )
+
+        if (alreadyReviewed) {
+
+            product.reviews.forEach(review => {
+
+                if (review.userId.toString() === req.userDecoded.id.toString()) {
+                    review.rating = rating;
+                    review.comment = comment;
+                }
+
+            })
+
+            // return res.status(400).json({ message: "Product already reviewed" });
+
+        } else {
+
+            product.reviews.push(review);
+
+            product.numReviews = product.reviews.length;
+
+        }
+
+        product.ratings = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
+
+        await product.save();
+
+        res.status(200).json({
+            message: "Review Added",
+            data: { product }
+        });
+
+    }
+
+);
+
+/*===========================================*/
+
+/**
+ *@desc delete product review
+ *@route /api/products/review?productId&id
+ *@method Delete
+ *@access private(only admin and user himself) 
+*/
+
+const deleteSingleReviewCtrl = asynHandler(
+
+    async (req, res) => {
+
+        const product = await ProductModel.findById(req.query.productId);
+
+        if (!product) {
+
+            return res.status(404).json({ message: "product not found" });
+
+        } else {
+
+            const reviews = product.reviews.filter(
+                review => review._id.toString() !== req.query.id.toString()
+            )
+
+            const numReviews = reviews.length;
+
+            const ratings = numReviews && product.reviews.reduce((acc, item) => item?.rating + acc, 0) / numReviews;
+
+            await ProductModel.findByIdAndUpdate(req.query.productId, {
+                reviews,
+                ratings,
+                numReviews
+            },
+                { new: true }
+            )
+            console.log(product)
+            res.status(200).json({
+                message: "Review delete",
+                product
+            })
+
+        }
+
+    }
+
+);
+
+/*===========================================*/
+
+/**
+ *@desc get reviews for specific product
+ *@route /api/products/reviews
+ *@method Get
+ *@access public   
+*/
+
+const getProductReviewsCtrl = asynHandler(
+
+    async (req, res) => {
+
+        const product = await ProductModel.findById(req.query.id);
+
+        res.status(200).json({ reviews: product.reviews });
 
     }
 
@@ -172,5 +298,7 @@ module.exports = {
     getProductCtrl,
     newProductCtrl,
     deleteProductCtrl,
-    countProductsCtrl
+    productReviewCtrl,
+    deleteSingleReviewCtrl,
+    getProductReviewsCtrl
 }

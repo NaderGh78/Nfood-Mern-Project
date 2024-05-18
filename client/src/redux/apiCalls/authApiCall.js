@@ -56,6 +56,8 @@ export function loginUser(user) {
 
             localStorage.setItem("currentUser", JSON.stringify(data));
 
+            window.location.reload();
+
         } catch (error) {
 
             toast.error(error?.response?.data?.message);
@@ -79,6 +81,8 @@ export function logoutUser() {
         dispatch(cartActions.clearCart());
 
         localStorage.removeItem("currentUser");
+
+        window.location.reload();
 
     }
 

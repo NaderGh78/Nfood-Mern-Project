@@ -9,7 +9,9 @@ const productSlice = createSlice({
     initialState: {
         productModal: false,
         ProductDetailsModal: false,/*for admin product details modal*/
-        isProductCreated: false
+        isProductCreated: false,
+        isProductReview: false,
+        productReviews: []
     },
     reducers: {
 
@@ -46,10 +48,26 @@ const productSlice = createSlice({
             state.isProductCreated = true;
         },
 
-        /*====================*/
-
         clearIsproductCreated(state) {
             state.isProductCreated = false;
+        },
+
+        /*====================*/
+
+        // when review product succefully
+        setIsProductReview(state) {
+            state.isProductReview = true;
+        },
+
+        clearIsProductReview(state) {
+            state.isProductReview = false;
+        },
+
+        /*====================*/
+
+        // get reviews for specific product
+        getProductReviews(state, action) {
+            state.productReviews = action.payload;
         }
 
     }
@@ -62,6 +80,9 @@ export const {
     hideProductModal,
     showProductDetailsModal,
     hideProductDetailsModal,
-    setIsproductCreated, clearIsproductCreated
+    setIsproductCreated,
+    clearIsproductCreated,
+    setIsProductReview,
+    clearIsProductReview
 } = productSlice.actions;
 export { productReducer, productActions };

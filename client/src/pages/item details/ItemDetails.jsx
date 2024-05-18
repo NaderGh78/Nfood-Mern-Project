@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getAllUserCart } from "../../redux/apiCalls/cartApiCall";
 import { setShowRgisterModal } from "../../redux/slices/modalSlice";
 import { request } from "../../utils/request";
-import { LiaStarSolid } from "react-icons/lia";
+import { LiaStarSolid, LiaStarHalfSolid } from "react-icons/lia";
 import { FaBasketShopping } from "react-icons/fa6";
 import { FaFacebookF, FaHeart, FaTwitter, FaYoutube } from "react-icons/fa";
 import { RelatedProducts, StickyAddCart, TabsItemDetailes } from "../../allPagesPaths";
@@ -22,6 +22,8 @@ const ItemDetails = () => {
     const dispatch = useDispatch();
 
     const { currentUser } = useSelector((state) => state.auth);
+
+    const { isProductReview } = useSelector((state) => state.product);
 
     const [product, setProduct] = useState({});
 
@@ -85,9 +87,17 @@ const ItemDetails = () => {
 
             try {
 
-                const { data } = await request.get(`/api/products`);
+                const res = await request.get(`/api/products`);
 
-                setProducts(data);
+                if (res && res?.data) {
+
+                    const { products } = res?.data;
+
+                    setProducts(products);
+
+                    setLoading(false);
+
+                }
 
             } catch (error) {
                 console.log(error)
@@ -105,7 +115,7 @@ const ItemDetails = () => {
 
     // get first 4 similair categories products
     const getFirstFourProducts =
-        getAllProductsWithSameCat.length > 4 ?
+        getAllProductsWithSameCat && getAllProductsWithSameCat.length > 4 ?
             getAllProductsWithSameCat.slice(0, 4) : getAllProductsWithSameCat;
 
     /*===========================================*/
@@ -191,15 +201,68 @@ const ItemDetails = () => {
 
     const handleIncrementQuantity = (id) => {
 
-    };
+        if (currentUser) {
 
-    const handleDecrementQuantity = () => {
-        setQuantity(prev => prev === 1 ? 1 : prev - 1);
+            const count = document.querySelector(".count");
+
+            const qty = count.valueAsNumber + 1;
+
+            setQuantity(qty);
+
+            const reqObj = { productId: id, quantity: qty }
+
+            dispatch(addToCart(reqObj));
+
+        } else {
+
+            dispatch(setShowRgisterModal());
+
+        }
     };
 
     /*===========================================*/
 
-    if (loading) return <Spinner />;
+    const handleDecrementQuantity = () => {
+
+        if (currentUser) {
+
+            const count = document.querySelector(".count");
+
+            const qty = count.valueAsNumber === 1 ? count.valueAsNumber : count.valueAsNumber - 1;
+
+            setQuantity(qty);
+
+            const reqObj = { productId: id, quantity: qty }
+
+            dispatch(addToCart(reqObj));
+
+        } else {
+
+            dispatch(setShowRgisterModal());
+
+        }
+    };
+
+    /*===========================================*/
+
+    // find the quantity of the product that match with param id
+    useEffect(() => {
+
+        const findSingleProductQty = userCart?.find(p => p.product._id === id);
+
+        setQuantity(findSingleProductQty?.quantity);
+
+    }, [userCart, product, quantity])
+
+    /*===========================================*/
+
+    const { ratings } = product;
+    // const productAllRatings = [...Array(ratings).keys()];
+    //   console.log(product.ratings)
+
+    /*===========================================*/
+
+    // if (loading) return <Spinner />;
     return (
         <div className="item-details">
             <div className="myContainer">
@@ -214,26 +277,37 @@ const ItemDetails = () => {
                         <div className="left">
                             <div>
                                 {product?.newPrice !== 1 ? <span>Sale!</span> : ""}
-
                                 <img src={product?.image?.url} alt={product?.name} />
                             </div>
                         </div>
                         {/* end left */}
                         <div className="right">
                             <h1 className="text-capitalize">{product?.name}</h1>
-                            <div className="product-rating">
-                                <ul>
-                                    <li><LiaStarSolid /></li>
-                                    <li><LiaStarSolid /></li>
-                                    <li><LiaStarSolid /></li>
-                                    <li><LiaStarSolid /></li>
-                                    <li><LiaStarSolid /></li>
-                                </ul>
-                                {/* we use the hashlink in order to jump to the review section in same page */}
-                                <p>(<HashLink smooth to={`/products/${product?._id}/#reviews`}>
-                                    5 Customer Reviews</HashLink>)
-                                </p>
-                            </div>
+                            {
+                                // if no rating show [no rating yet],otherwise show the rating div
+                                product?.numReviews ?
+                                    <div className="product-rating">
+
+                                        <div style={{ marginRight: "5px" }}>
+                                            <ul style={{ width: `${(product?.ratings / 5) * 100}%` }}>
+                                                <li><LiaStarSolid /></li>
+                                                <li><LiaStarSolid /></li>
+                                                <li><LiaStarSolid /></li>
+                                                <li><LiaStarSolid /></li>
+                                                <li><LiaStarSolid /></li>
+                                                {/* {[...Array(ratings).keys()]?.map((el, index) => (<li key={index}><LiaStarSolid /></li>))} */}
+                                            </ul>
+                                        </div>
+                                        {/* we use the hashlink in order to jump to the review section in same page */}
+                                        <p>(
+                                            <HashLink smooth to={`/products/${product?._id}/#reviews`}>
+                                                {product?.numReviews} Customer Reviews
+                                            </HashLink>
+                                            )
+                                        </p>
+                                    </div> :
+                                    <p>No Rating Yet.</p>
+                            }
                             <p style={{ color: "var(--light-white)" }}>{product?.description}</p>
                             <div className="item-price">
                                 {product?.newPrice !== 1
@@ -250,9 +324,13 @@ const ItemDetails = () => {
                                     </>}
                             </div>
                             <div className="increase">
-                                <button onClick={() => handleDecrementQuantity()} disabled={inCart}>-</button>
-                                <span>{quantity}</span>
-                                <button onClick={() => handleIncrementQuantity(product?._id)} disabled={inCart}>+</button>
+                                <button
+                                    onClick={() => handleDecrementQuantity(product?._id)}
+                                // disabled={inCart}
+                                >-</button>
+                                {/* <span>{quantity}</span> */}
+                                <input type="number" className="count" value={quantity || "1"} readOnly />
+                                <button onClick={() => handleIncrementQuantity(product?._id)}>+</button>
                                 <button className="big-btn" onClick={() => addToCartHandler(product?._id)} disabled={inCart}>
                                     {!inCart ? <><FaBasketShopping /> Add to Cart</> : "In Cart"}
                                     {/* 
@@ -289,7 +367,7 @@ const ItemDetails = () => {
                     </div>
                     {/* end item details top */}
                     <div className="item-details-bottom">
-                        <TabsItemDetailes />
+                        <TabsItemDetailes product={product} />
                     </div>
                     {/* related products */}
                     <RelatedProducts relatedProducts={getFirstFourProducts} />

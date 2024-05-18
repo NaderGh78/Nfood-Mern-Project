@@ -42,9 +42,15 @@ const AdminProducts = () => {
 
             try {
 
-                const { data } = await request.get(`/api/products`);
+                const res = await request.get(`/api/products`);
 
-                setProducts(data);
+                if (res && res?.data) {
+
+                    const { products } = res?.data;
+
+                    setProducts(products);
+
+                }
 
             } catch (error) {
                 console.log(error)

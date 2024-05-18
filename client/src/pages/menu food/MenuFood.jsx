@@ -70,11 +70,17 @@ const MenuFood = () => {
 
                 setLoading(true);
 
-                const { data } = await request.get(`/api/products`);
+                const res = await request.get(`/api/products`);
 
-                setProducts(data);
+                if (res && res?.data) {
 
-                setLoading(false);
+                    const { products } = res?.data;
+
+                    setProducts(products);
+
+                    setLoading(false);
+
+                }
 
             } catch (error) {
                 console.log(error)
