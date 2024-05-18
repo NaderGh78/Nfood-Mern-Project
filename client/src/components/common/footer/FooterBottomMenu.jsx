@@ -21,6 +21,17 @@ const FooterBottomMenu = () => {
 
     /*===========================================*/
 
+    // open the [cart modal] based on if there is an user or not
+    const openModalHandler = () => {
+        if (currentUser) {
+            dispatch(setShowModal());
+        } else {
+            dispatch(setShowRgisterModal());
+        }
+    }
+
+    /*===========================================*/
+
     return (
         <div className="footer-bottom-menu">
             <ul>
@@ -41,7 +52,7 @@ const FooterBottomMenu = () => {
                 <li onClick={() => dispatch(toggleTheme())}>
                     {isDarkMode ? <span><FaRegMoon /></span> : <span><LiaSun /></span>}
                 </li>
-                <li onClick={() => dispatch(setShowModal())}>
+                <li onClick={() => openModalHandler()}>
                     <small>{userCart.length || 0}</small>
                     <span><FaCartShopping /></span>
                 </li>
