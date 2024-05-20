@@ -211,11 +211,11 @@ const productReviewCtrl = asynHandler(
 
         product.ratings = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
 
-        await product.save();
+        let finalProduct = await product.save();
 
         res.status(200).json({
             message: "Review Added",
-            data: { product }
+            data: { finalProduct }
         });
 
     }
@@ -251,17 +251,19 @@ const deleteSingleReviewCtrl = asynHandler(
 
             const ratings = numReviews && product.reviews.reduce((acc, item) => item?.rating + acc, 0) / numReviews;
 
-            await ProductModel.findByIdAndUpdate(req.query.productId, {
+            let finalProduct = await ProductModel.findByIdAndUpdate(req.query.productId, {
                 reviews,
                 ratings,
                 numReviews
             },
                 { new: true }
             )
-            console.log(product)
+
+            console.log(finalProduct);
+
             res.status(200).json({
                 message: "Review delete",
-                product
+                finalProduct
             })
 
         }
