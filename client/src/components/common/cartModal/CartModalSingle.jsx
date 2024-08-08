@@ -37,8 +37,8 @@ const CartModalSingle = ({ data, onDelete }) => {
                 <p>
                     {
                         data?.product?.newPrice !== 1 ?
-                            <>{data?.quantity} x <span>${data?.product.newPrice}</span> </> :
-                            <>{data?.quantity} x <span>${data?.product.price}</span> </>
+                            <>{data?.quantity} x <span>${data?.product?.newPrice}</span> </> :
+                            <>{data?.quantity} x <span>${data?.product?.price}</span> </>
                     }
                 </p>
             </div>

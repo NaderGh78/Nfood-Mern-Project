@@ -30,6 +30,7 @@
 .sticky-add-cart .image-box img {
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
 }
 
@@ -61,9 +62,25 @@
 /* end right style */
 
 .slideUp {
+    -webkit-animation-duration: .5s;
     animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    -webkit-animation-name: slideUp;
     animation-name: slideUp;
+}
+
+@-webkit-keyframes slideUp {
+    0% {
+
+        transform: translate3d(0, 100%, 0);
+        visibility: hidden;
+    }
+
+    100% {
+
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 @keyframes slideUp {
@@ -80,9 +97,24 @@
 }
 
 .slideDown {
+    -webkit-animation-duration: .5s;
     animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    -webkit-animation-name: slideDown;
     animation-name: slideDown;
+}
+
+@-webkit-keyframes slideDown {
+    0% {
+
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
 }
 
 @keyframes slideDown {
@@ -128,9 +160,11 @@
 /* end 576px */
 
 @media only screen and (max-width:990px) {
+
     .sticky-add-cart {
         display: none;
     }
+
 }
 
 /* end 990px */

@@ -45,4 +45,6 @@ router.route("/profile/:id")
     .put(verifyTokenAndOnlyUser, updateUserCtrl)
     .delete(validateObjectId, verifyTokenAndAuthorization, deleteUserCtrl);
 
+/*===========================================*/
+
 module.exports = router;

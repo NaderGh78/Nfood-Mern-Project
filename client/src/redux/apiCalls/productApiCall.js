@@ -18,7 +18,7 @@ const config = {
 // get reviews for specific product
 export function getSpecificProductRviews(pId) {
 
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
 
         try {
 
@@ -31,7 +31,6 @@ export function getSpecificProductRviews(pId) {
                 dispatch(productActions.getProductReviews(reviews));
 
             }
-
 
         } catch (error) {
             //  console.log(error);

@@ -1,6 +1,5 @@
 import { cartActions } from "../slices/cartSlice";
-import { request } from "../../utils/request";
-import { toast } from "react-toastify";
+import { userRequest } from "../../utils/request";
 
 /*===========================================*/
 /*===========================================*/
@@ -18,11 +17,11 @@ const config = {
 // Add Item To Cart
 export function addToCart(newItem) {
 
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
 
     try {
 
-      const res = await request.post("/api/carts", newItem, config);
+      const res = await userRequest.post("/api/carts", newItem);
 
       dispatch(cartActions.addItemToCart(newItem));
 
@@ -34,18 +33,21 @@ export function addToCart(newItem) {
 
 /*===========================================*/
 
-// get all user cart
+// get all user cart 
 export function getAllUserCart() {
 
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
+
+    dispatch(cartActions.setCartLoading());
 
     try {
 
-      const res = await request.get("/api/carts", config);
+      const res = await userRequest.get("/api/carts");
 
-      if (res && res?.data?.data?.cart !== null) {
+      // console.log('API Response:', res.data);
+      if (res && res.data && res.data.data && res.data.data.cart !== null) {
 
-        const { products, totalAmount } = res?.data?.data?.cart
+        const { products, totalAmount } = res.data.data.cart;
 
         dispatch(cartActions.setUserCarts(products));
 
@@ -53,8 +55,10 @@ export function getAllUserCart() {
 
       }
 
+      dispatch(cartActions.clearCartLoading());
+
     } catch (error) {
-      //  console.log(error);
+      console.error('API Error:', error);
     }
   };
 }
@@ -64,19 +68,22 @@ export function getAllUserCart() {
 // remove single cart
 export function removeSingleCart(productId) {
 
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
 
     dispatch(cartActions.setIsCartDeleted());
 
     try {
 
-      const res = await request.delete(`/api/carts/${productId}`, config);
+      await userRequest.delete(`/api/carts/${productId}`, config);
+
+      dispatch(cartActions.removeSingleItem(productId));
 
       dispatch(cartActions.clearIsCartDeleted());
 
     } catch (error) {
-      //  console.log(error);
+      console.error("Failed to remove item:", error);
     }
+
   };
 }
 
@@ -85,24 +92,26 @@ export function removeSingleCart(productId) {
 // empty all cart
 export function emptyUserCart() {
 
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
 
     dispatch(cartActions.setIsCartEmpty());
 
     try {
 
-      const res = await request.delete(`/api/carts/`, config);
+      const res = await userRequest.delete(`/api/carts/`, config);
 
       const { message } = res.data;
 
-      toast.success(message);
-
       dispatch(cartActions.clearCart());
+
+    } catch (error) {
+
+      console.error("Failed to clear cart:", error);
+
+    } finally {
 
       dispatch(cartActions.clearIsCartEmpty());
 
-    } catch (error) {
-      //  console.log(error);
     }
   };
 }  

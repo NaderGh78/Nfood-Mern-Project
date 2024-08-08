@@ -18,6 +18,10 @@ const usersPath = require("./routes/userRoute");
 
 const categoryPath = require("./routes/categoryRoute");
 
+const checkoutPath = require("./routes/checkoutRoute");
+
+const orderPath = require("./routes/orderRoute");
+
 const productPath = require("./routes/productRoute");
 
 const cartPath = require("./routes/cartRoute");
@@ -48,6 +52,10 @@ app.use("/api/auth", authPath);
 app.use("/api/users", usersPath);
 
 app.use("/api/categories", categoryPath);
+
+app.use("/api/checkout", checkoutPath);
+
+app.use("/api/orders", orderPath);
 
 app.use("/api/products", productPath);
 

@@ -30,7 +30,7 @@ const OurStory = () => {
             id: 4,
             storyImag: "/assets/images/services/icon4.png",
             storyTitle: "Gift Cards",
-            storyDesc: "Give the gift of exceptional dining with Foodi Gift Cards"
+            storyDesc: "Give the gift of exceptional dining with Nfood Gift Cards"
         }
     ];
 

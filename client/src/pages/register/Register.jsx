@@ -28,8 +28,11 @@ const Register = () => {
 
     // Form Submit Handler
     const formSubmitHandler = (e) => {
+
         e.preventDefault();
+
         dispatch(registerUser({ username, email, password }))
+
     }
 
     /*===========================================*/
@@ -89,7 +92,6 @@ const Register = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-                    <Link to="">Forgot password?</Link>
                     <button type="submit">
                         {loading
                             ?

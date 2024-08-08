@@ -24,6 +24,7 @@ export { default as HeadingBreadcrumb } from "../src/components/common/heading b
 export { default as CartModal } from "../src/components/common/cartModal/CartModal";
 export { default as ScrollToTopWhenNavigatePage } from "../src/components/common/ScrollToTopWhenNavigatePage";
 export { default as MySpinner } from "../src/components/helpers/my spinner/MySpinner";
+
 // admin components
 export { default as AdminMain } from "../src/components/admin/AdminMain";
 export { default as AdminOrdersTable } from "../src/components/admin/AdminOrdersTable";
@@ -32,6 +33,8 @@ export { default as AdminFoodCategories } from "../src/components/admin/AdminFoo
 export { default as AdminCatModal } from "../src/components/admin/AdminCatModal";
 export { default as AdminCategoryForm } from "../src/components/admin/AdminCategoryForm";
 export { default as AdminProducts } from "../src/components/admin/AdminProducts";
+export { default as AdminOrderDetails } from "../src/components/admin/AdminOrderDetails";
+
 // profile components
 export { default as Order } from "../src/components/user profile/order/Order";
 export { default as Account } from "../src/components/user profile/account/Account";
@@ -52,7 +55,12 @@ export { default as Contact } from "../src/pages/contact/Contact";
 export { default as ItemDetails } from "../src/pages/item details/ItemDetails";
 export { default as Search } from "../src/pages/search/Search";
 export { default as Cart } from "../src/pages/cart/Cart";
+
 export { default as Checkout } from "../src/pages/checkout/Checkout";
+export { default as CheckoutInformation } from "../src/components/checkout/CheckoutInformation";
+export { default as CheckoutShipping } from "../src/components/checkout/CheckoutShipping";
+export { default as OrderConfirmed } from "../src/pages/orderConfirmed/OrderConfirmed";
+
 export { default as UserProfile } from "./pages/user profile/UserProfile";
 export { default as NotFound } from "../src/pages/not found/NotFound";
 export { default as Admin } from "../src/pages/admin/Admin";  

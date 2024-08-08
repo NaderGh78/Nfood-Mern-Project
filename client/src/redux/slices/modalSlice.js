@@ -33,6 +33,7 @@ const modalSlice = createSlice({
         setHideModal(state) {
             state.showCartModal = false;
         }
+
     }
 });
 

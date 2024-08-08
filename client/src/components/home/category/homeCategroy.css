@@ -41,9 +41,20 @@
     height: 100%;
     border: 2px dashed var(--light-red);
     border-radius: 50%;
+    -webkit-animation: mymove 15s linear infinite alternate;
     animation: mymove 15s linear infinite alternate;
     display: none;
     /*show it when hover*/
+}
+
+@-webkit-keyframes mymove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
 }
 
 @keyframes mymove {
@@ -102,7 +113,7 @@
 
 /* end 576px */
 
-@media only screen and (min-width:576px) and (max-width: 768px) {
+@media only screen and (min-width:576px) and (max-width: 992px) {
 
     .home-category .all-categories .single-category {
         width: calc((100% - 60px)/2) !important;

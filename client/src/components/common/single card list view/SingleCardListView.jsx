@@ -32,57 +32,54 @@ const SingleCardListView = ({ product }) => {
     }
     /*===========================================*/
 
-    // add item to cart  
+    // Add item to cart and open the right cart modal IN CASE there is an user log in
     const handleAddToCart = (productId) => {
 
         if (currentUser) {
 
-            const reqObj = { productId: productId, quantity: 1 }
-
-            dispatch(addToCart(reqObj));
+            dispatch(addToCart({ productId, quantity: 1 }));
 
             dispatch(setShowModal());
 
         } else {
+
             dispatch(setShowRgisterModal());
-        }
-    }
-
-    /*===========================================*/
-
-    /*
-     here we should get user cart in order to filter its items index,
-     in order to change the [add to cart] text btn to [in cart] 
-     */
-    const getUserCart = () => {
-        dispatch(getAllUserCart());
-    }
-
-    useEffect(() => {
-        getUserCart();
-    }, [])
-
-    /*===========================================*/
-
-    /*
-     get the product from user cart in order to change the the button text when add an item,
-     from add to cart to [in cart]
-    */
-    const getProductFromUserCart = userCart?.map(item => item.product);
-
-    useEffect(() => {
-
-        if (getProductFromUserCart && getProductFromUserCart.length > 0) {
-
-            const productIndx = getProductFromUserCart.findIndex(
-                (ele) => ele?._id === product?._id
-            );
-
-            setInCart(productIndx === -1 ? false : true);
 
         }
 
-    }, [getProductFromUserCart, userCart, product])
+    };
+
+    /*===========================================*/
+
+    // Fetch user cart and update inCart state
+    useEffect(() => {
+
+        if (currentUser) {
+
+            dispatch(getAllUserCart());
+
+        } else {
+
+            setInCart(false);
+
+        }
+
+    }, [currentUser, dispatch]);
+
+    /*===========================================*/
+
+    // Update inCart state based on userCart
+    useEffect(() => {
+
+        if (userCart) {
+
+            const isProductInCart = userCart.some(item => item.product?._id === _id);
+
+            setInCart(isProductInCart);
+
+        }
+
+    }, [userCart, _id]);
 
     /*===========================================*/
 

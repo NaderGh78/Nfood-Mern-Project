@@ -19,7 +19,7 @@ const Layout = () => {
     const { showCartModal } = useSelector((state) => state.modal);
 
     // hide the footer and header from [login and register] pages
-    const hideHeaderAndFooterForPaths = ['/login', '/register'];
+    const hideHeaderAndFooterForPaths = ['/login', '/register', '/checkout', '/order-confirm', 'admin'];
 
     /*===========================================*/
 

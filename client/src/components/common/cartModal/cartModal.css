@@ -77,6 +77,7 @@
 .cart-modal-Modal .cart-single-product .left img {
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
 }
 
@@ -173,25 +174,30 @@
     font-weight: 600;
     color: #000;
     text-align: center;
+    border: 1px solid;
     border-radius: 4px;
 }
 
-.cart-modal-Modal .cart-box-footer a.checkout-btn {
-    background-color: var(--pistach);
+.cart-modal-Modal .cart-box-footer a:first-of-type {
+    margin-bottom: 15px;
+    border-color: transparent;
 }
 
-.cart-modal-Modal .cart-box-footer a.checkout-btn:hover {
-    background-color: #d3d4d5;
+.cart-modal-Modal .cart-box-footer a:first-of-type:hover {
+    color: var(--pistach);
+    border-color: var(--pistach);
 }
 
 .cart-modal-Modal .cart-box-footer a:last-of-type {
-    margin: 14px auto;
-    border: 1px solid #999;
+    background-color: #d3d4d5;
+    border-color: #d3d4d5;
 }
 
 .cart-modal-Modal .cart-box-footer a:last-of-type:hover {
-    border: 1px solid var(--pistach);
+    background-color: transparent;
     color: var(--pistach);
+    border: 1px solid var(--pistach);
+
 }
 
 .cart-modal-Modal .cart-is-empty {
@@ -236,6 +242,7 @@
 .cart-modal-Modal .cart-modal-single .left img {
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
 }
 

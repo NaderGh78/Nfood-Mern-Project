@@ -16,6 +16,7 @@
 .account .account-box .img-handler img {
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
     border-radius: 50%;
 }

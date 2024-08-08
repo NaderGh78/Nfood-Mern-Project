@@ -111,7 +111,6 @@ const MyFooter = () => {
                                 </Accordion.Item>
                             </Accordion>
                         </div>
-
                         {/* ================ */}
                     </div>
                     {/* footer-sections end */}

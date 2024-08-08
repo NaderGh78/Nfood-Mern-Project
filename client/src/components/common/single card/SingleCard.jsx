@@ -26,64 +26,60 @@ const SingleCard = ({ product }) => {
 
     /*===========================================*/
 
-    // change heart color when user like the item
+    // Change heart color when user likes the item
     const handleChange = () => {
         setHeart(!heart);
-    }
+    };
 
     /*===========================================*/
 
-    // add item to cart
+    // Add item to cart and open the right cart modal IN CASE there is an user log in
     const handleAddToCart = (productId) => {
 
         if (currentUser) {
 
-            const reqObj = { productId: productId, quantity: 1 }
-
-            dispatch(addToCart(reqObj));
+            dispatch(addToCart({ productId, quantity: 1 }));
 
             dispatch(setShowModal());
 
         } else {
+
             dispatch(setShowRgisterModal());
+
         }
-    }
+    };
 
     /*===========================================*/
 
-    /*
-   here we should get user cart in order to filter its items index,
-   in order to change the [add to cart] text btn to [in cart] 
-   */
-    const getUserCart = () => {
-        dispatch(getAllUserCart());
-    }
-
-    useEffect(() => {
-        getUserCart();
-    }, [])
-
-    /*===========================================*/
-
-    /*
-     get the product from user cart in order to change the the button text when add an item,
-     from add to cart to [in cart]
-    */
-    const getProductFromUserCart = userCart?.map(item => item.product);
-
+    // Fetch user cart and update inCart state
     useEffect(() => {
 
-        if (getProductFromUserCart && getProductFromUserCart.length > 0) {
+        if (currentUser) {
 
-            const productIndx = getProductFromUserCart.findIndex(
-                (ele) => ele._id === product?._id
-            );
+            dispatch(getAllUserCart());
 
-            setInCart(productIndx === -1 ? false : true);
+        } else {
+
+            setInCart(false);
 
         }
 
-    }, [userCart, _id])
+    }, [currentUser, dispatch]);
+
+    /*===========================================*/
+
+    // Update inCart state based on userCart
+    useEffect(() => {
+
+        if (userCart) {
+
+            const isProductInCart = userCart.some(item => item.product?._id === _id);
+
+            setInCart(isProductInCart);
+
+        }
+
+    }, [userCart, _id]);
 
     /*===========================================*/
 
@@ -91,10 +87,9 @@ const SingleCard = ({ product }) => {
         <div className="my-card">
             <div className="card">
                 <div className="card-top">
-                    {newPrice !== 1 ? <span className="new-price">Sale!</span> : ""}
+                    {newPrice !== 1 && <span className="new-price">Sale!</span>}
                     <img src={image?.url} alt={name} />
                 </div>
-
                 <div className="card-body">
                     <h5 className="card-title text-capitalize" style={{ userSelect: "text", color: "var(--dark)" }}>
                         <Link to={`/products/${_id}`}>{name}</Link>
@@ -104,22 +99,17 @@ const SingleCard = ({ product }) => {
                     </p>
                     <p className="edit-price">
                         {newPrice !== 1
-                            ?
-                            <>
+                            ? <>
                                 <span className="text-decoration-line-through text-secondary">${price}</span>
                                 <span className="ms-2">${newPrice}</span>
                             </>
-                            :
-                            <>
-                                <span>${price}</span>
-                            </>}
+                            : <span>${price}</span>}
                     </p>
                     <div className="bottom">
                         <button type="button" onClick={() => handleAddToCart(_id)}>
-                            {/* {inCart ? "In Cart" : "Add to Cart"}{inCart ? <small>{itemQty}</small> : ""} */}
-                            {inCart ? "In Cart" : "Add to Cart"}{inCart ? <small>1</small> : ""}
+                            {inCart ? "In Cart" : "Add to Cart"}{inCart && <small>1</small>}
                         </button>
-                        <span onClick={() => handleChange()}>
+                        <span onClick={handleChange}>
                             <FaHeart style={{ color: heart ? "var(--light-red)" : "#686d6f" }} />
                         </span>
                         <Link to={`/products/${_id}`}><FaEye /></Link>
@@ -127,7 +117,7 @@ const SingleCard = ({ product }) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default SingleCard;
+export default SingleCard; 

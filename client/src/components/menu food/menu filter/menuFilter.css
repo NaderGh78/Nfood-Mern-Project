@@ -85,6 +85,7 @@
 
 .menu-filter .select-box select {
     -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     position: relative;
     width: 100%;

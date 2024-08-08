@@ -30,8 +30,9 @@
 }
 
 .topmenu .nav-link {
-    font-size: 20px;
+    font-size: 17px;
     color: var(--dark);
+    padding-left: 25px;
 }
 
 .topmenu .no-user {
@@ -116,6 +117,7 @@
 .topmenu .user-account img {
     width: 40px;
     height: 40px;
+    -o-object-fit: cover;
     object-fit: cover;
     margin-left: 10px;
     border-radius: 50%;
@@ -241,6 +243,7 @@
     .topmenu svg.toggle-icon {
         display: none !important;
     }
+
 }
 
 /* end 990px */

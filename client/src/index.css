@@ -1,21 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
 
 :root {
-  /* --navbar-active-link: #39db4a;
-  --navbar-link-hover: #39db4a;
-  --navbar-link-hover: #53ec62;
-  --button-bg: #fff;
-  --button-clr: #444;
-  --button-bg-hover: #c7ab62;
-  --arrow-slide-clr: rgba(0, 0, 0, .4);
-  --arrow-slide-hover: #c7ab62;
-  --form-btn-hover: #c7ab62;
-  --light-teal: #3bb19b;
-  --placeholder: #adb5bd;
-  --admin-bg: #f5f5f5;
-  --input-bg: #c4cfcc;
-  --dash-link-bg: #564675; */
-
   --pistach: #39db4a;
   --light-red: #ff6868;
   --nav-bg: rgb(248, 249, 250);
@@ -120,6 +105,30 @@ a.my_link {
 .my-form form label {
   font-size: 15px;
   color: var(--light-white);
+}
+
+.my-form form input::-webkit-input-placeholder,
+.my-form form textarea::-webkit-input-placeholder {
+  color: #cfcbcb;
+  font-size: 14px;
+}
+
+.my-form form input::-moz-placeholder,
+.my-form form textarea::-moz-placeholder {
+  color: #cfcbcb;
+  font-size: 14px;
+}
+
+.my-form form input:-ms-input-placeholder,
+.my-form form textarea:-ms-input-placeholder {
+  color: #cfcbcb;
+  font-size: 14px;
+}
+
+.my-form form input::-ms-input-placeholder,
+.my-form form textarea::-ms-input-placeholder {
+  color: #cfcbcb;
+  font-size: 14px;
 }
 
 .my-form form input::placeholder,
@@ -252,6 +261,7 @@ a.my_link {
 /* style the confirm msg */
 .react-confirm-alert-overlay {
   background: rgba(0, 0, 0, .3) !important;
+  -webkit-animation: react-confirm-alert-fadeIn 0.01s 0.01s forwards !important;
   animation: react-confirm-alert-fadeIn 0.01s 0.01s forwards !important;
   z-index: 99999999999 !important;
 }

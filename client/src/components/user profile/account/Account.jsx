@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProfile, uploadProfilePhoto } from "../../../redux/apiCalls/profileApiCall";
 import { request } from "../../../utils/request";
 import { CiImageOn } from "react-icons/ci";
-import Spinner from "../../common/spinner/Spinner";
 import CustomSpinner from "../../helpers/my spinner/CustomSpinner";
 
 /*===========================================*/
@@ -79,7 +78,7 @@ const Account = () => {
 
     /*===========================================*/
 
-    // if there is profile ,update username and email
+    // if there is profile ,update username and email and other info
     useEffect(() => {
 
         if (profile) {
@@ -133,7 +132,7 @@ const Account = () => {
 
     /*===========================================*/
 
-    if (loading) return <Spinner />;
+    // if (loading) return <Spinner />;
     return (
         <div className="account">
             <h2 style={{ color: "var(--dark)" }}>Account infomation</h2>

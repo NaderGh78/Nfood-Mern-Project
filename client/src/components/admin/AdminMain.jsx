@@ -21,6 +21,8 @@ const AdminMain = () => {
 
     const [catCount, setCatCount] = useState("");
 
+    const [orderCount, setOrderCount] = useState("");
+
     const [productCount, setProductCount] = useState("");
 
     const [customerCount, setCustomerCount] = useState("");
@@ -47,6 +49,37 @@ const AdminMain = () => {
                 const { customersCount } = res?.data;
 
                 setCustomerCount(customersCount);
+
+            }
+
+            setLoading(false);
+
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    /*===========================================*/
+
+    const getOrdersCount = async () => {
+
+        try {
+
+            setLoading(true);
+
+            const res = await request.get(`/api/orders`,
+                {
+                    headers: {
+                        Authorization: "Bearer " + currentUser.token,
+                    },
+                }
+            );
+
+            if (res && res?.data) {
+
+                const { ordersCount } = res?.data;
+
+                setOrderCount(ordersCount);
 
             }
 
@@ -114,6 +147,7 @@ const AdminMain = () => {
     useEffect(() => {
         getCatCount();
         getProductsCount();
+        getOrdersCount();
         getCustomersCount();
     }, []);
 
@@ -123,56 +157,61 @@ const AdminMain = () => {
     return (
         <div className='admin-main'>
             <div className="admin-main-sections">
-
                 <div className="single-section">
-                    <h4>Products</h4>
+                    <div className="single-section-top">
+                        <h4>Products</h4>
+                        <span><MdFastfood /></span>
+                    </div>
                     {
                         loading ?
                             "loading..." :
-                            <span className="text-danger fw-bold h3">
+                            <span className="text-danger fw-bold h3 h4">
                                 {productCount}
                             </span>
                     }
-                    <div className="single-section-bottom">
-                        <Link to="products">see all products</Link>
-                        <span><MdFastfood /></span>
-                    </div>
+                    <Link to="products">see all products</Link>
                 </div>
                 <div className="single-section">
-                    <h4>Orders</h4>
-                    <span className="text-danger fw-bold h3">5</span>
-                    <div className="single-section-bottom">
-                        <Link to="orders">see all orders</Link>
+                    <div className="single-section-top">
+                        <h4>Orders</h4>
                         <span><FaBurger /></span>
                     </div>
-                </div>
-                <div className="single-section">
-                    <h4>Customers</h4>
                     {
                         loading ?
                             "loading..." :
-                            <span className="text-danger fw-bold h3">
+                            <span className="text-danger fw-bold h3 h4">
+                                {orderCount}
+                            </span>
+                    }
+                    <Link to="orders">see all orders</Link>
+                </div>
+                <div className="single-section">
+                    <div className="single-section-top">
+                        <h4>Customers</h4>
+                        <span><HiOutlineUserGroup /></span>
+                    </div>
+                    {
+                        loading ?
+                            "loading..." :
+                            <span className="text-danger fw-bold h3 h4">
                                 {customerCount}
                             </span>
                     }
-                    <div className="single-section-bottom">
-                        <Link to="customers">see all Customers</Link>
-                        <span><HiOutlineUserGroup /></span>
-                    </div>
+                    <Link to="customers">see all customers</Link>
                 </div>
                 <div className="single-section">
-                    <h4>Categories</h4>
+                    <div className="single-section-top">
+                        <h4>Categories</h4>
+                        <span><BsFillTagFill /></span>
+                    </div>
                     {
                         loading ?
                             "loading..." :
-                            <span className="text-danger fw-bold h3">
+                            <span className="text-danger fw-bold h3 h4">
                                 {catCount}
                             </span>
                     }
-                    <div className="single-section-bottom">
-                        <Link to="categories">see all categories</Link>
-                        <span><BsFillTagFill /></span>
-                    </div>
+                    <Link to="categories">see all categories</Link>
                 </div>
             </div>
             <div className="recents">

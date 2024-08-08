@@ -7,9 +7,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
-        cartItems: localStorage.getItem("cartItems")
-            ? JSON.parse(localStorage.getItem("cartItems"))
-            : [],
         userCart: [],
         cartLoading: false,
         totalCart: 0,
@@ -19,7 +16,44 @@ const cartSlice = createSlice({
     reducers: {
 
         addItemToCart(state, action) {
-            return [...state, action.payload];
+
+            const newItem = action.payload;
+
+            const existingIndex = state.userCart.findIndex(item => item.product._id === newItem.product._id);
+
+            if (existingIndex > -1) {
+
+                // Update quantity if item already exists
+                state.userCart[existingIndex].quantity += newItem.quantity;
+
+            } else {
+
+                // Add new item
+                state.userCart.push(newItem);
+
+            }
+        },
+
+        /*====================*/
+
+        removeSingleItem: (state, action) => {
+
+            const itemId = action.payload;
+
+            state.userCart = state.userCart.filter(item => item.product._id !== itemId);
+
+            state.totalCart = state.userCart.reduce((total, item) => total + item.price, 0);
+
+        },
+
+        /*====================*/
+
+        // cart loading
+        setCartLoading: (state) => {
+            state.cartLoading = true;
+        },
+        clearCartLoading: (state) => {
+            state.cartLoading = false;
         },
 
         /*====================*/
@@ -44,6 +78,7 @@ const cartSlice = createSlice({
         // empty cart
         clearCart: (state) => {
             state.userCart = [];
+            state.totalCart = 0;
         },
 
         // check is cart already empty

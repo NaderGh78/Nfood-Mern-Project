@@ -1,0 +1,70 @@
+.order-confirmed-box {
+    text-align: center;
+    height: 100vh;
+}
+
+.order-confirmed-box .top .confirmed-img {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+.order-confirmed-box .top .confirmed-img img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.order-confirmed-box .top p {
+    font-size: 20px;
+}
+
+.order-confirmed-box .top h2 {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.order-confirmed-box .middle {
+    margin: 70px auto;
+}
+
+.order-confirmed-box .middle>div {
+    flex: 1;
+}
+
+.order-confirmed-box .middle>div h6 {
+    font-size: 20px;
+    color: #666;
+}
+
+.order-confirmed-box .bottom a {
+    transition: all .2s;
+}
+
+.order-confirmed-box .bottom a:hover {
+    opacity: .8;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width: 575.98px) {
+
+    .order-confirmed-box .top h2 {
+        font-size: 7vw;
+    }
+
+    .order-confirmed-box .middle {
+        margin: 40px auto 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .order-confirmed-box .bottom {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+}

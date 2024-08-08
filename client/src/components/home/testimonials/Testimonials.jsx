@@ -47,7 +47,7 @@ const Testimonials = () => {
     const testimonialAll = [
         {
             id: 1,
-            desc: "I had the pleasure of dining at Foodi last night, and I'm still raving about the experience! The attention to detail in presentation and service was impeccable",
+            desc: "I had the pleasure of dining at Nfood last night, and I'm still raving about the experience! The attention to detail in presentation and service was impeccable",
             name: "salim ahmad",
             imgSrc: "/assets/images/reviews/img1.jpg"
         },
@@ -84,7 +84,7 @@ const Testimonials = () => {
                                 ))}
                             </Slider> */}
                             <p className="homeP">
-                                "I had the pleasure of dining at Foodi last night, and I'm still raving about the experience!
+                                "I had the pleasure of dining at Nfood last night, and I'm still raving about the experience!
                                 The attention to detail in presentation and service was impeccable"
                             </p>
                         </div>

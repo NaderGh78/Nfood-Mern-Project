@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { request } from "../../utils/request";
 
 /*===========================================*/
 /*===========================================*/
@@ -6,16 +9,43 @@ import { Link } from "react-router-dom";
 
 const AdminRecentUsers = () => {
 
-    const profiles = [
-        { id: 1, username: "salim salim", userImage: "/assets/images/review.png", email: "hello@gmail.com" },
-        { id: 2, username: "dani dani", userImage: "/assets/images/review.png", email: "dani@gmail.com" },
-        { id: 3, username: "mike mike", userImage: "/assets/images/review.png", email: "mike@gmail.com" },
-        { id: 4, username: "maged maged", userImage: "/assets/images/review.png", email: "maged@gmail.com" },
-        { id: 5, username: "wael wael", userImage: "/assets/images/review.png", email: "wael@gmail.com" },
-        { id: 6, username: "sami sami", userImage: "/assets/images/review.png", email: "sami@gmail.com" },
-        { id: 7, username: "fawzet fawzet", userImage: "/assets/images/review.png", email: "fawzet@gmail.com" },
-        { id: 8, username: "adnan adnan", userImage: "/assets/images/review.png", email: "adnan@gmail.com" }
-    ];
+    const { currentUser } = useSelector((state) => state.auth);
+
+    const [profiles, setProfiles] = useState([]);
+
+    /*===========================================*/
+
+    // get all profiles to draw slider ui
+    useEffect(() => {
+
+        const getAllUsers = async () => {
+
+            try {
+
+                const res = await request.get(`/api/users/profile`,
+                    {
+                        headers: {
+                            Authorization: "Bearer " + currentUser.token,
+                        },
+                    }
+                );
+
+                if (res && res?.data) {
+
+                    const { allUsers } = res?.data;
+
+                    setProfiles(allUsers);
+
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        };
+
+        getAllUsers();
+
+    }, []);
 
     /*===========================================*/
 
@@ -28,9 +58,9 @@ const AdminRecentUsers = () => {
             <table className="table table-hover table-bordered table-transparent mb-0">
                 <thead>
                     <tr>
-                        <th scope="col" className='text-center'>#</th>
-                        <th scope="col" className='text-center'>User</th>
-                        <th scope="col" className='text-center'>Email</th>
+                        <th scope="col" className='text-center' style={{ color: "#e16262" }}>User</th>
+                        <th scope="col" className='text-center' style={{ color: "#e16262" }}>#</th>
+                        <th scope="col" className='text-center' style={{ color: "#e16262" }}>Email</th>
                     </tr>
                 </thead>
                 <tbody>

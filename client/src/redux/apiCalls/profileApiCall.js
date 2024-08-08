@@ -51,6 +51,7 @@ export function updateProfile(userId, profile) {
 }
 
 /*===========================================*/
+
 // Upload Profile Photo
 export function uploadProfilePhoto(newPhoto) {
 
@@ -96,6 +97,7 @@ export function uploadProfilePhoto(newPhoto) {
 
   }
 }
+
 /*===========================================*/
 
 // update Profile Password

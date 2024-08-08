@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const photoUpload = require("../middlewares/photoUpload");
 const { validateObjectId } = require("../middlewares/validateObjectId");
-const { verifyTokenAndAdmin, verifyTokenAndAuthorization, verifyToken } = require("../middlewares/verifyToken");
+const { verifyTokenAndAdmin, verifyToken } = require("../middlewares/verifyToken");
 const {
     getAllProductsCtrl,
     newProductCtrl,
@@ -39,5 +39,7 @@ router.route("/reviews").get(getProductReviewsCtrl);
 router.route("/:id")
     .get(validateObjectId, getProductCtrl)
     .delete(validateObjectId, verifyTokenAndAdmin, deleteProductCtrl);
+
+/*=========================================*/
 
 module.exports = router; 

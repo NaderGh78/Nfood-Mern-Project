@@ -95,7 +95,7 @@ const MenuFood = () => {
 
     // after we get the all products , check if there is a products,to do something
     useEffect(() => {
-        if (products.length) {
+        if (products?.length) {
             setItem(products);
             setFilteredItems(products);
         }

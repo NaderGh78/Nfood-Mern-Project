@@ -46,11 +46,17 @@ const TopMenu = () => {
 
   // open the [cart modal] based on if there is an user or not
   const openModalHandler = () => {
+
     if (currentUser) {
+
       dispatch(setShowModal());
+
     } else {
+
       dispatch(setShowRgisterModal());
+
     }
+
   }
 
   /*===========================================*/
@@ -145,7 +151,7 @@ const TopMenu = () => {
                     openModalHandler()
                   }}
                 >
-                  <span>{userCart.length || 0}</span>
+                  <span>{currentUser ? userCart.length : 0}</span>
                   <LiaShoppingCartSolid />
                 </Nav.Link>
 
@@ -167,7 +173,7 @@ const TopMenu = () => {
                           <ul className="dropdown-menu">
                             <li>
                               <div className='dropdown-title'>
-                                <img src={currentUser?.profilePhoto.url} alt="user" />
+                                <img src={currentUser?.profilePhoto?.url} alt="user" />
                                 <div>
                                   <h5>{currentUser?.username}</h5>
                                   <p>{currentUser?.email}</p>

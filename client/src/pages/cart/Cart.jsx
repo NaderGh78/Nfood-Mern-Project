@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, emptyUserCart, getAllUserCart, removeSingleCart } from "../../redux/apiCalls/cartApiCall";
+import { initiateCheckout } from "../../redux/apiCalls/checkoutApiCall";
 import { useTitle } from "../../components/helpers";
 import { HeadingBreadcrumb } from "../../allPagesPaths";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -18,7 +19,7 @@ const Cart = () => {
 
     const dispatch = useDispatch();
 
-    const { userCart, totalCart } = useSelector((state) => state.cart);
+    const { cart, userCart, totalCart } = useSelector((state) => state.cart);
 
     const [quantity, setQuantity] = useState(1);
 
@@ -27,14 +28,14 @@ const Cart = () => {
 
     /*===========================================*/
 
-    // get user cart
-    const getUserCart = () => {
-        dispatch(getAllUserCart());
-    }
+    // useEffect(() => {
+    //     console.log('Current cart state:', cart);
+    // }, [cart]);
+
 
     useEffect(() => {
-        getUserCart();
-    }, [userCart])
+        dispatch(getAllUserCart());
+    }, [dispatch]);
 
     /*===========================================*/
 
@@ -101,6 +102,13 @@ const Cart = () => {
         }
 
     };
+
+    /*===========================================*/
+
+    // initiate Checkout when ckeckout from cart page
+    const initiateCheckoutHandler = () => {
+        dispatch(initiateCheckout({ paymentType: "COD" }));
+    }
 
     /*===========================================*/
 
@@ -195,7 +203,7 @@ const Cart = () => {
                                             </h6>
                                         </li>
                                     </ul>
-                                    <Link to="/checkout">Proceed to checkout</Link>
+                                    <Link to="/checkout" onClick={initiateCheckoutHandler}>Proceed to checkout</Link>
                                     <button onClick={emptyCartHandler}>Clear Cart</button>
                                 </div>
                             </div>

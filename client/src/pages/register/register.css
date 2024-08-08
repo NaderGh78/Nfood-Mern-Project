@@ -12,9 +12,11 @@
 /*====================================*/
 
 @media only screen and (max-width:540px) {
+
     .register .my-form {
         width: 90% !important;
     }
+
 }
 
 /* end 540px */

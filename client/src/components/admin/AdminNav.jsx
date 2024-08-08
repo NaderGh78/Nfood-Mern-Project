@@ -17,6 +17,9 @@ const AdminNav = () => {
   return (
     <div className="admin-nav">
       <div className="admin-nav-content">
+        <Link to="/" className="back-home">
+          <h5 className='my-logo'><span>N</span>Food</h5>
+        </Link>
         <ul>
           <li className="dash">
             <Link

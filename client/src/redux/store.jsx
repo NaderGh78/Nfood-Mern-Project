@@ -7,6 +7,7 @@ import { modalReducer } from "./slices/modalSlice";
 import { categoryReducer } from "./slices/categorySlice";
 import { customerReducer } from "./slices/customerSlice";
 import { profileReducer } from "./slices/profileSlice";
+import { checkoutReducer } from "./slices/checkoutSlice";
 
 /*===========================================*/
 /*===========================================*/
@@ -20,6 +21,7 @@ const store = configureStore({
         theme: themeReducer,
         modal: modalReducer,
         category: categoryReducer,
+        checkout: checkoutReducer,
         customer: customerReducer,
         profile: profileReducer
     }

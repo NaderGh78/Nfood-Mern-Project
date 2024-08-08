@@ -1,5 +1,7 @@
 import "./order.css";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { request } from "../../../utils/request";
 import SingleOrder from "./SingleOrder";
 
 /*===========================================*/
@@ -8,7 +10,43 @@ import SingleOrder from "./SingleOrder";
 
 const Order = () => {
 
-    const { cartItems } = useSelector((state) => state.cart);
+    const { currentUser } = useSelector((state) => state.auth);
+
+    const [userOrders, setUserOrders] = useState([]);
+
+    /*===========================================*/
+
+    // get user orders
+    useEffect(() => {
+
+        const getUserOrder = async () => {
+
+            try {
+
+                const res = await request.get(`/api/orders/user-order`,
+                    {
+                        headers: {
+                            Authorization: "Bearer " + currentUser?.token,
+                        },
+                    }
+                );
+
+                if (res && res?.data?.userOrders !== null) {
+
+                    const { userOrders } = res?.data;
+
+                    setUserOrders(userOrders);
+
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        };
+
+        getUserOrder();
+
+    }, []);
 
     /*===========================================*/
 
@@ -16,10 +54,10 @@ const Order = () => {
         <div className="orders">
             <h2 className='tab-title'>Order History</h2>
             {
-                !cartItems.length ?
+                !userOrders?.length ?
                     <h5 className="noOrders">No orders yet.</h5> :
-                    [1, 2, 3].map(el => (
-                        <SingleOrder key={el} />
+                    userOrders.map((el, idx) => (
+                        <SingleOrder key={idx} singleOrder={el} />
                     ))
             }
         </div>

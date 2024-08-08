@@ -1,5 +1,4 @@
 const asynHandler = require("express-async-handler");
-const joi = require("joi");
 const {
     CategoryModel,
     newCategoryValidate,
@@ -123,11 +122,14 @@ const deleteCategoryCtrl = asynHandler(
 
         // 2. find the category and delete it,otherwise return msg the category not fond
         if (category) {
+
             await CategoryModel.findByIdAndDelete(req.params.id);
+
             res.status(200).json({
                 message: "category has been deleted successfully",
                 categoryId: category._id,
             });
+
         } else {
             res.status(404).json({ message: "category not found" });
         }

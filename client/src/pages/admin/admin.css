@@ -1,5 +1,6 @@
 .admin {
     min-height: 100vh;
+    margin: 30px 0 100px 0;
 }
 
 .admin-content {
@@ -13,8 +14,15 @@
 
 /* start admin nav */
 .admin-content .admin-nav {
-    margin: 120px 0 20px;
     overflow: auto;
+}
+
+.admin-content .admin-nav a.back-home {
+    margin: 50px;
+}
+
+.admin-content .admin-nav a.back-home h5 {
+    margin: 0;
 }
 
 .admin-content .admin-nav ul {
@@ -96,6 +104,7 @@
 .admin-content table img {
     width: 45px;
     height: 45px;
+    -o-object-fit: cover;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -126,19 +135,31 @@
 }
 
 .admin-content .admin-main-sections .single-section h4 {
+    font-size: 17px;
     color: var(--dark);
 }
 
-.admin-content .admin-main-sections .single-section .single-section-bottom {
+.admin-content .admin-main-sections .single-section a {
+    display: block;
+    text-decoration: none;
+    padding: 0 10px 3px;
+    margin-top: 10px;
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+    background-color: var(--pistach);
+    border-radius: 4px;
+}
+
+.admin-content .admin-main-sections .single-section .single-section-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 10px;
     margin-top: 20px;
 }
 
-.admin-content .admin-main-sections .single-section .single-section-bottom a {
+.admin-content .admin-main-sections .single-section .single-section-top a {
     text-decoration: none;
     padding: 3px 10px;
     color: #fff;
@@ -149,7 +170,7 @@
     white-space: pre;
 }
 
-.admin-content .admin-main-sections .single-section .single-section-bottom span {
+.admin-content .admin-main-sections .single-section .single-section-top span {
     width: 30px;
     height: 30px;
     background-color: #e16262;
@@ -159,7 +180,7 @@
     border-radius: 5px;
 }
 
-.admin-content .admin-main-sections .single-section .single-section-bottom span svg {
+.admin-content .admin-main-sections .single-section .single-section-top span svg {
     font-size: 20px;
 }
 
@@ -249,6 +270,30 @@ form.product-form textarea {
     border-radius: 0;
 }
 
+form.product-form input::-webkit-input-placeholder,
+form.product-form textarea::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #bebbbb;
+}
+
+form.product-form input::-moz-placeholder,
+form.product-form textarea::-moz-placeholder {
+    font-size: 14px;
+    color: #bebbbb;
+}
+
+form.product-form input:-ms-input-placeholder,
+form.product-form textarea:-ms-input-placeholder {
+    font-size: 14px;
+    color: #bebbbb;
+}
+
+form.product-form input::-ms-input-placeholder,
+form.product-form textarea::-ms-input-placeholder {
+    font-size: 14px;
+    color: #bebbbb;
+}
+
 form.product-form input::placeholder,
 form.product-form textarea::placeholder {
     font-size: 14px;
@@ -281,6 +326,39 @@ form.product-form button {
     background-color: #252525;
     color: #fff;
     border: none;
+}
+
+.admin-order-details .my-table {
+    width: 100%;
+    overflow: auto;
+}
+
+.admin-order-details .status {
+    display: flex;
+    gap: 40px;
+}
+
+.admin-order-details .status .left,
+.admin-order-details .status .right {
+    flex: 1;
+}
+
+.admin-order-details .status ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+}
+
+.admin-order-details button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 34px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
 }
 
 /*====================================*/
@@ -330,6 +408,15 @@ form.product-form button {
 
     .admin-content .table-box table {
         width: 200%;
+    }
+
+    .admin-order-details .my-table table {
+        width: 500px;
+    }
+
+    .admin-order-details .status {
+        gap: 20px;
+        flex-direction: column;
     }
 
 }

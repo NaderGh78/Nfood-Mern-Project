@@ -1,5 +1,4 @@
 const asynHandler = require("express-async-handler");
-const joi = require("joi");
 const { CartModel } = require("../models/CartModel");
 const { ProductModel } = require("../models/ProductModel");
 
@@ -211,14 +210,24 @@ const emptyUserCardCtrl = asynHandler(
 
   async (req, res) => {
 
-    const userId = req.userDecoded.id;
+    try {
 
-    const cart = await CartModel.findOneAndDelete({ userId: userId });
+      const userId = req.userDecoded.id;
 
-    res.status(200).json({
-      message: "All your cart remove successfully.",
-      data: { cart }
-    });
+      console.log(`Clearing cart for user: ${userId}`);
+
+      const cart = await CartModel.findOneAndDelete({ userId: userId });
+
+      console.log(`Deleted cart: ${cart}`);
+
+      res.status(200).json({
+        message: "All your cart removed successfully.",
+        data: { cart }
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Failed to clear cart" });
+    }
 
   }
 

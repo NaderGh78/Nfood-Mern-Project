@@ -23,6 +23,7 @@ const register = asynHandler(
         }
 
         let user = await UserModel.findOne({ email: req.body.email });
+
         if (user) {
             return res.status(400).json({ message: "user already exist" });
         }

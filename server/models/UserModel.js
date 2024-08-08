@@ -10,6 +10,11 @@ const ObjectID = mongoose.Schema.Types.ObjectId;
 
 // User Schema
 const UserSchema = new Schema({
+
+    // cart: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Cart'
+    // },
     username: {
         type: String,
         required: true,
@@ -32,6 +37,45 @@ const UserSchema = new Schema({
         trim: true,
         minlength: 2,
         maxlength: 200,
+    },
+    apartment: {
+        type: String,
+        default: "First Apartment",
+        required: false,
+        trim: true,
+        minlength: 2,
+        maxlength: 80,
+    },
+    building: {
+        type: String,
+        default: "First Building",
+        required: false,
+        trim: true,
+        minlength: 2,
+        maxlength: 80,
+    },
+    street: {
+        type: String,
+        default: "Main Street",
+        required: false,
+        trim: true,
+        minlength: 2,
+        maxlength: 100,
+    },
+    city: {
+        type: String,
+        default: "Beirut City",
+        required: false,
+        trim: true,
+        minlength: 2,
+        maxlength: 50,
+    },
+    postalCode: {
+        type: String,
+        default: "1234",
+        required: false,
+        minlength: 4,
+        maxlength: 6,
     },
     gender: {
         type: String,
@@ -83,11 +127,7 @@ const UserSchema = new Schema({
     isAdmin: {
         type: Boolean,
         default: false,
-    },
-    cartId: {
-        type: ObjectID,
-        ref: "Cart"
-    },
+    }
 }, {
     timestamps: true
 });
@@ -130,6 +170,11 @@ function validateUpdateUser(obj) {
         username: Joi.string().trim().min(2).max(100).allow(""),
         email: Joi.string().trim().min(5).max(100).email().allow(""),
         address: Joi.string().trim().min(2).max(200).allow(""),
+        apartment: Joi.string().trim().min(2).max(80).allow(""),
+        building: Joi.string().trim().min(2).max(80).allow(""),
+        street: Joi.string().trim().min(2).max(100).allow(""),
+        city: Joi.string().trim().min(2).max(50).allow(""),
+        postalCode: Joi.string().min(4).max(6).allow(""),
         gender: Joi.string().valid("Male", "Female").allow(""),
         phone: Joi.string()
             .pattern(/^(961(3|70|71|81)|(03|70|71|81))\d{6}$/)
@@ -140,7 +185,9 @@ function validateUpdateUser(obj) {
         bio: Joi.string().trim().min(2).max(300).allow(""),
         dob: Joi.string().allow("")
     });
+
     return schema.validate(obj);
+
 }
 
 // validate update password
@@ -150,7 +197,9 @@ function validateUpdatePassword(obj) {
         newPassword: Joi.string().trim().min(8).required().label("New Password"),
         confPassword: Joi.string().trim().min(8).required().label("Confirm Password ")
     });
+
     return schema.validate(obj);
+
 }
 
 /*===========================================*/

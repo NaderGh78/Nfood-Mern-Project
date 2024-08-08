@@ -23,10 +23,15 @@ const FooterBottomMenu = () => {
 
     // open the [cart modal] based on if there is an user or not
     const openModalHandler = () => {
+
         if (currentUser) {
+
             dispatch(setShowModal());
+
         } else {
+
             dispatch(setShowRgisterModal());
+
         }
     }
 

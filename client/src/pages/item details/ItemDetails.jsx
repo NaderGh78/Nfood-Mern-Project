@@ -11,7 +11,6 @@ import { FaFacebookF, FaHeart, FaTwitter, FaYoutube } from "react-icons/fa";
 import { RelatedProducts, StickyAddCart, TabsItemDetailes } from "../../allPagesPaths";
 import { HashLink } from 'react-router-hash-link';
 import { useTitle } from "../../components/helpers/index";
-import Spinner from "../../components/common/spinner/Spinner";
 
 /*===========================================*/
 /*===========================================*/
@@ -256,12 +255,6 @@ const ItemDetails = () => {
 
     /*===========================================*/
 
-    const { ratings } = product;
-    // const productAllRatings = [...Array(ratings).keys()];
-    //   console.log(product.ratings)
-
-    /*===========================================*/
-
     // if (loading) return <Spinner />;
     return (
         <div className="item-details">
@@ -287,7 +280,6 @@ const ItemDetails = () => {
                                 // if no rating show [no rating yet],otherwise show the rating div
                                 product?.numReviews ?
                                     <div className="product-rating">
-
                                         <div style={{ marginRight: "5px" }}>
                                             <ul style={{ width: `${(product?.ratings / 5) * 100}%` }}>
                                                 <li><LiaStarSolid /></li>
@@ -295,7 +287,6 @@ const ItemDetails = () => {
                                                 <li><LiaStarSolid /></li>
                                                 <li><LiaStarSolid /></li>
                                                 <li><LiaStarSolid /></li>
-                                                {/* {[...Array(ratings).keys()]?.map((el, index) => (<li key={index}><LiaStarSolid /></li>))} */}
                                             </ul>
                                         </div>
                                         {/* we use the hashlink in order to jump to the review section in same page */}
@@ -328,7 +319,6 @@ const ItemDetails = () => {
                                     onClick={() => handleDecrementQuantity(product?._id)}
                                 // disabled={inCart}
                                 >-</button>
-                                {/* <span>{quantity}</span> */}
                                 <input type="number" className="count" value={quantity || "1"} readOnly />
                                 <button onClick={() => handleIncrementQuantity(product?._id)}>+</button>
                                 <button className="big-btn" onClick={() => addToCartHandler(product?._id)} disabled={inCart}>

@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import OrderUi from "./OrderUi";
 
 /*===========================================*/
 /*===========================================*/
 /*===========================================*/
 
-const SingleOrder = () => {
+const SingleOrder = ({ singleOrder }) => {
 
-    const { cartItems } = useSelector((state) => state.cart);
-
-    const reverseCartItems = [...cartItems].reverse();
+    const { products } = singleOrder;
 
     // to make my custom accordion,by default is show
     const [isAccordionOpen, setIsAccordionOpen] = useState(false);
@@ -20,7 +17,11 @@ const SingleOrder = () => {
         setIsAccordionOpen(!isAccordionOpen);
     }
 
+    // console.log(singleOrder?.createdAt)
+    // 2024-07-27T15:49:06.381Z
+
     /*===========================================*/
+
     return (
         <div className="tab-single">
             {/* my custom accordion */}
@@ -28,9 +29,11 @@ const SingleOrder = () => {
                 <div className="panel panel-default">
                     <div className="panel-heading">
                         <div className='left'>
-                            <span>#64E408E5B31</span>
+                            <span>#{singleOrder?._id}</span>
                             <p className='mb-0'>
-                                <span>2023-08-22 01:01</span> - <span>To be delivered in 15 minutes</span>
+                                <span>
+                                    {singleOrder?.createdAt?.slice(0, 16).replace("T", " ")}
+                                </span> - <span>To be delivered in 15 minutes</span>
                             </p>
                         </div>
                         <h4 className="right mb-0" onClick={handleToggleAccordion}>
@@ -40,14 +43,14 @@ const SingleOrder = () => {
                     <div className={isAccordionOpen ? "panel-collapse" : "panel-collapse panel-close"}>
                         <ul>
                             {/* here we draw the orders */}
-                            {reverseCartItems?.map((d, i) => (
+                            {products?.map((d, i) => (
                                 <li key={i}>
                                     <OrderUi data={d} />
                                 </li>
                             ))}
                         </ul>
                         <div className="panel-footer d-flex align-items-center justify-content-between">
-                            Total Price <span className="green-span">$20</span>
+                            Total Price <span className="green-span">${singleOrder?.totalAmount}</span>
                         </div>
                     </div>
                 </div>

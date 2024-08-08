@@ -24,4 +24,6 @@ router.route("/:id")
     .put(verifyTokenAndAdmin, updateCategoryCtrl)
     .delete(validateObjectId, verifyTokenAndAdmin, deleteCategoryCtrl);
 
+/*=========================================*/
+
 module.exports = router;

@@ -1,8 +1,6 @@
 const asynHandler = require("express-async-handler");
-const bcrypt = require('bcryptjs');
 const path = require("path");
 const fs = require("fs");
-const { UserModel } = require("../models/UserModel");
 const { ProductModel, newProductValidate, newRatingValidate } = require("../models/ProductModel");
 const { cloudinaryUploadImage } = require("../utils/cloudinary");
 
@@ -81,6 +79,7 @@ const newProductCtrl = asynHandler(
 
         // 2. Validation for data
         const { error } = newProductValidate(req.body);
+
         if (error) {
             return res.status(400).json({ message: error.details[0].message });
         }

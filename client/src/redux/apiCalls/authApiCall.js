@@ -56,7 +56,7 @@ export function loginUser(user) {
 
             localStorage.setItem("currentUser", JSON.stringify(data));
 
-            window.location.reload();
+            // window.location.reload();
 
         } catch (error) {
 
@@ -74,16 +74,19 @@ export function loginUser(user) {
 // Logout User
 export function logoutUser() {
 
-    return (dispatch) => {
+    return async (dispatch) => {
 
-        dispatch(authActions.logout());
+        try {
 
-        dispatch(cartActions.clearCart());
+            dispatch(authActions.logout());
 
-        localStorage.removeItem("currentUser");
+            dispatch(cartActions.clearCart());
 
-        window.location.reload();
+            localStorage.removeItem("currentUser");
 
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 } 

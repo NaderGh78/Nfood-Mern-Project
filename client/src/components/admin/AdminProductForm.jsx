@@ -51,7 +51,6 @@ const AdminProductForm = () => {
 
         formData.append("newPrice", newPrice);
 
-        // cos the image is optional , we should check if the there is image upload or not
         formData.append("image", file);
 
         // add new product
@@ -89,6 +88,7 @@ const AdminProductForm = () => {
                     setFile("");
 
                 }
+
             } catch (error) {
 
                 console.log(error);

@@ -10,6 +10,7 @@ const Pagination = ({ pages, currentPage, setCurrentPage }) => {
 
     // make empty arr to fill the pages,based on posts length in every page
     const generatedPages = [];
+
     for (let i = 1; i <= pages; i++) {
         generatedPages.push(i);
     }

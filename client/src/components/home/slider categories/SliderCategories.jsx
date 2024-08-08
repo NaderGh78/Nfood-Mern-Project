@@ -1,6 +1,5 @@
 import "./sliderCategories.css";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { request } from "../../../utils/request";
 import { SingleCard } from "../../../allPagesPaths";
 import Slider from "react-slick";
@@ -104,7 +103,7 @@ const SliderCategories = () => {
     /*===========================================*/
 
     // show the first 7 products from whole products to draw the cart slider
-    const slicedProducts = products.length > 0 && products?.slice(0, 7);
+    const slicedProducts = products?.length > 0 && products?.slice(0, 7);
 
     if (loading) return <Spinner />;
     return (

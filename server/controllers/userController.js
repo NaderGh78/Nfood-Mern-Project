@@ -45,20 +45,20 @@ const getUserCtrl = asynHandler(
 
     async (req, res) => {
 
-        // 1. get single user by id , without [password] and populate posts
-        // const user = await UserModel.findById(req.params.id).populate("products");
-        const user = await UserModel.findById(req.params.id).select("-password");
+        try {
 
-        // 2. check if the user not found , show user not found error msg
-        if (!user) {
-            return res.status(404).json({ message: "user not found" });
+            const user = await UserModel.findById(req.params.id).select("-password");
+
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
+
+            return res.status(200).json(user);
+
+        } catch (error) {
+            return res.status(500).json({ message: "Error fetching user", error: error.message });
         }
-
-        // 3. send response to client
-        res.status(200).json(user);
-
     }
-
 );
 
 /*===========================================*/
@@ -76,6 +76,7 @@ const updateUserCtrl = asynHandler(
 
         // 1. validation
         const { error } = validateUpdateUser(req.body);
+
         if (error) {
             return res.status(400).json({ message: error.details[0].message });
         }
@@ -94,6 +95,11 @@ const updateUserCtrl = asynHandler(
                 username: req.body.username,
                 email: req.body.email,
                 address: req.body.address,
+                apartment: req.body.apartment,
+                building: req.body.building,
+                street: req.body.street,
+                city: req.body.city,
+                postalCode: req.body.postalCode,
                 gender: req.body.gender,
                 bio: req.body.bio,
                 phone: req.body.phone,
@@ -189,8 +195,11 @@ const deleteUserCtrl = asynHandler(
 
         // 2. if user exists , delte it and show success msg, otherwise show user not found error msg
         if (user) {
+
             await UserModel.findByIdAndDelete(req.params.id);
+
             res.status(200).json({ message: "user has been deleted successfully" });
+
         } else {
             res.status(404).json({ message: "user not found" });
         }

@@ -2,6 +2,9 @@
     width: 100%;
     background-color: var(--white);
     border: 1px solid var(--soft-white);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     overflow: hidden;
 }
@@ -29,6 +32,7 @@
 .my-card .card .card-top img {
     width: 100%;
     height: 270px;
+    -o-object-fit: contain;
     object-fit: contain;
     transition: all .3s;
     margin: auto;
@@ -50,6 +54,9 @@
 
 .my-card .card p {
     color: var(--light-white);
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
     user-select: text;
     white-space: nowrap;
     text-overflow: ellipsis;

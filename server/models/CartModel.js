@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
-const joi = require("joi");
 const ObjectID = mongoose.Schema.Types.ObjectId;
 
 /*===========================================*/
@@ -10,7 +9,7 @@ const ObjectID = mongoose.Schema.Types.ObjectId;
 const cartSchema = new Schema(
     {
         userId: {
-            type: ObjectID,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
         products: [{

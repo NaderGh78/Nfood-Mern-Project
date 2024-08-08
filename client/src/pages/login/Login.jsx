@@ -54,14 +54,19 @@ const Login = () => {
     // }
     /*===========================================*/
 
-
     // in case exist user navigate to home page , otherwise go to login page
     useEffect(() => {
+
         if (currentUser) {
+
             navigate("/");
+
         } else {
+
             navigate("/login");
+
         }
+
     }, [currentUser, navigate]);
 
     /*===========================================*/

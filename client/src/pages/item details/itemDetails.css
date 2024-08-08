@@ -135,6 +135,9 @@
     color: var(--light-white);
     border: none;
     outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 

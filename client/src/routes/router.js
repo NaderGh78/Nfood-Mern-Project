@@ -22,10 +22,13 @@ import {
     Account,
     Password,
     Wishlist,
-    AdminProducts
+    AdminProducts,
+    CheckoutInformation,
+    CheckoutShipping,
+    OrderConfirmed,
+    AdminOrderDetails
 } from "../allPagesPaths";
 import ProtectRoute from "./ProtectRoute";
-import AdminProtectRoute from "./AdminProtectRoute";
 
 /*===========================================*/
 /*===========================================*/
@@ -66,7 +69,21 @@ export const router = createHashRouter([
             },
             {
                 path: "/checkout",
-                element: <Checkout />
+                element: <Checkout />,
+                children: [
+                    {
+                        index: true,
+                        element: <CheckoutInformation />
+                    },
+                    {
+                        path: "shipping",
+                        element: <CheckoutShipping />
+                    }
+                ]
+            },
+            {
+                path: "/order-confirm",
+                element: <OrderConfirmed />
             },
             {
                 path: "/register",
@@ -127,7 +144,11 @@ export const router = createHashRouter([
                     {
                         path: "categories",
                         element: <AdminFoodCategories />
-                    }
+                    },
+                    {
+                        path: "orders/:id",
+                        element: <AdminOrderDetails />
+                    },
                 ]
             },
         ]
