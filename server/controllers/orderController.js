@@ -48,7 +48,8 @@ const getUserOrders = asynHandler(
 
         // get user orders that it status equal [pending] and populate the product
         const orders = await OrderModel
-            .find({ userInfo: userId, status: "pending" })
+            // .find({ userInfo: userId, status: "pending" })
+            .find({ userInfo: userId })
             .sort({ createdAt: -1 })
             .populate("products.product")
             .populate({ path: 'userInfo', select: '-password' });
@@ -100,13 +101,10 @@ const updateOrderStatus = asynHandler(
             }, { new: true }
         )
 
-        // console.log(orderInfo.status); 
-
-        // orderInfo.status !== "initiated" && await CartModel.findByIdAndDelete({ _id: cartInfo._id });
-
         res.status(200).json({
             message: "Order status updated."
         });
+
     }
 );
 

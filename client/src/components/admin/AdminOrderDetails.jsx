@@ -89,9 +89,6 @@ const AdminOrderDetails = () => {
           }
         );
 
-        console.log(res)
-
-
         if (res && res?.data) {
 
           const { message } = res?.data;

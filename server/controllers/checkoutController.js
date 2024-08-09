@@ -13,7 +13,7 @@ const { CartModel } = require("../models/CartModel");
  * @access private(only user) 
 */
 
-const initiateCheckout = asynHandler(
+const confirmCheckout = asynHandler(
 
     async (req, res) => {
 
@@ -65,51 +65,51 @@ const initiateCheckout = asynHandler(
  * @access private(only user) 
 */
 
-const confirmCheckout = asynHandler(
+// const confirmCheckout22 = asynHandler(
 
-    async (req, res) => {
+//     async (req, res) => {
 
-        // get the logged user
-        const userId = req.userDecoded.id;
+//         // get the logged user
+//         const userId = req.userDecoded.id;
 
-        // distructe orderId from params
-        const { orderId } = req.params;
+//         // distructe orderId from params
+//         const { orderId } = req.params;
 
-        // Find the order that matches the ID and has a status of "initiated"
-        const orderInfo = await OrderModel.findOne({ _id: orderId, status: "initiated" });
+//         // Find the order that matches the ID and has a status of "initiated"
+//         const orderInfo = await OrderModel.findOne({ _id: orderId, status: "initiated" });
 
-        if (!orderInfo) {
-            return res.status(400).json({ message: "Order not found or already confirmed." })
-        }
+//         if (!orderInfo) {
+//             return res.status(400).json({ message: "Order not found or already confirmed." })
+//         }
 
-        // Find the cart for the user
-        const cartInfo = await CartModel.findOne({ userId });
+//         // Find the cart for the user
+//         const cartInfo = await CartModel.findOne({ userId });
 
-        if (!cartInfo) {
-            return res.status(400).json({ message: "No product in cart." })
-        }
+//         if (!cartInfo) {
+//             return res.status(400).json({ message: "No product in cart." })
+//         }
 
-        // Update the order status to "pending" and set the payment type
-        await OrderModel.findByIdAndUpdate({ _id: orderId }, {
-            $set: {
-                status: "pending",
-                paymentType: req.body.paymentType
-            }
-        }, { new: true }
-        );
+//         // Update the order status to "pending" and set the payment type
+//         await OrderModel.findByIdAndUpdate({ _id: orderId }, {
+//             $set: {
+//                 status: "pending",
+//                 paymentType: req.body.paymentType
+//             }
+//         }, { new: true }
+//         );
 
-        // Remove the cart associated with the user
-        await CartModel.findByIdAndDelete({ _id: cartInfo._id });
+//         // Remove the cart associated with the user
+//         await CartModel.findByIdAndDelete({ _id: cartInfo._id });
 
-        return res.status(200).json({ message: "Order confirmed and cart cleared." });
+//         return res.status(200).json({ message: "Order confirmed and cart cleared." });
 
-    }
+//     }
 
-);
+// );
 
 /*===========================================*/
 
 module.exports = {
-    initiateCheckout,
+    // initiateCheckout,
     confirmCheckout
 }

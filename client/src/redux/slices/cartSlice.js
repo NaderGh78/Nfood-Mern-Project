@@ -19,7 +19,7 @@ const cartSlice = createSlice({
 
             const newItem = action.payload;
 
-            const existingIndex = state.userCart.findIndex(item => item.product._id === newItem.product._id);
+            const existingIndex = state.userCart.findIndex(item => item.product?._id === newItem.product?._id);
 
             if (existingIndex > -1) {
 

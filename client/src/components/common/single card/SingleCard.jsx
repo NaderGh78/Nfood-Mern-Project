@@ -18,15 +18,17 @@ const SingleCard = ({ product }) => {
 
     const { currentUser } = useSelector((state) => state.auth);
 
-    const { userCart } = useSelector((state) => state.cart);
+    const { userCart, cartLoading } = useSelector((state) => state.cart);
 
     const [inCart, setInCart] = useState(false);
+
+    const [loading, setLoading] = useState(false);
 
     const [heart, setHeart] = useState(false);
 
     /*===========================================*/
 
-    // Change heart color when user likes the item
+    // Toggle heart icon
     const handleChange = () => {
         setHeart(!heart);
     };
@@ -34,52 +36,81 @@ const SingleCard = ({ product }) => {
     /*===========================================*/
 
     // Add item to cart and open the right cart modal IN CASE there is an user log in
-    const handleAddToCart = (productId) => {
+    const handleAddToCart = async (productId) => {
 
         if (currentUser) {
 
-            dispatch(addToCart({ productId, quantity: 1 }));
+            setLoading(true);
 
-            dispatch(setShowModal());
+            try {
+
+                await dispatch(addToCart({ productId, quantity: 1 }));
+
+                await dispatch(getAllUserCart());
+
+                dispatch(setShowModal());
+
+            } catch (error) {
+
+                console.error('Failed to add to cart', error);
+
+            } finally {
+                setLoading(false);
+            }
 
         } else {
-
             dispatch(setShowRgisterModal());
-
         }
     };
 
     /*===========================================*/
 
-    // Fetch user cart and update inCart state
+    // Check if the product is in the cart
+    useEffect(() => {
+
+        const checkInCart = () => {
+
+            if (userCart && userCart.length > 0) {
+
+                const isProductInCart = userCart.some(item => item.product?._id === _id);
+
+                setInCart(isProductInCart);
+
+            } else {
+                setInCart(false);
+            }
+        };
+
+        // Immediately reset inCart when user logs out
+        if (!currentUser) {
+            setInCart(false);
+        } else {
+            checkInCart();
+        }
+
+    }, [userCart, _id, currentUser]);
+
+    /*===========================================*/
+
+    // Fetch user cart on login
     useEffect(() => {
 
         if (currentUser) {
-
             dispatch(getAllUserCart());
-
-        } else {
-
-            setInCart(false);
-
         }
 
     }, [currentUser, dispatch]);
 
     /*===========================================*/
 
-    // Update inCart state based on userCart
-    useEffect(() => {
+    // Log current state for debugging
+    // useEffect(() => {
 
-        if (userCart) {
+    //     console.log("User Cart:", userCart);
 
-            const isProductInCart = userCart.some(item => item.product?._id === _id);
+    //     console.log("In Cart Status:", inCart);
 
-            setInCart(isProductInCart);
-
-        }
-
-    }, [userCart, _id]);
+    // }, [userCart, inCart]);
 
     /*===========================================*/
 
@@ -106,8 +137,28 @@ const SingleCard = ({ product }) => {
                             : <span>${price}</span>}
                     </p>
                     <div className="bottom">
-                        <button type="button" onClick={() => handleAddToCart(_id)}>
-                            {inCart ? "In Cart" : "Add to Cart"}{inCart && <small>1</small>}
+                        <button
+                            type="button"
+                            onClick={() => handleAddToCart(_id)}
+                            disabled={loading || cartLoading || inCart}
+                        >
+                            {loading ? (
+                                <div className="single-cart-spinner">
+                                    <h6
+                                        className="spinner-border mb-0"
+                                        style={{
+                                            width: "24px",
+                                            height: "24px",
+                                            borderWidth: "2px",
+                                            color: "#fff"
+                                        }}>
+                                        <span className="visually-hidden">Loading...</span>
+                                    </h6>
+                                </div>
+                            ) : (
+                                inCart ? <>In Cart <small>1</small></> : "Add to Cart"
+                            )}
+                            {/* {inCart && <small>1</small>} */}
                         </button>
                         <span onClick={handleChange}>
                             <FaHeart style={{ color: heart ? "var(--light-red)" : "#686d6f" }} />

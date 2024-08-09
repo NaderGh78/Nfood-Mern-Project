@@ -36,13 +36,14 @@ const orderSchema = new Schema(
         status: {
             type: String,
             enum: ["initiated", "pending", "processing", "completed", "cancel"],
-            default: "initiated"
+            default: "pending"
         }
     },
     { timestamps: true }
 );
 
 /*===========================================*/
+
 function validateOrder(obj) {
 
     const schema = Joi.object({

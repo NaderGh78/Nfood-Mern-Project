@@ -1,5 +1,6 @@
 import { useState } from "react";
 import OrderUi from "./OrderUi";
+import moment from 'moment';
 
 /*===========================================*/
 /*===========================================*/
@@ -19,7 +20,7 @@ const SingleOrder = ({ singleOrder }) => {
 
     // console.log(singleOrder?.createdAt)
     // 2024-07-27T15:49:06.381Z
-
+    // console.log(singleOrder?.status)
     /*===========================================*/
 
     return (
@@ -32,8 +33,8 @@ const SingleOrder = ({ singleOrder }) => {
                             <span>#{singleOrder?._id}</span>
                             <p className='mb-0'>
                                 <span>
-                                    {singleOrder?.createdAt?.slice(0, 16).replace("T", " ")}
-                                </span> - <span>To be delivered in 15 minutes</span>
+                                    {moment(singleOrder?.createdAt).format().slice(0, 16).replace("T", " ")}
+                                </span> - <span className="status-badge text-capitalize fw-bold">{singleOrder?.status || 'Pending'}</span>
                             </p>
                         </div>
                         <h4 className="right mb-0" onClick={handleToggleAccordion}>

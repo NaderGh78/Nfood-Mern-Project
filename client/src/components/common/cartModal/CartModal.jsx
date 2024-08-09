@@ -86,9 +86,9 @@ const CartModal = () => {
 
     /*===========================================*/
 
-    const initiateCheckoutHandler = () => {
-        dispatch(initiateCheckout({ paymentType: "COD" }));
-    }
+    // const initiateCheckoutHandler = () => {
+    //     dispatch(initiateCheckout({ paymentType: "COD" }));
+    // }
 
     /*===========================================*/
 
@@ -129,7 +129,7 @@ const CartModal = () => {
                                         to="/checkout"
                                         onClick={() => {
                                             dispatch(setHideModal())
-                                            initiateCheckoutHandler()
+                                            //initiateCheckoutHandler()
                                         }}
                                         className='checkout-btn'
                                     >Checkout</Link>

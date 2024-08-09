@@ -106,9 +106,9 @@ const Cart = () => {
     /*===========================================*/
 
     // initiate Checkout when ckeckout from cart page
-    const initiateCheckoutHandler = () => {
-        dispatch(initiateCheckout({ paymentType: "COD" }));
-    }
+    // const initiateCheckoutHandler = () => {
+    //     dispatch(initiateCheckout({ paymentType: "COD" }));
+    // }
 
     /*===========================================*/
 
@@ -203,7 +203,7 @@ const Cart = () => {
                                             </h6>
                                         </li>
                                     </ul>
-                                    <Link to="/checkout" onClick={initiateCheckoutHandler}>Proceed to checkout</Link>
+                                    <Link to="/checkout">Proceed to checkout</Link>
                                     <button onClick={emptyCartHandler}>Clear Cart</button>
                                 </div>
                             </div>

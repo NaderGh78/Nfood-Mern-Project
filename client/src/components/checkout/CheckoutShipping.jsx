@@ -87,7 +87,7 @@ const CheckoutShipping = () => {
             when click on confirm order btn , it will confirm checkout and confirm 
             the payment type that we given from body
             */
-            const res = await userRequest.put(`/api/checkout/${orderId}`, reqObj, {});
+            const res = await userRequest.post(`/api/checkout`, reqObj, {});
 
             setConfirmLoading(false);
 

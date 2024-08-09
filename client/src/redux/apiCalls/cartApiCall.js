@@ -19,15 +19,22 @@ export function addToCart(newItem) {
 
   return async (dispatch) => {
 
+    dispatch(cartActions.setCartLoading());
+
     try {
 
-      const res = await userRequest.post("/api/carts", newItem);
+      await userRequest.post("/api/carts", newItem);
 
       dispatch(cartActions.addItemToCart(newItem));
 
     } catch (error) {
-      //  console.log(error);
+
+      console.error("Failed to add to cart", error);
+
+    } finally {
+      dispatch(cartActions.clearCartLoading());
     }
+
   };
 }
 
@@ -44,7 +51,6 @@ export function getAllUserCart() {
 
       const res = await userRequest.get("/api/carts");
 
-      // console.log('API Response:', res.data);
       if (res && res.data && res.data.data && res.data.data.cart !== null) {
 
         const { products, totalAmount } = res.data.data.cart;
@@ -55,10 +61,14 @@ export function getAllUserCart() {
 
       }
 
+    } catch (error) {
+
+      console.error('API Error:', error);
+
+    } finally {
+
       dispatch(cartActions.clearCartLoading());
 
-    } catch (error) {
-      console.error('API Error:', error);
     }
   };
 }
