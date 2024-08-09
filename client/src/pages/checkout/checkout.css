@@ -105,6 +105,10 @@ input[type=number] {
 } */
 
 /* checkout show product style */
+.checkout-box .checkout-content .right .top {
+    overflow: auto;
+}
+
 .checkout-box .checkout-content .right .top .checkout-products-show img {
     width: 60px;
     height: 60px;
@@ -216,7 +220,11 @@ input[type=number] {
     }
 
     .checkout-box .checkout-content .right .top {
-        height: 220px;
+        height: 310px;
+    }
+
+    .checkout-box .checkout-products-show {
+        width: 550px;
     }
 
 }
