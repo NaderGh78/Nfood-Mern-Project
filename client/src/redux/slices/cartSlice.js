@@ -19,7 +19,7 @@ const cartSlice = createSlice({
 
             const newItem = action.payload;
 
-            console.log('Received New Item:', newItem);
+            // console.log('Received New Item:', newItem);
 
             const existingIndex = state.userCart.findIndex(item => item.product?._id.toString() === newItem.productId?.toString());
 

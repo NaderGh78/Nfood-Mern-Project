@@ -103,7 +103,7 @@ const Checkout = () => {
                                 <div className="middle">
                                     <div className='d-flex align-items-center justify-content-between mt-5'>
                                         <h6>Subtotal</h6>
-                                        <span>${(totalCart).toFixed(2)}</span>
+                                        <span>${totalCart}</span>
                                     </div>
                                     <div className='d-flex align-items-center justify-content-between mt-3'>
                                         <h6>Shipping</h6>
@@ -113,7 +113,7 @@ const Checkout = () => {
                                 <div className="bottom">
                                     <div className='d-flex align-items-center justify-content-between mt-3'>
                                         <h6>Subtotal</h6>
-                                        <span>${(totalCart).toFixed(2)}</span>
+                                        <span>${totalCart}</span>
                                     </div>
                                 </div>
                             </>
