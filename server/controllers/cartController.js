@@ -60,73 +60,89 @@ const getUserCartCtrl = asynHandler(
  * @access private (user himself only) 
 */
 
-const creatCartCtrl = asynHandler(
+const creatCartCtrl = asynHandler(async (req, res) => {
 
-  async (req, res) => {
-    try {
+  try {
 
-      // check if user logged
-      const userId = req.userDecoded.id;
+    // Check if user is logged in
+    const userId = req.userDecoded.id;
 
-      const { productId, quantity } = req.body;
+    const { productId, quantity } = req.body;
 
-      const productInfo = await ProductModel.findById(productId);
+    // Fetch product details
+    const productInfo = await ProductModel.findById(productId);
 
-      if (!productInfo) {
-        return res.status(400).json({ message: "Product not found." });
-      }
+    if (!productInfo) {
 
-      const price =
-        productInfo.newPrice !== 1 ?
-          (quantity * productInfo.newPrice).toFixed(2) :
-          (quantity * productInfo.price).toFixed(2);
-
-      let cart = await CartModel.findOne({ userId: userId });
-
-      if (!cart) {
-        cart = new CartModel({
-          userId: userId,
-          products: [],
-          totalAmount: 0
-        })
-      }
-
-      //cart exists for user
-      let itemIndex = cart.products.findIndex(p => p.product == productId);
-
-      if (itemIndex > -1) {
-
-        cart.products[itemIndex].quantity = quantity;
-
-        cart.products[itemIndex].price = price;
-
-      } else {
-
-        //product does not exists in cart, add new item
-        cart.products.push({ product: productId, quantity, price });
-
-      }
-
-      const totalAmount = cart.products.reduce((total, item) => { return total + item.price }, 0);
-
-      cart.totalAmount = totalAmount.toFixed(2);
-
-      const cartInfo = await cart.save();
-
-      return res.status(200).json({
-        message: "Added to cart",
-        data: { cartInfo }
-      });
-
-    } catch (err) {
-
-      console.log(err);
-
-      res.status(500).json("Something went wrong");
+      return res.status(400).json({ message: "Product not found." });
 
     }
 
-  });
+    // Calculate price based on the new price or the default price
+    const price = productInfo.newPrice !== 1
+      ? (quantity * productInfo.newPrice).toFixed(2)
+      : (quantity * productInfo.price).toFixed(2);
+
+    // console.log('Product Info:', productInfo);
+    // console.log('Requested Quantity:', quantity);
+    // console.log('Price Calculation - New Price:', productInfo.newPrice, 'Default Price:', productInfo.price);
+    // console.log('Calculated Price:', price);
+
+    // Find or create the cart
+    let cart = await CartModel.findOne({ userId: userId });
+
+    if (!cart) {
+      cart = new CartModel({
+        userId: userId,
+        products: [],
+        totalAmount: 0,
+      });
+    }
+
+    // Check if the item is already in the cart
+    const itemIndex = cart.products.findIndex(p => p.product.toString() === productId);
+
+    if (itemIndex > -1) {
+
+      // Update existing item
+      // console.log('Item already in cart:', cart.products[itemIndex]);
+
+      cart.products[itemIndex].quantity += quantity - cart.products[itemIndex].quantity;
+
+      cart.products[itemIndex].price = price;
+
+      // console.log('Updated Item:', cart.products[itemIndex]);
+
+    } else {
+
+      // Add new item
+      cart.products.push({ product: productId, quantity, price: parseFloat(price) });
+
+      // console.log('Added New Item:', cart.products[cart.products.length - 1]);
+
+    }
+
+    // Calculate the total amount
+    const totalAmount = cart.products.reduce((total, item) => total + item.price, 0);
+
+    cart.totalAmount = totalAmount.toFixed(2);
+
+    // console.log('Total Amount:', cart.totalAmount);
+
+    // Save the cart
+    const cartInfo = await cart.save();
+    // console.log('Saved Cart Info:', cartInfo);
+
+    return res.status(200).json({
+      message: "Added to cart",
+      data: { cartInfo }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("Something went wrong");
+  }
+
+});
 
 /*===========================================*/
 

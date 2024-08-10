@@ -75,31 +75,37 @@ const Cart = () => {
 
     const handleIncrementQuantity = (id, quantity) => {
 
+        if (!id) {
+
+            console.error('Product ID is undefined');
+
+            return;
+
+        }
+
         const newQty = quantity + 1;
 
-        let itemIndex = userCart.findIndex(p => p.product._id === id);
+        const reqObj = { productId: id, quantity: newQty };
 
-        const reqObj = { productId: id, quantity: newQty }
-
-        if (itemIndex > -1) {
-            dispatch(addToCart(reqObj));
-        }
+        dispatch(addToCart(reqObj));
 
     };
 
-    /*===========================================*/
-
     const handleDecrementQuantity = (id, quantity) => {
 
-        const newQty = quantity === 1 ? quantity : quantity - 1;
+        if (!id) {
 
-        let itemIndex = userCart.findIndex(p => p.product._id === id);
+            console.error('Product ID is undefined');
 
-        const reqObj = { productId: id, quantity: newQty }
+            return;
 
-        if (itemIndex > -1) {
-            dispatch(addToCart(reqObj));
         }
+
+        const newQty = quantity > 1 ? quantity - 1 : 1;
+
+        const reqObj = { productId: id, quantity: newQty };
+
+        dispatch(addToCart(reqObj));
 
     };
 
@@ -139,7 +145,7 @@ const Cart = () => {
                                                         <th scope="row">{idx + 1}</th>
                                                         <td>
                                                             <div className="img-box">
-                                                                <button onClick={() => deleteItemHandler(el.product._id)}>
+                                                                <button onClick={() => deleteItemHandler(el.product?._id)}>
                                                                     <AiOutlineCloseCircle />
                                                                 </button>
                                                                 <Link to={`/products/${el.product?._id}`}>
@@ -152,29 +158,32 @@ const Cart = () => {
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            {el.product.newPrice !== 1
+                                                            {el.product?.newPrice !== 1
                                                                 ?
                                                                 <>
-                                                                    <span className="text-decoration-line-through text-secondary">${el.product.price}</span>
-                                                                    <span className="ms-2">${el.product.newPrice}</span>
+                                                                    <span className="text-decoration-line-through text-secondary">${el.product?.price}</span>
+                                                                    <span className="ms-2">${el.product?.newPrice}</span>
                                                                 </>
                                                                 :
                                                                 <>
-                                                                    <span>${el.product.price}</span>
+                                                                    <span>${el.product?.price}</span>
                                                                 </>}
                                                         </td>
                                                         <td>
                                                             <div className="input-box">
                                                                 <span>{el.quantity}</span>
                                                                 <div>
-                                                                    <button onClick={() => handleIncrementQuantity(el.product._id, el.quantity)}>+</button>
-                                                                    <button onClick={() => handleDecrementQuantity(el.product._id, el.quantity)}>-</button>
+                                                                    <button onClick={() => handleIncrementQuantity(el.product?._id, el.quantity)}>+</button>
+                                                                    <button onClick={() => handleDecrementQuantity(el.product?._id, el.quantity)}>-</button>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             {/* here the price is [price * quantity] */}
-                                                            ${el.price}
+                                                            {el.product?.newPrice !== 1
+                                                                ? <span>${(el.quantity * el.product?.newPrice).toFixed(2)}</span>
+                                                                : <span>${(el.quantity * el.product?.price).toFixed(2)}</span>
+                                                            }
                                                         </td>
                                                     </tr>
                                                 ))
@@ -189,7 +198,7 @@ const Cart = () => {
                                             <h6>
                                                 Subtotal
                                                 <span>
-                                                    ${(totalCart).toFixed(2)}
+                                                    ${totalCart}
                                                 </span>
                                             </h6>
                                         </li>
@@ -198,7 +207,7 @@ const Cart = () => {
                                             <h6>
                                                 Total
                                                 <span>
-                                                    ${(totalCart).toFixed(2)}
+                                                    ${totalCart}
                                                 </span>
                                             </h6>
                                         </li>

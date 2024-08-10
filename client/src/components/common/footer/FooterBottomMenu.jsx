@@ -58,7 +58,7 @@ const FooterBottomMenu = () => {
                     {isDarkMode ? <span><FaRegMoon /></span> : <span><LiaSun /></span>}
                 </li>
                 <li onClick={() => openModalHandler()}>
-                    <small>{userCart.length || 0}</small>
+                    <small>{userCart?.length || 0}</small>
                     <span><FaCartShopping /></span>
                 </li>
                 <li><Link to="/search"><FaMagnifyingGlass /></Link></li>

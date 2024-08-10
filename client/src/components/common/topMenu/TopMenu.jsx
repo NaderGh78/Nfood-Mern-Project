@@ -151,7 +151,7 @@ const TopMenu = () => {
                     openModalHandler()
                   }}
                 >
-                  <span>{currentUser ? userCart.length : 0}</span>
+                  <span>{currentUser ? userCart?.length : 0}</span>
                   <LiaShoppingCartSolid />
                 </Nav.Link>
 

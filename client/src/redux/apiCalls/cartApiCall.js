@@ -14,16 +14,20 @@ const config = {
 
 /*===========================================*/
 
-// Add Item To Cart
+// Add Item To Cart 
 export function addToCart(newItem) {
 
   return async (dispatch) => {
+
+    // console.log('Request payload:', newItem); // Log payload before dispatch
 
     dispatch(cartActions.setCartLoading());
 
     try {
 
       await userRequest.post("/api/carts", newItem);
+
+      // console.log('Dispatching addItemToCart with payload:', newItem);
 
       dispatch(cartActions.addItemToCart(newItem));
 
@@ -32,7 +36,9 @@ export function addToCart(newItem) {
       console.error("Failed to add to cart", error);
 
     } finally {
+
       dispatch(cartActions.clearCartLoading());
+
     }
 
   };
@@ -70,6 +76,7 @@ export function getAllUserCart() {
       dispatch(cartActions.clearCartLoading());
 
     }
+
   };
 }
 

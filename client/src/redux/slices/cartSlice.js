@@ -19,19 +19,32 @@ const cartSlice = createSlice({
 
             const newItem = action.payload;
 
-            const existingIndex = state.userCart.findIndex(item => item.product?._id === newItem.product?._id);
+            console.log('Received New Item:', newItem);
+
+            const existingIndex = state.userCart.findIndex(item => item.product?._id.toString() === newItem.productId?.toString());
 
             if (existingIndex > -1) {
 
-                // Update quantity if item already exists
-                state.userCart[existingIndex].quantity += newItem.quantity;
+                state.userCart[existingIndex].quantity = newItem.quantity;
 
+                state.userCart[existingIndex].price = parseFloat(newItem.price);
+
+                // console.log('Updated Existing Item:', state.userCart[existingIndex]);
             } else {
 
-                // Add new item
-                state.userCart.push(newItem);
+                state.userCart.push({
+                    ...newItem,
+                    quantity: newItem.quantity,
+                    price: parseFloat(newItem.price)
+                });
+
+                // console.log('Added New Item:', state.userCart[state.userCart.length - 1]);
 
             }
+
+            state.totalCart = state.userCart.reduce((total, item) => total + (parseFloat(item.price) * item.quantity), 0).toFixed(2);
+            // console.log('Updated Cart State:', state);
+
         },
 
         /*====================*/
@@ -40,7 +53,7 @@ const cartSlice = createSlice({
 
             const itemId = action.payload;
 
-            state.userCart = state.userCart.filter(item => item.product._id !== itemId);
+            state.userCart = state.userCart.filter(item => item.product?._id !== itemId);
 
             state.totalCart = state.userCart.reduce((total, item) => total + item.price, 0);
 
@@ -94,6 +107,8 @@ const cartSlice = createSlice({
         // get total
         getCartTotal(state, action) {
             state.totalCart = action.payload;
+
+            // console.log(state.totalCart)
         }
 
     }
