@@ -37,8 +37,6 @@ const AdminRecentOrders = () => {
 
         }
 
-        console.log(orders)
-
       } catch (error) {
         console.log(error)
       }

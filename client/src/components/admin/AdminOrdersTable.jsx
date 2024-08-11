@@ -79,7 +79,7 @@ const AdminOrdersTable = () => {
                                 <th scope="row" className='text-center'>{el._id}</th>
                                 <td className='text-capitalize bg-danger text-center'>{el.userInfo?._id}</td>
                                 <td className='text-center'>{el.userInfo?.email}</td>
-                                <td className='text-center'>{el.totalAmount}</td>
+                                <td className='text-center'>{el.totalAmount.toFixed(2)}</td>
                                 <td className='text-center text-nowrap'>
                                     {moment(el.createdAt).format().slice(0, 16).replace("T", " ")}
                                 </td>

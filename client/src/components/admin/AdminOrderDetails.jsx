@@ -144,7 +144,7 @@ const AdminOrderDetails = () => {
             }
             <tr>
               <td colSpan="5"><strong>Total</strong></td>
-              <td><strong>${findOrder?.totalAmount}</strong></td>
+              <td><strong>${findOrder?.totalAmount.toFixed(2)}</strong></td>
             </tr>
           </tbody>
         </table>

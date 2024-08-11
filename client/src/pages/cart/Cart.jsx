@@ -35,7 +35,7 @@ const Cart = () => {
 
     useEffect(() => {
         dispatch(getAllUserCart());
-    }, [dispatch]);
+    }, [dispatch, totalCart]);
 
     /*===========================================*/
 
