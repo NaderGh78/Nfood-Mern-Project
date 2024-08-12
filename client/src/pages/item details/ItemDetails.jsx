@@ -247,7 +247,7 @@ const ItemDetails = () => {
     // find the quantity of the product that match with param id
     useEffect(() => {
 
-        const findSingleProductQty = userCart?.find(p => p.product._id === id);
+        const findSingleProductQty = userCart?.find(p => p.product?._id === id);
 
         setQuantity(findSingleProductQty?.quantity);
 
