@@ -50,12 +50,12 @@ router.route("/profile/:id")
 /*===========================================*/
 
 //  /api/users/wishlist
-router.route("/wishlist").post(verifyTokenAndAdmin, addToWishlistCtrl);
+router.route("/wishlist").post(verifyToken, addToWishlistCtrl);
 
 /*===========================================*/
 
 //  /api/users/wishlist/:userId
-router.route("/wishlist/:userId").get(verifyTokenAndAdmin, getWishlistCtrl);
+router.route("/wishlist/:userId").get(verifyToken, getWishlistCtrl);
 
 /*===========================================*/
 
