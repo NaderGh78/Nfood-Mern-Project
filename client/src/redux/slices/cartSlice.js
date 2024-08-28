@@ -12,6 +12,7 @@ const cartSlice = createSlice({
         totalCart: 0,
         isCartEmpty: false,
         isCartDeleted: false,
+        loading: false, // Add a loading state
     },
     reducers: {
 
@@ -74,6 +75,13 @@ const cartSlice = createSlice({
         // get user cart
         setUserCarts(state, action) {
             state.userCart = action.payload;
+            // state.totalCart = state.userCart.reduce((total, item) => total + (parseFloat(item.price) * item.quantity), 0);
+        },
+
+        /*====================*/
+
+        setLoading: (state, action) => {
+            state.loading = action.payload;
         },
 
         /*====================*/
@@ -107,8 +115,6 @@ const cartSlice = createSlice({
         // get total
         getCartTotal(state, action) {
             state.totalCart = action.payload;
-
-            // console.log(state.totalCart)
         }
 
     }
@@ -116,5 +122,7 @@ const cartSlice = createSlice({
 
 const cartActions = cartSlice.actions;
 const cartReducer = cartSlice.reducer;
+
+export const { setLoading } = cartSlice.actions;
 
 export { cartActions, cartReducer }; 

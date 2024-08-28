@@ -8,6 +8,7 @@ import { categoryReducer } from "./slices/categorySlice";
 import { customerReducer } from "./slices/customerSlice";
 import { profileReducer } from "./slices/profileSlice";
 import { checkoutReducer } from "./slices/checkoutSlice";
+import { wishlistReducer } from "./slices/wishlistSlice";
 
 /*===========================================*/
 /*===========================================*/
@@ -23,7 +24,8 @@ const store = configureStore({
         category: categoryReducer,
         checkout: checkoutReducer,
         customer: customerReducer,
-        profile: profileReducer
+        profile: profileReducer,
+        wishlist: wishlistReducer
     }
 });
 

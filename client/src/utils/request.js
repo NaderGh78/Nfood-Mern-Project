@@ -5,9 +5,9 @@ import axios from "axios";
 /*===========================================*/
 
 // Define the base URL for the API
-//    const BASE_URL = "http://localhost:3001";
+const BASE_URL = "http://localhost:3001";
 
-const BASE_URL = "https://nfood-mern-project.onrender.com";
+// const BASE_URL = "https://nfood-mern-project.onrender.com";
 
 // Create an axios instance for general requests
 export const request = axios.create({
@@ -26,7 +26,7 @@ export const userRequest = axios.create({
 const getToken = () => {
     const user = localStorage.getItem('currentUser');
     if (!user) {
-        console.error('User not found in localStorage');
+        // console.error('User not found in localStorage');
         return null;
     }
     const parsedUser = JSON.parse(user);

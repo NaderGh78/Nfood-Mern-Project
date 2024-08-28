@@ -15,7 +15,9 @@ const {
     updatePasswordCtrl,
     getUserCtrl,
     updateUserCtrl,
-    deleteUserCtrl
+    deleteUserCtrl,
+    addToWishlistCtrl,
+    getWishlistCtrl
 } = require("../controllers/userController");
 
 /*===========================================*/
@@ -44,6 +46,16 @@ router.route("/profile/:id")
     .get(verifyTokenAndAuthorization, getUserCtrl)
     .put(verifyTokenAndOnlyUser, updateUserCtrl)
     .delete(validateObjectId, verifyTokenAndAuthorization, deleteUserCtrl);
+
+/*===========================================*/
+
+//  /api/users/wishlist
+router.route("/wishlist").post(verifyTokenAndAdmin, addToWishlistCtrl);
+
+/*===========================================*/
+
+//  /api/users/wishlist/:userId
+router.route("/wishlist/:userId").get(verifyTokenAndAdmin, getWishlistCtrl);
 
 /*===========================================*/
 

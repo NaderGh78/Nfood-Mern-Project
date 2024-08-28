@@ -262,6 +262,83 @@ const profilePhotoUploadCtrl = asynHandler(
 );
 
 /*===========================================*/
+/**
+ * @desc  User wishlist
+ * @route  /api/users/wishlist
+ * @method  POST
+ * @access  private (only logged in user)
+*/
+
+// addToWishlist  
+const addToWishlistCtrl = asynHandler(async (req, res) => {
+
+    try {
+
+        const { userId, productId } = req.body;
+
+        const user = await UserModel.findById(userId);
+
+        // Initialize wishlist if it is not present
+        if (!user.wishlist) {
+            user.wishlist = [];
+        }
+
+        if (!user) return res.status(404).json({ error: 'User not found' });
+
+        const index = user.wishlist.indexOf(productId);
+
+        if (index > -1) {
+
+            // Remove product from wishlist 
+            user.wishlist.splice(index, 1);
+
+        } else {
+
+            // Add product to wishlist
+            user.wishlist.push(productId);
+
+        }
+
+        await user.save();
+
+        res.json(user.wishlist);
+
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
+
+/*===========================================*/
+
+/**
+ * @desc  get User wishlist
+ * @route  /api/users/wishlist/
+ * @method  GET
+ * @access  private (only logged in user)
+*/
+
+const getWishlistCtrl = asynHandler(
+
+    async (req, res) => {
+
+        try {
+
+            const { userId } = req.params; // Expect userId as a URL parameter
+
+            const user = await UserModel.findById(userId);
+
+            if (!user) {
+                return res.status(404).json({ error: 'User not found' });
+            }
+
+            res.json(user.wishlist);
+
+        } catch (err) {
+            res.status(400).json({ error: err.message });
+        }
+    }
+);
+/*===========================================*/
 
 module.exports = {
     getAllUsersCtrl,
@@ -269,5 +346,7 @@ module.exports = {
     updateUserCtrl,
     updatePasswordCtrl,
     deleteUserCtrl,
-    profilePhotoUploadCtrl
+    profilePhotoUploadCtrl,
+    addToWishlistCtrl,
+    getWishlistCtrl
 }

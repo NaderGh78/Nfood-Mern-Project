@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getAllUserCart } from "../../../redux/apiCalls/cartApiCall";
 import { setShowModal, setShowRgisterModal } from "../../../redux/slices/modalSlice";
+import { addToWishlist, fetchUserWishlists } from "../../../redux/apiCalls/wishlistApiCall";
 import { FaHeart, FaEye } from "react-icons/fa";
 
 /*===========================================*/
@@ -18,20 +19,46 @@ const SingleCard = ({ product }) => {
 
     const { currentUser } = useSelector((state) => state.auth);
 
+    const { userWishlist } = useSelector((state) => state.wishlist);
+
     const { userCart, cartLoading } = useSelector((state) => state.cart);
 
     const [inCart, setInCart] = useState(false);
 
     const [loading, setLoading] = useState(false);
 
-    const [heart, setHeart] = useState(false);
-
     /*===========================================*/
 
-    // Toggle heart icon
-    const handleChange = () => {
-        setHeart(!heart);
+    // add to wishlist handler
+    const addToWishlistHandler = async (userId, productId) => {
+
+        if (currentUser) {
+
+            try {
+
+                await dispatch(addToWishlist(userId, productId));
+                // Fetch updated wishlist
+                // await dispatch(fetchWishlist(userId));
+
+            } catch (error) {
+
+                console.error('Failed to add to wishlist', error);
+
+            }
+        } else {
+            dispatch(setShowRgisterModal());
+        }
     };
+
+    // useEffect(() => {
+
+    //     if (currentUser) {
+
+    //         dispatch(fetchUserWishlists(currentUser._id));
+
+    //     }
+
+    // }, [currentUser, dispatch]);
 
     /*===========================================*/
 
@@ -92,25 +119,15 @@ const SingleCard = ({ product }) => {
 
     /*===========================================*/
 
-    // Fetch user cart on login
+    // Fetch user cart and user wishlists on login
     useEffect(() => {
 
         if (currentUser) {
             dispatch(getAllUserCart());
+            dispatch(fetchUserWishlists(currentUser._id));
         }
 
-    }, [currentUser, dispatch]);
-
-    /*===========================================*/
-
-    // Log current state for debugging
-    // useEffect(() => {
-
-    //     console.log("User Cart:", userCart);
-
-    //     console.log("In Cart Status:", inCart);
-
-    // }, [userCart, inCart]);
+    }, [currentUser, dispatch]); 
 
     /*===========================================*/
 
@@ -158,10 +175,9 @@ const SingleCard = ({ product }) => {
                             ) : (
                                 inCart ? <>In Cart <small>1</small></> : "Add to Cart"
                             )}
-                            {/* {inCart && <small>1</small>} */}
                         </button>
-                        <span onClick={handleChange}>
-                            <FaHeart style={{ color: heart ? "var(--light-red)" : "#686d6f" }} />
+                        <span onClick={() => addToWishlistHandler(currentUser?._id, _id)}>
+                            <FaHeart style={{ color: userWishlist.includes(_id) ? "var(--light-red)" : "#686d6f" }} />
                         </span>
                         <Link to={`/products/${_id}`}><FaEye /></Link>
                     </div>

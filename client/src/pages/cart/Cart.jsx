@@ -8,6 +8,7 @@ import { useTitle } from "../../components/helpers";
 import { HeadingBreadcrumb } from "../../allPagesPaths";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import swal from "sweetalert";
+import { setLoading } from "../../redux/slices/cartSlice";
 
 /*===========================================*/
 /*===========================================*/
@@ -19,7 +20,7 @@ const Cart = () => {
 
     const dispatch = useDispatch();
 
-    const { cart, userCart, totalCart } = useSelector((state) => state.cart);
+    const { cart, userCart, totalCart, loading } = useSelector((state) => state.cart);
 
     const [quantity, setQuantity] = useState(1);
 
@@ -28,14 +29,25 @@ const Cart = () => {
 
     /*===========================================*/
 
-    // useEffect(() => {
-    //     console.log('Current cart state:', cart);
-    // }, [cart]);
-
-
     useEffect(() => {
-        dispatch(getAllUserCart());
+
+        const fetchData = async () => {
+
+            dispatch(setLoading(true));
+
+            await dispatch(getAllUserCart());
+
+            dispatch(setLoading(false));
+
+        };
+
+        fetchData();
+
     }, [dispatch, totalCart]);
+
+    const formattedTotalCart = (typeof totalCart === 'number' && !isNaN(totalCart))
+        ? totalCart.toFixed(2)
+        : '0.00';
 
     /*===========================================*/
 
@@ -198,7 +210,17 @@ const Cart = () => {
                                             <h6>
                                                 Subtotal
                                                 <span>
-                                                    ${totalCart}
+                                                    {
+                                                        !loading ?
+                                                            <> ${formattedTotalCart}</> :
+                                                            <>
+                                                                <div
+                                                                    className="spinner-border"
+                                                                    style={{ width: "18px", height: "18px", borderWidth: "2px", color: "var(--pistach)" }}>
+                                                                    <span className="visually-hidden">Loading...</span>
+                                                                </div>
+                                                            </>
+                                                    }
                                                 </span>
                                             </h6>
                                         </li>
@@ -207,7 +229,17 @@ const Cart = () => {
                                             <h6>
                                                 Total
                                                 <span>
-                                                    ${totalCart}
+                                                    {
+                                                        !loading ?
+                                                            <> ${formattedTotalCart}</> :
+                                                            <>
+                                                                <div
+                                                                    className="spinner-border"
+                                                                    style={{ width: "18px", height: "18px", borderWidth: "2px", color: "var(--pistach)" }}>
+                                                                    <span className="visually-hidden">Loading...</span>
+                                                                </div>
+                                                            </>
+                                                    }
                                                 </span>
                                             </h6>
                                         </li>

@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getAllUserCart } from "../../redux/apiCalls/cartApiCall";
+import { addToWishlist, fetchUserWishlists } from "../../redux/apiCalls/wishlistApiCall";
 import { setShowRgisterModal } from "../../redux/slices/modalSlice";
 import { request } from "../../utils/request";
-import { LiaStarSolid, LiaStarHalfSolid } from "react-icons/lia";
+import { LiaStarSolid } from "react-icons/lia";
 import { FaBasketShopping } from "react-icons/fa6";
 import { FaFacebookF, FaHeart, FaTwitter, FaYoutube } from "react-icons/fa";
 import { RelatedProducts, StickyAddCart, TabsItemDetailes } from "../../allPagesPaths";
@@ -21,6 +22,8 @@ const ItemDetails = () => {
     const dispatch = useDispatch();
 
     const { currentUser } = useSelector((state) => state.auth);
+
+    const { userWishlist } = useSelector((state) => state.wishlist);
 
     const { isProductReview } = useSelector((state) => state.product);
 
@@ -41,6 +44,38 @@ const ItemDetails = () => {
 
     const [loading, setLoading] = useState(false);
 
+    /*===========================================*/
+
+    // add to wishlist handler
+    const addToWishlistHandler = async (userId, productId) => {
+
+        if (currentUser) {
+
+            try {
+
+                await dispatch(addToWishlist(userId, productId));
+                // Fetch updated wishlist
+                // await dispatch(fetchWishlist(userId));
+
+            } catch (error) {
+
+                console.error('Failed to add to wishlist', error);
+
+            }
+        } else {
+            dispatch(setShowRgisterModal());
+        }
+    };
+
+    useEffect(() => {
+
+        if (currentUser) {
+
+            dispatch(fetchUserWishlists(currentUser._id));
+
+        }
+
+    }, [currentUser, dispatch]);
     /*===========================================*/
 
     // capitalize the first letters that given in order to put it as browser page title 
@@ -334,7 +369,12 @@ const ItemDetails = () => {
                                             </>
                                     } */}
                                 </button>
-                                <button className="heart"><FaHeart /></button>
+                                <button
+                                    className="heart"
+                                    onClick={() => addToWishlistHandler(currentUser?._id, product?._id)}
+                                >
+                                    <FaHeart style={{ color: userWishlist.includes(product?._id) ? "var(--light-red)" : "#686d6f" }} />
+                                </button>
                             </div>
                             <div className="product-meta">
                                 <h6>Category : <Link>{product?.category}</Link></h6>
