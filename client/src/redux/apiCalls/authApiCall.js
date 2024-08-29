@@ -1,7 +1,8 @@
 import { authActions } from "../slices/authSlice";
+import { wishlistActions } from "../slices/wishlistSlice";
+import { cartActions } from "../slices/cartSlice";
 import { request } from "../../utils/request";
 import { toast } from "react-toastify";
-import { cartActions } from "../slices/cartSlice";
 
 /*===========================================*/
 /*===========================================*/
@@ -82,7 +83,10 @@ export function logoutUser() {
 
             dispatch(cartActions.clearCart());
 
+            dispatch(wishlistActions.clearWishlist());
+
             localStorage.removeItem("currentUser");
+
 
         } catch (error) {
             console.log(error)

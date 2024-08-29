@@ -119,16 +119,19 @@ const SingleCard = ({ product }) => {
 
     /*===========================================*/
 
-    // Fetch user cart and user wishlists on login
+    // Fetch user cart on login
     useEffect(() => {
 
         if (currentUser) {
+
             dispatch(getAllUserCart());
+
             dispatch(fetchUserWishlists(currentUser._id));
+
         }
 
     }, [currentUser, dispatch]); 
-
+     
     /*===========================================*/
 
     return (

@@ -37,13 +37,21 @@ export function fetchUserWishlists(userId) {
 
         try {
 
-            const res = await userRequest.get(`/api/users/wishlist/${userId}`);
+            if (userId) {
 
-            dispatch(wishlistActions.setuserWishlist(res.data));
+                const res = await userRequest.get(`/api/users/wishlist/${userId}`);
+
+                dispatch(wishlistActions.setuserWishlist(res?.data));
+
+            } else {
+
+                dispatch(wishlistActions.setuserWishlist([]));
+
+            }
 
         } catch (error) {
 
-            console.error("Failed to fetch wishlist", error);
+            console.error('Failed to fetch user wishlists:', error);
 
         }
 
