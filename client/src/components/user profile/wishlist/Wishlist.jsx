@@ -1,6 +1,7 @@
 import "./wishlist.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { fetchUserWishlists } from "../../../redux/apiCalls/wishlistApiCall";
 import { addToCart, getAllUserCart } from "../../../redux/apiCalls/cartApiCall";
 import { setShowModal } from "../../../redux/slices/modalSlice";
@@ -13,6 +14,7 @@ import swal from "sweetalert";
 /*===========================================*/
 
 const Wishlist = () => {
+
     const dispatch = useDispatch();
 
     const { currentUser } = useSelector((state) => state.auth);
@@ -26,6 +28,8 @@ const Wishlist = () => {
     const [loadingProductId, setLoadingProductId] = useState(null);
 
     const [localWishlist, setLocalWishlist] = useState(userWishlist); // Local state for wishlist
+
+    const { id } = useParams();
 
     /*===========================================*/
 
@@ -62,7 +66,7 @@ const Wishlist = () => {
 
         if (currentUser) {
 
-            dispatch(fetchUserWishlists(currentUser._id));
+            dispatch(fetchUserWishlists(id));
 
             dispatch(getAllUserCart());
 

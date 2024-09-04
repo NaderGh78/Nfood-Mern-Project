@@ -1,6 +1,7 @@
 import "./order.css";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { request } from "../../../utils/request";
 import SingleOrder from "./SingleOrder";
 
@@ -14,6 +15,8 @@ const Order = () => {
 
     const [userOrders, setUserOrders] = useState([]);
 
+    const { id } = useParams();
+
     /*===========================================*/
 
     // get user orders
@@ -23,7 +26,7 @@ const Order = () => {
 
             try {
 
-                const res = await request.get(`/api/orders/user-order`,
+                const res = await request.get(`/api/orders/${id}`,
                     {
                         headers: {
                             Authorization: "Bearer " + currentUser?.token,

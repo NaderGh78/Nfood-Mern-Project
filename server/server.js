@@ -26,6 +26,8 @@ const productPath = require("./routes/productRoute");
 
 const cartPath = require("./routes/cartRoute");
 
+const cleanupPath = require("./routes/cleanupRoutes");
+
 const { errorHandling, notFound } = require("./middlewares/errorHandling");
 
 /*===========================================*/
@@ -60,6 +62,8 @@ app.use("/api/orders", orderPath);
 app.use("/api/products", productPath);
 
 app.use("/api/carts", cartPath);
+
+app.use("/api", cleanupPath);
 
 /*=================================*/
 

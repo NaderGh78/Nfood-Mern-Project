@@ -9,8 +9,8 @@ const { verifyToken, verifyTokenAndAdmin } = require("../middlewares/verifyToken
 //  /api/orders
 router.get("/", getAllOrders);
 
-//  /api/orders/user-order
-router.get("/user-order", verifyToken, getUserOrders);
+//  /api/orders/orderId
+router.get("/:orderId", verifyToken, getUserOrders);
 
 //  /api/orders/:orderId
 router.put("/:orderId", verifyTokenAndAdmin, updateOrderStatus);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 /*===========================================*/
 /*===========================================*/
@@ -11,6 +11,8 @@ const SingleWishList = ({ data, currentUser, onAddToWishlist, onRemoveFromWishli
     const { _id, name, image, price, newPrice } = data;
 
     const [inCart, setInCart] = useState(false);
+
+    const { id } = useParams();
 
     /*===========================================*/
 
@@ -52,31 +54,37 @@ const SingleWishList = ({ data, currentUser, onAddToWishlist, onRemoveFromWishli
                     </li>
                     <li>August 20, 2024</li>
                 </ul>
-                <div className="button-box">
-                    <button onClick={() => onAddToWishlist(_id)} disabled={loading || inCart}>
-                        {loading ? (
-                            <div className="single-cart-spinner">
-                                <h6
-                                    className="spinner-border mb-0"
-                                    style={{
-                                        width: "21px",
-                                        height: "21px",
-                                        borderWidth: "2px",
-                                        color: "#fff"
-                                    }}>
-                                    <span className="visually-hidden">Loading...</span>
-                                </h6>
-                            </div>
-                        ) : (
-                            inCart ? "In Cart" : "Add to Cart"
-                        )}
-                    </button>
-                    <button
-                        className="bg-danger"
-                        onClick={() => onRemoveFromWishlist(currentUser?._id, _id)}>
-                        Remove from Wishlist
-                    </button>
-                </div>
+                {/* hide the button box in case the curent user is admin */}
+                {currentUser?._id === id ?
+                    <>
+                        <div className="button-box">
+                            <button onClick={() => onAddToWishlist(_id)} disabled={loading || inCart}>
+                                {loading ? (
+                                    <div className="single-cart-spinner">
+                                        <h6
+                                            className="spinner-border mb-0"
+                                            style={{
+                                                width: "21px",
+                                                height: "21px",
+                                                borderWidth: "2px",
+                                                color: "#fff"
+                                            }}>
+                                            <span className="visually-hidden">Loading...</span>
+                                        </h6>
+                                    </div>
+                                ) : (
+                                    inCart ? "In Cart" : "Add to Cart"
+                                )}
+                            </button>
+                            <button
+                                className="bg-danger"
+                                onClick={() => onRemoveFromWishlist(currentUser?._id, _id)}>
+                                Remove from Wishlist
+                            </button>
+                        </div>
+                    </> :
+                    ""
+                }
             </div>
         </div>
     );

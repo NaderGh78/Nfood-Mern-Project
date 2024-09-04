@@ -32,7 +32,7 @@ function OrderConfirmed() {
 
                 setOrderLoading(true);
 
-                const res = await request.get(`/api/orders/user-order`,
+                const res = await request.get(`/api/orders/${currentUser?._id}`,
                     {
                         headers: {
                             Authorization: "Bearer " + currentUser?.token,

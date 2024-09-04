@@ -43,8 +43,8 @@ const getUserOrders = asynHandler(
 
     async (req, res) => {
 
-        // get the logged user
-        const userId = req.userDecoded.id;
+        // ordedid params
+        const userId = req.params.orderId;
 
         // get user orders that it status equal [pending] and populate the product
         const orders = await OrderModel

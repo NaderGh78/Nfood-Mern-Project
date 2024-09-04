@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const path = require("path");
 const fs = require("fs");
 const { UserModel, validateUpdateUser, validateUpdatePassword } = require("../models/UserModel");
+const { ProductModel } = require("../models/ProductModel");
+const { cleanupOrphanReviews } = require("../utils/cleanupOrphanedReviews");
 const { cloudinaryUploadImage, cloudinaryRemoveImage } = require("../utils/cloudinary");
 
 /*===========================================*/
@@ -186,27 +188,22 @@ const updatePasswordCtrl = asynHandler(
  * @access private (only admin and user himeself) 
 */
 
-const deleteUserCtrl = asynHandler(
+const deleteUserCtrl = asynHandler(async (req, res) => {
 
-    async (req, res) => {
+    const user = await UserModel.findById(req.params.id);
 
-        // 1. get single user by id from db
-        const user = await UserModel.findById(req.params.id);
-
-        // 2. if user exists , delte it and show success msg, otherwise show user not found error msg
-        if (user) {
-
-            await UserModel.findByIdAndDelete(req.params.id);
-
-            res.status(200).json({ message: "user has been deleted successfully" });
-
-        } else {
-            res.status(404).json({ message: "user not found" });
-        }
-
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
     }
 
-);
+    await UserModel.findByIdAndDelete(req.params.id);
+
+    // Clean up orphan reviews after user deletion
+    await cleanupOrphanReviews();
+
+    res.status(200).json({ message: "User deleted successfully" });
+
+});
 
 /*===========================================*/
 
@@ -262,6 +259,7 @@ const profilePhotoUploadCtrl = asynHandler(
 );
 
 /*===========================================*/
+
 /**
  * @desc  User wishlist
  * @route  /api/users/wishlist
