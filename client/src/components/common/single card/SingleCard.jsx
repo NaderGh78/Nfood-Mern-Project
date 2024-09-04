@@ -32,7 +32,7 @@ const SingleCard = ({ product }) => {
 
     // Determine if the product is in the wishlist
     const isInWishlist = currentUser ? userWishlist.includes(_id) : false;
- 
+
     /*===========================================*/
 
     // Add to wishlist handler

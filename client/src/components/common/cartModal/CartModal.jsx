@@ -119,7 +119,7 @@ const CartModal = () => {
                                 <div className="cart-box-footer">
                                     <div className="total-price">
                                         <h4 className='mb-0'>Total Price</h4>
-                                        <span>${totalCart}</span>
+                                        <span>${totalCart.toFixed(2)}</span>
                                     </div>
                                     <Link
                                         to="/cart"

@@ -323,7 +323,7 @@ const getWishlistCtrl = asynHandler(
 
         try {
 
-            const { userId } = req.params; // Expect userId as a URL parameter
+            const { userId } = req.params;
 
             const user = await UserModel.findById(userId);
 
@@ -338,6 +338,56 @@ const getWishlistCtrl = asynHandler(
         }
     }
 );
+
+/*===========================================*/
+
+/**
+ * @desc  delete single User wishlist
+ * @route  /api/users/wishlist/
+ * @method  DELETE
+ * @access  private (only logged in user)
+*/
+
+const removeSingleWishlisttCtrl = asynHandler(async (req, res) => {
+    try {
+
+        const { userId, productId } = req.body;
+
+        if (!userId || !productId) {
+
+            return res.status(400).json({ error: 'UserId and productId are required' });
+
+        }
+
+        const user = await UserModel.findById(userId);
+
+        if (!user) return res.status(404).json({ error: 'User not found' });
+
+        // Initialize wishlist if it is not present
+        if (!user.wishlist) {
+            user.wishlist = [];
+        }
+
+        const index = user.wishlist.indexOf(productId);
+
+        if (index > -1) {
+
+            // Remove product from wishlist 
+            user.wishlist.splice(index, 1);
+
+            await user.save();
+
+            res.status(200).json({ data: user.wishlist, message: "The product was removed from your wishlist successfully." });
+
+        } else {
+            res.status(404).json({ message: "The product was already removed." });
+        }
+
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
+
 /*===========================================*/
 
 module.exports = {
@@ -348,5 +398,6 @@ module.exports = {
     deleteUserCtrl,
     profilePhotoUploadCtrl,
     addToWishlistCtrl,
-    getWishlistCtrl
+    getWishlistCtrl,
+    removeSingleWishlisttCtrl
 }

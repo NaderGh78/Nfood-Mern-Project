@@ -17,7 +17,8 @@ const {
     updateUserCtrl,
     deleteUserCtrl,
     addToWishlistCtrl,
-    getWishlistCtrl
+    getWishlistCtrl,
+    removeSingleWishlisttCtrl
 } = require("../controllers/userController");
 
 /*===========================================*/
@@ -49,12 +50,19 @@ router.route("/profile/:id")
 
 /*===========================================*/
 
-//  /api/users/wishlist
+/*================= WISHLIST ================*/
+
+//  /api/users/wishlist => ADD ITEM TO WISHLIST 
 router.route("/wishlist").post(verifyToken, addToWishlistCtrl);
 
 /*===========================================*/
 
-//  /api/users/wishlist/:userId
+//  /api/users/wishlist => REMOVE ITEM FROM WISHLIST 
+router.route("/wishlist").delete(verifyToken, removeSingleWishlisttCtrl);
+
+/*===========================================*/
+
+//  /api/users/wishlist/:userId => SHOW USER WISHLIST
 router.route("/wishlist/:userId").get(verifyToken, getWishlistCtrl);
 
 /*===========================================*/
