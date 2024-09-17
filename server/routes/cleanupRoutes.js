@@ -1,14 +1,14 @@
 const router = require("express").Router();
-const { cleanupOrphanReviews } = require("../utils/cleanupOrphanedReviews");
+const { cleanupOrphans } = require("../utils/cleanupOrphans");
 
 /*===========================================*/
 /*===========================================*/
 /*===========================================*/
 
-//  /api/cleanup-reviews 
-// Temporary route to manually trigger orphan reviews cleanup   
-router.route("/cleanup-reviews").get(cleanupOrphanReviews);
+// /api/cleanup-orphans/:userId
+// Route to manually trigger orphan data cleanup  
+router.route("/cleanup-orphans/:userId").get(cleanupOrphans);
 
 /*===========================================*/
 
-module.exports = router;
+module.exports = router; 

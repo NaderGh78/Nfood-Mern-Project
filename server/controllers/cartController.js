@@ -230,11 +230,11 @@ const emptyUserCardCtrl = asynHandler(
 
       const userId = req.userDecoded.id;
 
-      console.log(`Clearing cart for user: ${userId}`);
+      // console.log(`Clearing cart for user: ${userId}`);
 
       const cart = await CartModel.findOneAndDelete({ userId: userId });
 
-      console.log(`Deleted cart: ${cart}`);
+      // console.log(`Deleted cart: ${cart}`);
 
       res.status(200).json({
         message: "All your cart removed successfully.",

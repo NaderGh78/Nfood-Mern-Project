@@ -3,8 +3,7 @@ const bcrypt = require('bcryptjs');
 const path = require("path");
 const fs = require("fs");
 const { UserModel, validateUpdateUser, validateUpdatePassword } = require("../models/UserModel");
-const { ProductModel } = require("../models/ProductModel");
-const { cleanupOrphanReviews } = require("../utils/cleanupOrphanedReviews");
+const { cleanupOrphans } = require("../utils/cleanupOrphans");
 const { cloudinaryUploadImage, cloudinaryRemoveImage } = require("../utils/cloudinary");
 
 /*===========================================*/
@@ -189,20 +188,19 @@ const updatePasswordCtrl = asynHandler(
 */
 
 const deleteUserCtrl = asynHandler(async (req, res) => {
-
-    const user = await UserModel.findById(req.params.id);
+    const userId = req.params.id;
+    const user = await UserModel.findById(userId);
 
     if (!user) {
         return res.status(404).json({ message: "User not found" });
     }
 
-    await UserModel.findByIdAndDelete(req.params.id);
+    await UserModel.findByIdAndDelete(userId);
 
-    // Clean up orphan reviews after user deletion
-    await cleanupOrphanReviews();
+    // Clean up orphaned data after user deletion
+    await cleanupOrphans({ params: { userId } });
 
     res.status(200).json({ message: "User deleted successfully" });
-
 });
 
 /*===========================================*/
