@@ -28,7 +28,7 @@ const Wishlist = () => {
 
     const [loadingProductId, setLoadingProductId] = useState(null);
 
-    const [localWishlist, setLocalWishlist] = useState(userWishlist); // Local state for wishlist
+    const [localWishlist, setLocalWishlist] = useState(userWishlist);
 
     const { id } = useParams();
 
@@ -102,7 +102,7 @@ const Wishlist = () => {
     // add wishlist to cart
     const addWishlistToCartHandler = async (productId) => {
 
-        setLoadingProductId(productId); // Set loading for specific product
+        setLoadingProductId(productId);
 
         try {
 
@@ -118,7 +118,7 @@ const Wishlist = () => {
 
         } finally {
 
-            setLoadingProductId(null); // Reset loading after completion
+            setLoadingProductId(null);
 
         }
 
