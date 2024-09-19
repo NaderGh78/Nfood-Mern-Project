@@ -9,7 +9,8 @@ const {
     deleteProductCtrl,
     productReviewCtrl,
     deleteSingleReviewCtrl,
-    getProductReviewsCtrl
+    getProductReviewsCtrl,
+    searchProductCtrl
 } = require("../controllers/productController");
 
 /*===========================================*/
@@ -27,6 +28,11 @@ router.route("/")
 router.route("/review")
     .put(verifyToken, productReviewCtrl)
     .delete(verifyToken, deleteSingleReviewCtrl);
+
+/*=========================================*/
+
+// /api/products/search
+router.route("/search").get(searchProductCtrl);
 
 /*=========================================*/
 

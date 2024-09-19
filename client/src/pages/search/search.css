@@ -1,0 +1,140 @@
+.search {
+    text-align: center;
+}
+
+.search .search-content {
+    position: relative;
+    min-height: 330px;
+    padding: 1px;
+}
+
+.search .search-content .input-box {
+    width: 40%;
+    height: 40px;
+    margin: 30px auto;
+}
+
+.search .search-content .input-box input {
+    width: 80%;
+    height: 100%;
+    padding-left: 15px;
+    background-color: transparent;
+    color: #999;
+    border: 2px solid #dee2e6;
+    border-radius: 30px 0 0 30px;
+    border-right: none;
+}
+
+.search .search-content .input-box input:focus {
+    outline: none;
+}
+
+.search .search-content .input-box button {
+    width: calc(100% - 80%);
+    height: 100%;
+    background-color: var(--pistach);
+    color: #fff;
+    border: 2px solid var(--pistach);
+    border-radius: 0 30px 30px 0;
+}
+
+.search .cards-results {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+}
+
+.search .cards-results .my-card {
+    flex: 1 1 calc(33.333% - 16px);
+    max-width: calc(33.333% - 16px);
+}
+
+.search .highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/*====================================*/
+/*===========Responsive===============*/
+/*====================================*/
+
+@media only screen and (max-width: 1025px) {
+
+    .search .search-content .input-box {
+        width: 70%;
+
+    }
+
+    .search .cards-results .my-card {
+        flex: 1 1 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+    }
+
+}
+
+/* end 1024px */
+
+@media only screen and (max-width: 768px) {
+
+    .search .cards-results {
+        width: 95%;
+    }
+
+    .search .cards-results .my-card {
+        flex: 1 1 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+    }
+
+}
+
+/* end 768px */
+
+@media only screen and (max-width: 600px) {
+
+    .search .search-content .input-box {
+        width: 92%;
+
+    }
+
+    .search .cards-results .my-card {
+        flex: 1 1 calc(100% - 8px);
+        max-width: calc(100% - 8px);
+    }
+
+}
+
+/* end 600px */
+
+@media only screen and (max-width: 480px) {
+
+    .search .search-content .input-box input {
+        width: 75%;
+
+    }
+
+    .search .search-content .input-box button {
+        width: calc(100% - 75%);
+
+    }
+
+    .search .cards-results {
+        width: 100%;
+        gap: 8px;
+    }
+
+}
+
+/* end 480px */
+
+@media only screen and (max-width: 320px) {
+
+    .search .cards-results .my-card {
+        font-size: 0.9em;
+    }
+
+}
+
+/* end 320px */

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { request } from "../../../utils/request";
 import SingleOrder from "./SingleOrder";
+import Spinner from "../../common/spinner/Spinner";
 
 /*===========================================*/
 /*===========================================*/
@@ -17,12 +18,16 @@ const Order = () => {
 
     const { id } = useParams();
 
+    const [loading, setLoading] = useState(false);
+
     /*===========================================*/
 
     // get user orders
     useEffect(() => {
 
         const getUserOrder = async () => {
+
+            setLoading(true);
 
             try {
 
@@ -44,6 +49,10 @@ const Order = () => {
 
             } catch (error) {
                 console.log(error)
+            } finally {
+
+                setLoading(false);
+
             }
         };
 
@@ -57,14 +66,16 @@ const Order = () => {
         <div className="orders">
             <h2 className='tab-title'>Order History</h2>
             {
-                !userOrders?.length ?
-                    <h5 className="noOrders">No orders yet.</h5> :
-                    userOrders.map((el, idx) => (
-                        <SingleOrder key={idx} singleOrder={el} />
-                    ))
+                loading ? (<Spinner />) :
+                    userOrders?.length > 0 ? (
+                        userOrders?.map((el, idx) => (
+                            <SingleOrder key={idx} singleOrder={el} />
+                        ))
+                    ) :
+                        (<h5 className="noOrders">No results found.</h5>)
             }
         </div>
     )
 }
 
-export default Order;
+export default Order; 

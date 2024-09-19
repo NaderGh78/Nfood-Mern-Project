@@ -3,17 +3,13 @@
     display: flex;
 }
 
-.menu-filter .my-card {
-    width: calc((100% - 60px) /3) !important
-}
-
 .menu-filter .menu-filter-content-all {
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
 .menu-filter .menu-filter-content-all .left {
-    flex: 9;
+    flex: 10;
 }
 
 .menu-filter .menu-filter-content-all .left-content {
@@ -108,8 +104,9 @@
 .menu-filter .all-filters-items {
     position: relative;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 22px 10px;
     width: 100%;
     min-height: 400px;
     margin-top: 20px;
@@ -123,7 +120,8 @@
 }
 
 .menu-filter .all-filters-items .my-card {
-    width: calc((100% - 90px)/4);
+    flex: 1 1 calc(33.333% - 16px);
+    max-width: calc(33.333% - 16px);
 }
 
 .menu-filter .all-filters-items .my-card .card {
@@ -147,8 +145,6 @@
 @media only screen and (max-width:560px) {
 
     .menu-filter .my-card {
-        /* width: 100% !important; */
-        width: 80% !important;
         margin: auto;
     }
 
@@ -165,16 +161,6 @@
 
 /* end 560px*/
 
-@media only screen and (min-width:560px) and (max-width: 800px) {
-
-    .menu-filter .my-card {
-        width: calc((100% - 30px) /2) !important
-    }
-
-}
-
-/* end 800px and 560px*/
-
 @media only screen and (max-width:767px) {
 
     .menu-filter .menu-filter-content-all .left-content {
@@ -190,24 +176,13 @@
 @media only screen and (max-width:1090px) {
 
     .change-to-list-view .single-card-list-view {
-        /* width: 100% !important; */
-        width: 80% !important;
+        width: 95% !important;
         margin: auto;
     }
 
 }
 
 /* end 1090px*/
-
-@media only screen and (min-width:800px) and (max-width: 1450px) {
-
-    .menu-filter .my-card {
-        width: calc((100% - 60px) /3) !important
-    }
-
-}
-
-/* end 1120px and 800px*/
 
 @media only screen and (max-width:1450px) {
 
@@ -230,3 +205,56 @@
 }
 
 /* end 1450px */
+
+@media only screen and (max-width: 1024px) {
+
+    .menu-filter .all-filters-items .my-card {
+        flex: 1 1 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+    }
+
+}
+
+/* end 1024px */
+
+@media only screen and (max-width: 768px) {
+
+    .menu-filter .all-filters-items .my-card {
+        flex: 1 1 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+    }
+
+}
+
+/* end 768px */
+
+@media only screen and (max-width: 600px) {
+
+    .menu-filter .all-filters-items .my-card {
+        flex: 1 1 calc(100% - 8px);
+        max-width: calc(100% - 8px);
+    }
+
+}
+
+/* end 600px */
+
+@media only screen and (max-width: 480px) {
+
+    .menu-filter .all-filters-items {
+        gap: 8px;
+    }
+
+}
+
+/* end 480px */
+
+@media only screen and (max-width: 320px) {
+
+    .menu-filter .all-filters-items .my-card {
+        font-size: 0.9em;
+    }
+
+}
+
+/* end 320px */

@@ -8,6 +8,7 @@ import { setShowModal } from "../../../redux/slices/modalSlice";
 import { request, userRequest } from "../../../utils/request";
 import SingleWishList from "./SingleWishList";
 import swal from "sweetalert";
+import { Spinner } from "react-bootstrap";
 
 /*===========================================*/
 /*===========================================*/
@@ -31,12 +32,16 @@ const Wishlist = () => {
 
     const { id } = useParams();
 
+    const [loading, setLoading] = useState(false);
+
     /*===========================================*/
 
     // Fetch products
     useEffect(() => {
 
         const getProducts = async () => {
+
+            setLoading(true);
 
             try {
 
@@ -51,6 +56,10 @@ const Wishlist = () => {
             } catch (error) {
 
                 console.log(error);
+
+            } finally {
+
+                setLoading(false);
 
             }
 
@@ -166,24 +175,27 @@ const Wishlist = () => {
     /*===========================================*/
 
     return (
-        <div>
+        <div className="wishlist">
+            <h2 className='tab-title'>Wishlist History</h2>
             {
-                !wishlistProducts?.length ?
-                    <h5 className="noWishlist">No wishlist yet.</h5> :
-                    wishlistProducts.map((el) => (
-                        <SingleWishList
-                            data={el}
-                            key={el._id}
-                            currentUser={currentUser}
-                            onAddToWishlist={addWishlistToCartHandler}
-                            onRemoveFromWishlist={deleteItemHandler}
-                            loading={loadingProductId === el._id}
-                            userCart={userCart}
-                        />
-                    ))
+                loading ? (<Spinner />) :
+                    wishlistProducts?.length > 0 ? (
+                        wishlistProducts.map((el) => (
+                            <SingleWishList
+                                data={el}
+                                key={el._id}
+                                currentUser={currentUser}
+                                onAddToWishlist={addWishlistToCartHandler}
+                                onRemoveFromWishlist={deleteItemHandler}
+                                loading={loadingProductId === el._id}
+                                userCart={userCart}
+                            />
+                        ))
+                    ) :
+                        (<h5 className="noWishlist">No wishlist yet.</h5>)
             }
         </div>
     );
 };
 
-export default Wishlist; 
+export default Wishlist;  

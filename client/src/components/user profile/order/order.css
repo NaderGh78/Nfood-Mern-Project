@@ -3,6 +3,19 @@
     color: var(--dark);
 }
 
+.orders .spinner-holder {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.orders .spinner-holder .spinner-border {
+    width: 2rem !important;
+    height: 2rem !important;
+    --bs-spinner-border-width: 2px !important;
+}
+
 .orders h5.noOrders {
     font-size: 17px;
     font-weight: 300;

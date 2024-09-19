@@ -95,6 +95,17 @@ h5.noWishlist {
     color: rgb(153, 153, 153);
 }
 
+.wishlist .tab-title {
+    margin-bottom: 25px;
+    color: var(--dark);
+}
+
+.wishlist .spinner-border {
+    width: 2rem !important;
+    height: 2rem !important;
+    --bs-spinner-border-width: 2px !important;
+}
+
 /*====================================*/
 /*===========Responsive===============*/
 /*====================================*/

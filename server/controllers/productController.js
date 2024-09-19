@@ -294,6 +294,42 @@ const getProductReviewsCtrl = asynHandler(
 
 /*===========================================*/
 
+/** 
+ * @desc search for a product by product name
+ * @route api/products/search
+ * @method Get
+ * @access public 
+*/
+
+const searchProductCtrl = asynHandler(async (req, res) => {
+
+    const query = req.query.q || '';
+
+    if (!query.trim()) {
+
+        return res.status(200).json({ data: [], resultsLength: 0 });
+
+    }
+
+    try {
+
+        const products = await ProductModel.find({
+            name: { $regex: query, $options: 'i' }
+        });
+
+        res.status(200).json({ data: products, resultsLength: products.length });
+
+    } catch (error) {
+
+        res.status(500).json({ message: error.message });
+
+    }
+
+});
+
+
+/*===========================================*/
+
 module.exports = {
     getAllProductsCtrl,
     getProductCtrl,
@@ -301,5 +337,6 @@ module.exports = {
     deleteProductCtrl,
     productReviewCtrl,
     deleteSingleReviewCtrl,
-    getProductReviewsCtrl
+    getProductReviewsCtrl,
+    searchProductCtrl
 }
