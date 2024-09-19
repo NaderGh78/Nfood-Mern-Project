@@ -61,7 +61,7 @@
 /*===========Responsive===============*/
 /*====================================*/
 
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:769px) {
 
     .user-profile .user-profile-box {
         width: 100%;
@@ -85,3 +85,21 @@
     }
 
 }
+
+/* end 769px */
+
+@media only screen and (max-width:426px) {
+
+    .account .hide-account {
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .user-profile .user-profile-box ul {
+        width: 100%;
+    }
+
+}
+
+/* end 425px */

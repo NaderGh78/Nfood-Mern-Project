@@ -124,7 +124,7 @@ const Search = () => {
                             />
                         ))
                     ) : (
-                        query.trim() !== '' && <h2>No results found.</h2>
+                        query.trim() !== '' && <h2 style={{ color: "#999" }}>No results found.</h2>
                     )}
                 </div>
             </div>

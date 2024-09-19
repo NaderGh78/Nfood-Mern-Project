@@ -6,6 +6,7 @@ import { FaTrash } from "react-icons/fa6";
 import { LiaEye } from "react-icons/lia";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import Spinner from "../common/spinner/Spinner";
 
 /*===========================================*/
 /*===========================================*/
@@ -19,6 +20,8 @@ const AdminCutomersTable = () => {
 
     const [isDelete, setIsDelete] = useState(false);
 
+    const [loading, setLoading] = useState(false);
+
     /*===========================================*/
 
     // get all products to draw slider ui
@@ -26,27 +29,31 @@ const AdminCutomersTable = () => {
 
         const getAllUsers = async () => {
 
+            setLoading(true);
+
             try {
 
-                const res = await request.get(`/api/users/profile`,
-                    {
-                        headers: {
-                            Authorization: "Bearer " + currentUser.token,
-                        },
-                    }
-                );
+                const res = await request.get(`/api/users/profile`, {
+                    headers: {
+                        Authorization: "Bearer " + currentUser.token,
+                    },
+                });
 
                 if (res && res?.data) {
-
                     const { allUsers } = res?.data;
-
                     setProfiles(allUsers);
-
                 }
 
             } catch (error) {
-                console.log(error)
+
+                console.log(error);
+
+            } finally {
+
+                setLoading(false);
+
             }
+
         };
 
         getAllUsers();
@@ -70,29 +77,20 @@ const AdminCutomersTable = () => {
             buttons: true,
             dangerMode: true,
         }).then((isOk) => {
-
             if (isOk) {
-
                 const deleteSingleProfile = async () => {
-
                     try {
-
                         setIsDelete(false);
-
-                        const { data } = await request.delete(`/api/users/profile/${id}`,
-                            {
-                                headers: {
-                                    Authorization: "Bearer " + currentUser.token,
-                                },
-                            }
-                        );
+                        const { data } = await request.delete(`/api/users/profile/${id}`, {
+                            headers: {
+                                Authorization: "Bearer " + currentUser.token,
+                            },
+                        });
 
                         toast.success(data?.message);
-
                         setIsDelete(true);
-
                     } catch (error) {
-                        console.log(error)
+                        console.log(error);
                     }
                 };
 
@@ -105,24 +103,27 @@ const AdminCutomersTable = () => {
 
     return (
         <div className='table-box'>
-            <h2 style={{ color: "var(--dark)" }}>All Cutomers</h2>
-            <table className="table table-hover table-bordered table-transparent">
-                <thead>
-                    <tr>
-                        <th scope="col" className='text-center'>#</th>
-                        <th scope="col" className='text-center'>Name</th>
-                        <th scope="col" className='text-center'>Email</th>
-                        <th scope="col" className='text-center'>Address</th>
-                        <th scope="col" className='text-center'>Phone</th>
-                        <th scope="col" className='text-center'>Role</th>
-                        <th scope="col" className='text-center'>Joined at</th>
-                        <th scope="col" className='text-center'>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        profiles.length > 0
-                            ?
+            <h2 style={{ color: "var(--dark)" }}>All Customers</h2>
+            {loading ? (
+                <div className='text-center'>
+                    <Spinner />
+                </div>
+            ) : (
+                <table className="table table-hover table-bordered table-transparent">
+                    <thead>
+                        <tr>
+                            <th scope="col" className='text-center'>#</th>
+                            <th scope="col" className='text-center'>Name</th>
+                            <th scope="col" className='text-center'>Email</th>
+                            <th scope="col" className='text-center'>Address</th>
+                            <th scope="col" className='text-center'>Phone</th>
+                            <th scope="col" className='text-center'>Role</th>
+                            <th scope="col" className='text-center'>Joined at</th>
+                            <th scope="col" className='text-center'>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {profiles.length > 0 ? (
                             profiles.map((el, i) => (
                                 <tr key={i}>
                                     <th scope="row" className='text-center'>{i + 1}</th>
@@ -136,9 +137,7 @@ const AdminCutomersTable = () => {
                                     <td className='text-center'>
                                         <a href={`mailto:${el.email}`} target="_blank">{el.email}</a>
                                     </td>
-                                    <td className='text-center'>
-                                        {el.address}
-                                    </td>
+                                    <td className='text-center'>{el.address}</td>
                                     <td className='text-center'>{el.phone}</td>
                                     <td
                                         className='text-center'
@@ -154,32 +153,28 @@ const AdminCutomersTable = () => {
                                         >
                                             <LiaEye />
                                         </Link>
-
-                                        {/* if the user is admin , hide the delete btn */}
-                                        {!el.isAdmin
-                                            &&
-                                            <>
-                                                <button
-                                                    className='btn btn-small bg-danger rounded-0 text-white'
-                                                    onClick={() => handleDeleteUser(el._id)}
-                                                    disabled={el.isAdmin}
-                                                >
-                                                    <FaTrash />
-                                                </button>
-                                            </>
-                                        }
+                                        {!el.isAdmin && (
+                                            <button
+                                                className='btn btn-small bg-danger rounded-0 text-white'
+                                                onClick={() => handleDeleteUser(el._id)}
+                                                disabled={el.isAdmin}
+                                            >
+                                                <FaTrash />
+                                            </button>
+                                        )}
                                     </td>
                                 </tr>
                             ))
-                            :
+                        ) : (
                             <tr className='text-center'>
-                                <td colSpan="8"><h2>No Cutomers Yet!</h2></td>
+                                <td colSpan="8"><h2>No Customers Yet!</h2></td>
                             </tr>
-                    }
-                </tbody>
-            </table>
+                        )}
+                    </tbody>
+                </table>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default AdminCutomersTable;
+export default AdminCutomersTable; 

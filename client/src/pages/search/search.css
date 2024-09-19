@@ -53,7 +53,7 @@
 }
 
 .search .highlight {
-    background-color: yellow;
+    background-color: var(--pistach);
     font-weight: bold;
 }
 

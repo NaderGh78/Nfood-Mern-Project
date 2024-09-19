@@ -6,6 +6,7 @@ import AdminCatModal from "./AdminCatModal";
 import { FaTrash } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import Spinner from "../common/spinner/Spinner";
 
 /*===========================================*/
 /*===========================================*/
@@ -25,12 +26,16 @@ const AdminFoodCategories = () => {
 
     const [isDelete, setIsDelete] = useState(false);
 
+    const [loading, setLoading] = useState(false);
+
     /*===========================================*/
 
     // fetch all categories
     useEffect(() => {
 
         const getCategories = async () => {
+
+            setLoading(true);
 
             try {
 
@@ -46,6 +51,10 @@ const AdminFoodCategories = () => {
 
             } catch (error) {
                 console.log(error)
+            } finally {
+
+                setLoading(false);
+
             }
         };
 
@@ -110,41 +119,51 @@ const AdminFoodCategories = () => {
                     onClick={() => { dispatch(setShowNewCatModal()) }}
                 >Add New</button>
             </div>
-            <table className="table table-hover table-bordered table-transparent">
-                <thead>
-                    <tr>
-                        <th scope="col" className='text-center'>#</th>
-                        <th scope="col" className='text-center'>Category</th>
-                        <th scope="col" className='text-center'>Create At</th>
-                        <th scope="col" className='text-center'>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cat.length > 0
-                        ? cat.map((el, idx) => (
-                            <tr key={idx}>
-                                <th scope="row" className='text-center'>{idx + 1}</th>
-                                <td className='text-center text-capitalize'>{el.title}</td>
-                                <td className='text-center'>{new Date(el.createdAt).toDateString()}</td>
-                                <td className='d-flex justify-content-center gap-1'>
-                                    <button
-                                        className='btn btn-small bg-danger rounded-0 text-white'
-                                        onClick={() => handleDeleteCategory(el._id)}
-                                    >
-                                        <FaTrash />
-                                    </button>
-                                </td>
+
+            {loading ? (
+                <div className='text-center'>
+                    <Spinner />
+                </div>
+            ) :
+                (
+                    <table className="table table-hover table-bordered table-transparent">
+                        <thead>
+                            <tr>
+                                <th scope="col" className='text-center'>#</th>
+                                <th scope="col" className='text-center'>Category</th>
+                                <th scope="col" className='text-center'>Create At</th>
+                                <th scope="col" className='text-center'>Action</th>
                             </tr>
-                        ))
-                        :
-                        <>
-                            <tr className='text-center'>
-                                <td colSpan="4"><h5>No Category Yet,Add One !</h5></td>
-                            </tr>
-                        </>
-                    }
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            {cat.length > 0
+                                ? cat.map((el, idx) => (
+                                    <tr key={idx}>
+                                        <th scope="row" className='text-center'>{idx + 1}</th>
+                                        <td className='text-center text-capitalize'>{el.title}</td>
+                                        <td className='text-center'>{new Date(el.createdAt).toDateString()}</td>
+                                        <td className='d-flex justify-content-center gap-1'>
+                                            <button
+                                                className='btn btn-small bg-danger rounded-0 text-white'
+                                                onClick={() => handleDeleteCategory(el._id)}
+                                            >
+                                                <FaTrash />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                                :
+                                <>
+                                    <tr className='text-center'>
+                                        <td colSpan="4"><h5>No Category Yet,Add One !</h5></td>
+                                    </tr>
+                                </>
+                            }
+                        </tbody>
+                    </table>
+                )
+            }
+
             {/* [add new] category modal */}
             <AdminCatModal
                 show={showNewCatModal}

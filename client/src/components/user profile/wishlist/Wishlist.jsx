@@ -8,7 +8,7 @@ import { setShowModal } from "../../../redux/slices/modalSlice";
 import { request, userRequest } from "../../../utils/request";
 import SingleWishList from "./SingleWishList";
 import swal from "sweetalert";
-import { Spinner } from "react-bootstrap";
+import Spinner from "../../common/spinner/Spinner";
 
 /*===========================================*/
 /*===========================================*/
